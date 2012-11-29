@@ -1,0 +1,85 @@
+linux:
+  base:
+    CPU_TIME: top -b -n 1 |grep ^Cpu
+    SYSTEM_INFO: free -m
+    DISK_USAGE: df -h
+  dea:
+    CHECK: if [ -d /var/vcap/jobs/dea ]; then echo Linux DEA ; fi
+    DROPLETCOUNTFOLDER: ls -la /var/vcap/data/dea/apps/
+    WORKERPROCESSESIISCOUNT: ps aux | grep dea/apps
+    WORKERPROCESSESMEMORY: ps aux | grep dea/apps
+    DEAPROCESSMEMORY: ps aux | grep jobs/dea
+    CONFIG: cat /var/vcap/jobs/dea/config/dea.yml
+    DROPLETDATA: cat /var/vcap/data/dea/db/applications.json
+  mysql_node:
+    CHECK: if [ -d /var/vcap/jobs/mysql_node ]; then echo MySQL Node ; fi
+    DATABASESONDRIVE: ls /var/vcap/store/mysql/ -la
+    SERVERMEMORY: ps aux | grep libexec/mysqld
+    NODEPROCESSMEMORY: ps aux | grep bin/mysql_node
+    CONFIG: cat /var/vcap/jobs/mysql_node/config/mysql_node.yml
+    SERVICEDB: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/mysql_node.db "select name,plan,quota_exceeded from vcap_services_mysql_node_provisioned_services"
+  postgresql_node:
+    CHECK: if [ -d /var/vcap/jobs/postgresql_node ]; then echo PostgreSQL Node ; fi
+    DATABASESONDRIVE: ls -la /var/vcap/store/postgresql/base/
+    SERVERMEMORY: ps aux | grep 'postgres:\|5.1/bin/postgres'
+    NODEPROCESSMEMORY: ps aux | grep bin/postgresql_node
+    CONFIG: cat /var/vcap/jobs/postgresql_node/config/postgresql_node.yml
+    SERVICEDB: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/postgresql_node.db "select name,plan,quota_exceeded from vcap_services_postgresql_node_provisionedservices"
+  mongodb_node:
+    CHECK: if [ -d /var/vcap/jobs/mongodb_node ]; then echo MongoDB Node ; fi
+    DATABASESONDRIVE: ls -la /var/vcap/store/mongodb/
+    SERVERMEMORY: ps aux | grep "bin/mongod -f"
+    NODEPROCESSMEMORY: ps aux | grep "mongodb_node"
+    CONFIG: cat /var/vcap/jobs/mongodb_node/config/mongodb_node.yml
+    SERVICEDB: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/mongodb_node.db "select name,plan,quota_exceeded from vcap_services_mongodb_node_provisioned_services"
+  redis_node:
+    CHECK: if [ -d /var/vcap/jobs/redis_node ]; then echo Redis Node ; fi
+    DATABASESONDRIVE: ls -la /var/vcap/store/redis/instances/
+    SERVERMEMORY: ps aux | grep redis-server
+    NODEPROCESSMEMORY: ps aux | grep redis_node
+    CONFIG: cat /var/vcap/jobs/redis_node/config/redis_node.yml
+    SERVICEDB: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/redis_node.db "select name,plan,quota_exceeded from vcap_services_redis_node_provisioned_services"
+  rabbit_node:
+    CHECK: if [ -d /var/vcap/jobs/rabbit_node ]; then echo RabbitMQ Node ; fi
+    DATABASESONDRIVE: ls -la /var/vcap/store/rabbit/instances/
+    SERVERMEMORY: ps aux | grep /var/vcap/store/rabbit/instances/
+    NODEPROCESSMEMORY: ps aux | grep rabbit_node
+    CONFIG: cat /var/vcap/jobs/rabbit_node/config/rabbit_node.yml
+    SERVICEDB: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/rabbit_node.db "select name,plan,quota_exceeded from vcap_services_rabbit_node_provisioned_services"
+  cloud_controller:
+    CHECK: if [ -d /var/vcap/jobs/cloud_controller ]; then echo Cloud Controller ; fi
+  stager:
+    CHECK: if [ -d /var/vcap/jobs/stager ]; then echo Stager ; fi
+  ccdb_postgres:
+    CHECK: if [ -d /var/vcap/jobs/ccdb_postgres ]; then echo Cloud Controller Database ; fi
+  collector:
+    CHECK: if [ -d /var/vcap/jobs/collector ]; then echo Collector ; fi
+  dashboard:
+    CHECK: if [ -d /var/vcap/jobs/dashboard ]; then echo Dashboard ; fi
+  debian_nfs_server:
+    CHECK: if [ -d /var/vcap/jobs/debian_nfs_server ]; then echo Network File System ; fi
+  opentsdb:
+    CHECK: if [ -d /var/vcap/jobs/opentsdb ]; then echo Open TSTB ; fi
+  nats:
+    CHECK: if [ -d /var/vcap/jobs/nats ]; then echo NATS Server ; fi
+  router:
+    CHECK: if [ -d /var/vcap/jobs/router ]; then echo Router ; fi
+  syslog_aggregator:
+    CHECK: if [ -d /var/vcap/jobs/syslog_aggregator ]; then echo Syslog Aggregator ; fi
+  vcap_redis:
+    CHECK: if [ -d /var/vcap/jobs/vcap_redis ]; then echo VCAP Redis ; fi
+  mysql_gateway:
+    CHECK: if [ -d /var/vcap/jobs/mysql_gateway ]; then echo MySQL Gateway ; fi
+  postgresql_gateway:
+    CHECK: if [ -d /var/vcap/jobs/postgresql_gateway ]; then echo PostgreSQL Gateway ; fi
+  mongodb_gateway:
+    CHECK: if [ -d /var/vcap/jobs/mongodb_gateway ]; then echo MongoDB Gateway ; fi
+  redis_gateway:
+    CHECK: if [ -d /var/vcap/jobs/redis_gateway ]; then echo Redis Gateway ; fi
+  rabbit_mq:
+    CHECK: if [ -d /var/vcap/jobs/rabbit_gateway ]; then echo RabbitMQ Gateway ; fi
+  sqlserver_gateway:
+    CHECK: if [ -d /var/vcap/jobs/sqlserver_gateway ]; then echo SqlServer Gateway ; fi
+  uhurufs_gateway:
+    CHECK: if [ -d /var/vcap/jobs/uhurufs_gateway ]; then echo UhuruFS Gateway ; fi
+ 
