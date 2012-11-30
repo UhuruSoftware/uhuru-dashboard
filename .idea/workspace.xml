@@ -2,33 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="982a80a2-bb73-4734-84e4-3b04f50aa944" name="Default" comment="">
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\data\199.16.201.75.yml" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\ccdb_postgres.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\cloud_controller.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\collector.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\dashboard.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\dea.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\debian_nfs_server.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\mongodb_gateway.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\mongodb_node.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\mysql_gateway.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\mysql_node.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\nats.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\opentsdb.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\postgresql_gateway.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\postgresql_node.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\rabbit_gateway.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\rabbit_node.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\redis_gateway.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\redis_node.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\router.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\sqlserver_gateway.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\stemcell.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\syslog_aggregator.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\uhurufs_gateway.sh" afterPath="" />
-      <change type="DELETED" beforePath="H:\code\private-uhuru-dashboard\scripts\linux\vcap_redis.sh" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/uhuru-dashboard.yml" afterPath="$PROJECT_DIR$/config/uhuru-dashboard.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/private-uhuru-dashboard.iml" afterPath="$PROJECT_DIR$/.idea/private-uhuru-dashboard.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/199.16.201.151.yml" afterPath="$PROJECT_DIR$/data/199.16.201.151.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/get_linux_stats.rb" afterPath="$PROJECT_DIR$/lib/get_linux_stats.rb" />
     </list>
     <ignored path="private-uhuru-dashboard.iws" />
@@ -51,16 +27,34 @@
       <file leaf-file-name="get_linux_stats.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/get_linux_stats.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="110" column="132" selection-start="3572" selection-end="3572" vertical-scroll-proportion="0.0">
+            <state line="322" column="195" selection-start="10412" selection-end="10412" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="199.16.201.151.yml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/data/199.16.201.151.yml">
+      <file leaf-file-name="uhuru-hosts.cfg" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/uhuru-hosts.cfg">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="165" column="53" selection-start="24310" selection-end="24310" vertical-scroll-proportion="0.73179615">
+            <state line="12" column="88" selection-start="467" selection-end="467" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="get-metric.sh" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bin/get-metric.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="7" selection-start="44" selection-end="44" vertical-scroll-proportion="0.03329634">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="localhost_nagios2.cfg" pinned="false" current="false" current-in-tab="false">
+        <entry file="file:///etc/nagios3/conf.d/localhost_nagios2.cfg">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="84" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -69,7 +63,16 @@
       <file leaf-file-name="uhuru-dashboard.yml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/uhuru-dashboard.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="132" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0">
+            <state line="12" column="35" selection-start="460" selection-end="460" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="199.16.201.151.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/199.16.201.151.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="257" column="202" selection-start="30284" selection-end="30284" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -93,13 +96,16 @@
         <option value="$PROJECT_DIR$/data/199.16.201.75.yml" />
         <option value="$PROJECT_DIR$/data/199.16.201.151.yml" />
         <option value="$PROJECT_DIR$/lib/get_linux_stats.rb" />
+        <option value="$PROJECT_DIR$/config/uhuru-hosts.cfg" />
+        <option value="$PROJECT_DIR$/bin/get-metric.sh" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="454" />
-    <option name="width" value="1466" />
-    <option name="height" value="998" />
+    <option name="x" value="-7" />
+    <option name="y" value="-10" />
+    <option name="width" value="1934" />
+    <option name="height" value="1062" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -188,6 +194,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="private-uhuru-dashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="private-uhuru-dashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -206,7 +226,11 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
       <envs />
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
@@ -229,7 +253,11 @@
       <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
       <envs />
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
       <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="" />
       <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
       <method />
@@ -244,7 +272,11 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
       <envs />
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="" />
@@ -259,32 +291,33 @@
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+      <changelist id="982a80a2-bb73-4734-84e4-3b04f50aa944" name="Default" comment="" />
       <created>1354220468572</created>
       <updated>1354220468572</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="454" y="0" width="1466" height="998" extended-state="0" />
+    <frame x="-7" y="-10" width="1934" height="1062" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19373219" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12593383" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -340,13 +373,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/uhuru-dashboard.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="132" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/get_linux_stats.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="110" column="132" selection-start="3572" selection-end="3572" vertical-scroll-proportion="0.0">
@@ -356,7 +382,63 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data/199.16.201.151.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="165" column="53" selection-start="24310" selection-end="24310" vertical-scroll-proportion="0.73179615">
+        <state line="165" column="53" selection-start="24310" selection-end="24310" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/uhuru-dashboard.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="132" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///etc/nagios3/conf.d/services_nagios2.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/199.16.201.151.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="257" column="202" selection-start="30284" selection-end="30284" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/uhuru-dashboard.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="35" selection-start="460" selection-end="460" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/get_linux_stats.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="322" column="195" selection-start="10412" selection-end="10412" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///etc/nagios3/conf.d/localhost_nagios2.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="84" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/uhuru-hosts.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="88" selection-start="467" selection-end="467" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/get-metric.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="7" selection-start="44" selection-end="44" vertical-scroll-proportion="0.03329634">
           <folding />
         </state>
       </provider>

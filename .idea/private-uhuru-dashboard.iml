@@ -4,8 +4,6 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="bundler (v1.2.2, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="net-ssh (v2.6.2, ruby-1.9.3-p327) [gem]" level="application" />
   </component>
 </module>
 

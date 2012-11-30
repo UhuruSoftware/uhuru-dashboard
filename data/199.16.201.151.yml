@@ -1,11 +1,11 @@
 cpu_time: |
   ---
-  Cpu(s):  1.6%us,  4.6%sy,  0.1%ni, 93.1%id,  0.6%wa,  0.0%hi,  0.1%si,  0.0%st
+  Cpu(s):  1.6%us,  4.5%sy,  0.1%ni, 93.1%id,  0.6%wa,  0.0%hi,  0.1%si,  0.0%st
 system_info: |
   ---
                total       used       free     shared    buffers     cached
-  Mem:          3963       1909       2053          0        461        631
-  -/+ buffers/cache:        816       3146
+  Mem:          3963       2010       1953          0        532        422
+  -/+ buffers/cache:       1055       2908
   Swap:         3969          2       3966
 disk_usage: |
   ---
@@ -16,66 +16,132 @@ disk_usage: |
   none                  2.0G   52K  2.0G   1% /var/run
   none                  2.0G     0  2.0G   0% /var/lock
   none                  2.0G     0  2.0G   0% /lib/init/rw
-  /dev/sdb2              59G  2.0G   54G   4% /var/vcap/data
+  /dev/sdb2              59G  1.5G   55G   3% /var/vcap/data
   /dev/loop0            124M  5.7M  118M   5% /tmp
-  //192.168.6.2/D4Ta5566d5552e274df8b586cab63846564b
-                        400G   73G  328G  19% /var/vcap/data/dea/uhurufs/testappzc-0-6e48eb96559725428f134b1758657f89/TestFs
-  //192.168.6.2/D4Tae2c2c452d7f14608aca7b87bcbb86fbc
-                        400G   73G  328G  19% /var/vcap/data/dea/uhurufs/Testapp1-0-aae75e8da805e21f7ddb96391586b038/Testapp1FS
-  //192.168.6.2/D4Tade6e407013e44df3b51bcece1ac8b031
-                        400G   73G  328G  19% /var/vcap/data/dea/uhurufs/svr01-0-97a3ec90ff0257645cde75dc39396e81/svr01FS
-  //192.168.6.2/D4Ta2e13be9ab0534f6bb0aa3810af4a45ad
-                        400G   73G  328G  19% /var/vcap/data/dea/uhurufs/start-0-9572d07bf76da61a0bfcf198575ea4cf/startFS
-  //192.168.6.2/D4Tafbb360482fbf41b1a778c30f6da078ee
-                        400G   73G  328G  19% /var/vcap/data/dea/uhurufs/manni-0-4fe2fe81975bf125766f77c1c4c30f17/manniFS
+  //192.168.6.2/D4Tabce683d92d624e0c803c9124585d58c7
+                        400G   73G  328G  19% /var/vcap/data/dea/uhurufs/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/yourmagnetoFS
+  //192.168.6.2/D4Ta52a28c80427e4923ba44551ab75d009e
+                        400G   73G  328G  19% /var/vcap/data/dea/uhurufs/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/uhuruwpfs
+  //192.168.6.2/D4Taea38b33b9f6a48848ab1897c207af00d
+                        400G   73G  328G  19% /var/vcap/data/dea/uhurufs/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/simpleCloudServiceFS
+  //192.168.6.3/D4Ta429d11fc8d8e4dba87537529772a53a1
+                        160G   15G  146G  10% /var/vcap/data/dea/uhurufs/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/indiealertsFS
+  //192.168.6.2/D4Ta02db603a85554087962d81d4d538d893
+                        400G   73G  328G  19% /var/vcap/data/dea/uhurufs/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/myfbappFS
 check: |
   ---
   Linux DEA
 dropletcountfolder: |
   ---
-  total 76
-  drwx--x--x 15 root         root     20480 2012-11-29 22:27 .
+  total 68
+  drwx--x--x 13 root         root     20480 2012-11-30 16:15 .
   drwx--x--x  6 root         root      4096 2012-08-31 09:26 ..
-  drwx------  6 vcap-user-1  vcap-dea  4096 2012-11-29 21:31 cardGameService-0-995e1fe699d4ab1dde01f776885215a0
+  drwx------  7 vcap-user-3  vcap-dea  4096 2012-11-30 15:28 indiealerts-0-57933d9a1ff87dc567227e0802a75aee
   drwx------  3 vcap-user-43 vcap-dea  4096 2012-10-03 18:37 kaniz-0-1a905799f6c256c8c7f4721844f14cf6
-  drwx------  6 vcap-user-7  vcap-dea  4096 2012-11-29 22:28 manni-0-4fe2fe81975bf125766f77c1c4c30f17
-  drwx------  6 vcap-user-6  vcap-dea  4096 2012-11-29 22:28 omstest-0-67144157b33002a0da989f1d01bc2535
+  drwx------  7 vcap-user-4  vcap-dea  4096 2012-11-30 16:10 myfbapp-0-f77bb1460e33b649752e2965e85e0f67
   drwx------  3 vcap-user-48 vcap-dea  4096 2012-09-14 13:26 prueba-0-2a66cafc9f0ed93db39d47f78a8dcae4
   drwx------  3 vcap-user-36 vcap-dea  4096 2012-10-03 18:37 rajneeshverma-0-a39c54c767ece3d8a5a87aa341ddc391
-  drwx------  6 vcap-user-5  vcap-dea  4096 2012-11-29 22:27 start-0-9572d07bf76da61a0bfcf198575ea4cf
-  drwx------  6 vcap-user-4  vcap-dea  4096 2012-11-29 22:27 svr01-0-97a3ec90ff0257645cde75dc39396e81
+  drwx------  7 vcap-user-2  vcap-dea  4096 2012-11-30 14:45 simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e
   drwx------  3 vcap-user-40 vcap-dea  4096 2012-09-14 13:26 test2wordpress-0-89fa817b6651665769768fe39d6bc136
-  drwx------  6 vcap-user-3  vcap-dea  4096 2012-11-29 22:28 Testapp1-0-aae75e8da805e21f7ddb96391586b038
-  drwx------  6 vcap-user-2  vcap-dea  4096 2012-11-29 21:25 testappzc-0-6e48eb96559725428f134b1758657f89
+  drwx------  6 vcap-user-1  vcap-dea  4096 2012-11-30 12:44 uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f
   drwx------  3 vcap-user-41 vcap-dea  4096 2012-10-03 18:37 wirelessmedia-0-65637a9a4b366f1f533cfc601b3f6fa5
   drwx------  3 vcap-user-49 vcap-dea  4096 2012-09-14 13:26 wordpress1e-0-e93af0656df48cc6f43a2fcc3e616ac3
+  drwx------  6 vcap-user-8  vcap-dea  4096 2012-11-30 07:45 yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9
 workerprocessesiiscount: |
   ---
-  root      8734  2.2  0.0  12520   668 ?        D<   22:27   0:01 cp -Rn /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/LICENSE.html /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/LICENSE.txt /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/LICENSE_AFL.txt /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/RELEASE_NOTES.txt /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/api.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/app /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/cron.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/cron.sh /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/downloader /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/errors /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/favicon.ico /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/get.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/includes /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/index-install.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/index.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/index.php.sample /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/install.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/install.sh /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/js /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/lib /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/mage /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/media /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/not_installed.lock /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/php.ini.sample /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/pkginfo /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/shell /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/skin /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/var /var/vcap/data/dea/uhurufs/svr01-0-97a3ec90ff0257645cde75dc39396e81/svr01FS/svr01
-  root      8780  0.0  0.0   4144   568 ?        S<   22:28   0:00 sh -c du -skhx /var/vcap/data/dea/apps/* > /var/vcap/sys/log/dea/apps.du.20121129_2228.summary 2>&1; du -hx --max-depth 6 /var/vcap/data/dea/apps > /var/vcap/sys/log/dea/apps.du.20121129_2228.details
-  root      8784 11.5  0.0   4220   836 ?        D<   22:28   0:00 du -skhx /var/vcap/data/dea/apps/Testapp1-0-aae75e8da805e21f7ddb96391586b038 /var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0 /var/vcap/data/dea/apps/kaniz-0-1a905799f6c256c8c7f4721844f14cf6 /var/vcap/data/dea/apps/manni-0-4fe2fe81975bf125766f77c1c4c30f17 /var/vcap/data/dea/apps/omstest-0-67144157b33002a0da989f1d01bc2535 /var/vcap/data/dea/apps/prueba-0-2a66cafc9f0ed93db39d47f78a8dcae4 /var/vcap/data/dea/apps/rajneeshverma-0-a39c54c767ece3d8a5a87aa341ddc391 /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81 /var/vcap/data/dea/apps/test2wordpress-0-89fa817b6651665769768fe39d6bc136 /var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89 /var/vcap/data/dea/apps/wirelessmedia-0-65637a9a4b366f1f533cfc601b3f6fa5 /var/vcap/data/dea/apps/wordpress1e-0-e93af0656df48cc6f43a2fcc3e616ac3
-  root      8800  1.0  0.0  12520   668 ?        D<   22:28   0:00 cp -Rn /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/LICENSE.html /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/LICENSE.txt /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/LICENSE_AFL.txt /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/RELEASE_NOTES.txt /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/api.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/app /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/cron.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/cron.sh /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/downloader /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/errors /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/favicon.ico /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/get.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/includes /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/index-install.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/index.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/index.php.sample /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/install.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/install.sh /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/js /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/lib /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/mage /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/media /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/not_installed.lock /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/php.ini.sample /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/pkginfo /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/shell /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/skin /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/var /var/vcap/data/dea/uhurufs/start-0-9572d07bf76da61a0bfcf198575ea4cf/startFS/start
-  22003     8806  0.8  0.0  26468  3952 ?        Dl   22:28   0:00 ruby resources/generate_apache_conf 29851 /var/vcap/data/dea/apps/Testapp1-0-aae75e8da805e21f7ddb96391586b038 {"uhurufs-0.9":[{"name":"Testapp1FS","label":"uhurufs-0.9","plan":"free","tags":["Persistent filesystem service","uhurufs-0.9","uhurufs"],"credentials":{"name":"D4Tae2c2c452d7f14608aca7b87bcbb86fbc","username":"US3R6b3rQBj0gDTs","user":"US3R6b3rQBj0gDTs","password":"P4SSds3eWYj5eSiB","hostname":"192.168.6.2","port":54658,"bind_opts":{}}}],"mysql-5.1":[{"name":"Testapp1DB","label":"mysql-5.1","plan":"free","tags":["relational","mysql-5.1","mysql"],"credentials":{"name":"d259db90455a8408da885b31d35921e74","hostname":"192.168.4.101","host":"192.168.4.101","port":3306,"user":"ujM9x1mXaUtIy","username":"ujM9x1mXaUtIy","password":"p7EZppxwDx0zS"}}]} 256m
-  root      8890  0.0  0.0  10776  1320 ?        Ss   22:28   0:00 bash -c ps aux | grep dea/apps
-  root      8892  0.0  0.0   7676   836 ?        S    22:28   0:00 grep dea/apps
-  22002    29922  0.7  5.7 877372 234972 ?       SNl  21:25   0:28 /var/vcap/packages/dea_jvm/bin/java -Djava.util.logging.config.file=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Xms512m -Xmx512m -Djava.io.tmpdir=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tmp -Djava.endorsed.dirs=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat/endorsed -classpath /var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat/bin/bootstrap.jar -Dcatalina.base=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat -Dcatalina.home=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat -Djava.io.tmpdir=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat/temp org.apache.catalina.startup.Bootstrap start
-  22001    31501  1.0  6.8 877768 276848 ?       SNl  21:31   0:35 /var/vcap/packages/dea_jvm/bin/java -Djava.util.logging.config.file=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Xms512m -Xmx512m -Djava.io.tmpdir=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tmp -Djava.endorsed.dirs=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat/endorsed -classpath /var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat/bin/bootstrap.jar -Dcatalina.base=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat -Dcatalina.home=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat -Djava.io.tmpdir=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat/temp org.apache.catalina.startup.Bootstrap start
+  22008      994  0.0  0.3 250780 14428 ?        S    07:45   0:01 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache -f /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache/apache2.conf -D FOREGROUND
+  22008      996  0.0  0.1 250780  6528 ?        S    07:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache -f /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache/apache2.conf -D FOREGROUND
+  22008      997  0.0  0.1 250780  6280 ?        S    07:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache -f /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache/apache2.conf -D FOREGROUND
+  22008      998  0.0  0.1 250780  6280 ?        S    07:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache -f /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache/apache2.conf -D FOREGROUND
+  22008      999  0.0  0.1 250780  6280 ?        S    07:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache -f /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache/apache2.conf -D FOREGROUND
+  22008     1000  0.0  0.1 250780  6280 ?        S    07:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache -f /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache/apache2.conf -D FOREGROUND
+  22002     8282  0.0  0.3 250780 14428 ?        S    14:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache -f /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache/apache2.conf -D FOREGROUND
+  22002     8284  0.0  0.1 250780  7028 ?        S    14:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache -f /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache/apache2.conf -D FOREGROUND
+  22002     8285  0.0  0.3 256076 14276 ?        S    14:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache -f /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache/apache2.conf -D FOREGROUND
+  22002     8286  0.0  0.8 274000 32580 ?        S    14:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache -f /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache/apache2.conf -D FOREGROUND
+  22002     8287  0.0  0.1 250780  7024 ?        S    14:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache -f /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache/apache2.conf -D FOREGROUND
+  22002     8288  0.0  0.1 250780  7024 ?        S    14:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache -f /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache/apache2.conf -D FOREGROUND
+  22002     8343  0.0  0.1 250780  7024 ?        S    14:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache -f /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache/apache2.conf -D FOREGROUND
+  22001    12617  0.7  1.3 294876 53920 ?        S    15:11   0:29 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache -f /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache/apache2.conf -D FOREGROUND
+  22001    14249  0.6  1.3 294436 53508 ?        S    15:20   0:23 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache -f /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache/apache2.conf -D FOREGROUND
+  22003    15714  0.0  0.3 250780 14428 ?        S    15:28   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache -f /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache/apache2.conf -D FOREGROUND
+  22003    15716  0.0  0.1 250780  6532 ?        S    15:28   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache -f /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache/apache2.conf -D FOREGROUND
+  22003    15717  0.0  0.1 250780  6280 ?        S    15:28   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache -f /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache/apache2.conf -D FOREGROUND
+  22003    15718  0.0  0.1 250780  6280 ?        S    15:28   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache -f /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache/apache2.conf -D FOREGROUND
+  22003    15719  0.0  0.1 250780  6280 ?        S    15:28   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache -f /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache/apache2.conf -D FOREGROUND
+  22003    15720  0.0  0.1 250780  6280 ?        S    15:28   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache -f /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache/apache2.conf -D FOREGROUND
+  22001    18219  0.5  1.3 294356 53120 ?        S    15:42   0:11 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache -f /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache/apache2.conf -D FOREGROUND
+  22001    20171  0.0  0.3 250780 14436 ?        S    12:44   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache -f /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache/apache2.conf -D FOREGROUND
+  22001    20175  0.5  1.3 294428 53508 ?        S    12:44   1:14 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache -f /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache/apache2.conf -D FOREGROUND
+  22001    20176  0.6  1.3 294476 53548 ?        S    12:44   1:23 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache -f /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache/apache2.conf -D FOREGROUND
+  22001    20177  0.6  1.3 294504 53552 ?        S    12:44   1:22 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache -f /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache/apache2.conf -D FOREGROUND
+  22001    22882  0.3  1.1 287828 47308 ?        S    16:10   0:01 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache -f /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache/apache2.conf -D FOREGROUND
+  22001    22980  0.6  1.1 288664 47156 ?        S    16:10   0:02 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache -f /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache/apache2.conf -D FOREGROUND
+  22004    23016  0.0  0.3 250780 14432 ?        S    16:10   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache -f /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache/apache2.conf -D FOREGROUND
+  22004    23018  0.5  0.9 280928 39196 ?        D    16:10   0:02 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache -f /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache/apache2.conf -D FOREGROUND
+  22004    23019  0.6  0.9 280904 39400 ?        S    16:10   0:02 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache -f /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache/apache2.conf -D FOREGROUND
+  22004    23020  0.3  0.8 276080 34384 ?        S    16:10   0:01 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache -f /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache/apache2.conf -D FOREGROUND
+  22004    23021  0.4  0.9 280024 38492 ?        S    16:10   0:01 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache -f /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache/apache2.conf -D FOREGROUND
+  22004    23022  0.3  0.9 277944 37124 ?        S    16:10   0:01 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache -f /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache/apache2.conf -D FOREGROUND
+  22004    23048  1.7  0.9 281016 39408 ?        S    16:11   0:06 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache -f /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache/apache2.conf -D FOREGROUND
+  22004    23383  0.3  0.6 267188 26412 ?        S    16:12   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache -f /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache/apache2.conf -D FOREGROUND
+  22004    23388  0.6  0.8 274292 32636 ?        S    16:12   0:01 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache -f /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache/apache2.conf -D FOREGROUND
+  22004    23389  0.9  0.9 282124 40356 ?        S    16:12   0:02 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache -f /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache/apache2.conf -D FOREGROUND
+  22004    23398  0.0  0.2 252036  9644 ?        S    16:12   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache -f /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache/apache2.conf -D FOREGROUND
+  root     24242  0.0  0.0  10772  1316 ?        Ss   16:17   0:00 bash -c ps aux | grep dea/apps
+  root     24244  0.0  0.0   7676   836 ?        S    16:17   0:00 grep dea/apps
+  22001    26431  0.6  1.1 289536 48612 ?        S    13:21   1:04 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache -f /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache/apache2.conf -D FOREGROUND
+  22001    26489  0.6  1.3 294540 53616 ?        S    13:21   1:08 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache -f /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache/apache2.conf -D FOREGROUND
 workerprocessesmemory: |
   ---
-  root      8734  2.2  0.0  12520   668 ?        D<   22:27   0:01 cp -Rn /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/LICENSE.html /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/LICENSE.txt /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/LICENSE_AFL.txt /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/RELEASE_NOTES.txt /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/api.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/app /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/cron.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/cron.sh /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/downloader /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/errors /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/favicon.ico /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/get.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/includes /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/index-install.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/index.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/index.php.sample /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/install.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/install.sh /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/js /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/lib /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/mage /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/media /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/not_installed.lock /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/php.ini.sample /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/pkginfo /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/shell /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/skin /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/var /var/vcap/data/dea/uhurufs/svr01-0-97a3ec90ff0257645cde75dc39396e81/svr01FS/svr01
-  root      8780  0.0  0.0   4144   568 ?        S<   22:28   0:00 sh -c du -skhx /var/vcap/data/dea/apps/* > /var/vcap/sys/log/dea/apps.du.20121129_2228.summary 2>&1; du -hx --max-depth 6 /var/vcap/data/dea/apps > /var/vcap/sys/log/dea/apps.du.20121129_2228.details
-  root      8784  9.8  0.0   4220   836 ?        D<   22:28   0:00 du -skhx /var/vcap/data/dea/apps/Testapp1-0-aae75e8da805e21f7ddb96391586b038 /var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0 /var/vcap/data/dea/apps/kaniz-0-1a905799f6c256c8c7f4721844f14cf6 /var/vcap/data/dea/apps/manni-0-4fe2fe81975bf125766f77c1c4c30f17 /var/vcap/data/dea/apps/omstest-0-67144157b33002a0da989f1d01bc2535 /var/vcap/data/dea/apps/prueba-0-2a66cafc9f0ed93db39d47f78a8dcae4 /var/vcap/data/dea/apps/rajneeshverma-0-a39c54c767ece3d8a5a87aa341ddc391 /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81 /var/vcap/data/dea/apps/test2wordpress-0-89fa817b6651665769768fe39d6bc136 /var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89 /var/vcap/data/dea/apps/wirelessmedia-0-65637a9a4b366f1f533cfc601b3f6fa5 /var/vcap/data/dea/apps/wordpress1e-0-e93af0656df48cc6f43a2fcc3e616ac3
-  root      8800  0.8  0.0  12520   668 ?        D<   22:28   0:00 cp -Rn /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/LICENSE.html /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/LICENSE.txt /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/LICENSE_AFL.txt /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/RELEASE_NOTES.txt /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/api.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/app /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/cron.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/cron.sh /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/downloader /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/errors /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/favicon.ico /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/get.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/includes /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/index-install.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/index.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/index.php.sample /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/install.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/install.sh /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/js /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/lib /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/mage /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/media /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/not_installed.lock /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/php.ini.sample /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/pkginfo /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/shell /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/skin /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/var /var/vcap/data/dea/uhurufs/start-0-9572d07bf76da61a0bfcf198575ea4cf/startFS/start
-  22003     8806  0.8  0.0  26468  3952 ?        Dl   22:28   0:00 ruby resources/generate_apache_conf 29851 /var/vcap/data/dea/apps/Testapp1-0-aae75e8da805e21f7ddb96391586b038 {"uhurufs-0.9":[{"name":"Testapp1FS","label":"uhurufs-0.9","plan":"free","tags":["Persistent filesystem service","uhurufs-0.9","uhurufs"],"credentials":{"name":"D4Tae2c2c452d7f14608aca7b87bcbb86fbc","username":"US3R6b3rQBj0gDTs","user":"US3R6b3rQBj0gDTs","password":"P4SSds3eWYj5eSiB","hostname":"192.168.6.2","port":54658,"bind_opts":{}}}],"mysql-5.1":[{"name":"Testapp1DB","label":"mysql-5.1","plan":"free","tags":["relational","mysql-5.1","mysql"],"credentials":{"name":"d259db90455a8408da885b31d35921e74","hostname":"192.168.4.101","host":"192.168.4.101","port":3306,"user":"ujM9x1mXaUtIy","username":"ujM9x1mXaUtIy","password":"p7EZppxwDx0zS"}}]} 256m
-  root      8894  0.0  0.0  10776  1316 ?        Ss   22:28   0:00 bash -c ps aux | grep dea/apps
-  root      8896  0.0  0.0   7676   832 ?        S    22:28   0:00 grep dea/apps
-  22002    29922  0.7  5.7 877372 234972 ?       SNl  21:25   0:28 /var/vcap/packages/dea_jvm/bin/java -Djava.util.logging.config.file=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Xms512m -Xmx512m -Djava.io.tmpdir=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tmp -Djava.endorsed.dirs=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat/endorsed -classpath /var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat/bin/bootstrap.jar -Dcatalina.base=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat -Dcatalina.home=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat -Djava.io.tmpdir=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat/temp org.apache.catalina.startup.Bootstrap start
-  22001    31501  1.0  6.8 877768 276848 ?       SNl  21:31   0:35 /var/vcap/packages/dea_jvm/bin/java -Djava.util.logging.config.file=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Xms512m -Xmx512m -Djava.io.tmpdir=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tmp -Djava.endorsed.dirs=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat/endorsed -classpath /var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat/bin/bootstrap.jar -Dcatalina.base=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat -Dcatalina.home=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat -Djava.io.tmpdir=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat/temp org.apache.catalina.startup.Bootstrap start
+  22008      994  0.0  0.3 250780 14428 ?        S    07:45   0:01 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache -f /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache/apache2.conf -D FOREGROUND
+  22008      996  0.0  0.1 250780  6528 ?        S    07:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache -f /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache/apache2.conf -D FOREGROUND
+  22008      997  0.0  0.1 250780  6280 ?        S    07:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache -f /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache/apache2.conf -D FOREGROUND
+  22008      998  0.0  0.1 250780  6280 ?        S    07:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache -f /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache/apache2.conf -D FOREGROUND
+  22008      999  0.0  0.1 250780  6280 ?        S    07:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache -f /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache/apache2.conf -D FOREGROUND
+  22008     1000  0.0  0.1 250780  6280 ?        S    07:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache -f /var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9/apache/apache2.conf -D FOREGROUND
+  22002     8282  0.0  0.3 250780 14428 ?        S    14:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache -f /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache/apache2.conf -D FOREGROUND
+  22002     8284  0.0  0.1 250780  7028 ?        S    14:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache -f /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache/apache2.conf -D FOREGROUND
+  22002     8285  0.0  0.3 256076 14276 ?        S    14:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache -f /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache/apache2.conf -D FOREGROUND
+  22002     8286  0.0  0.8 274000 32580 ?        S    14:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache -f /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache/apache2.conf -D FOREGROUND
+  22002     8287  0.0  0.1 250780  7024 ?        S    14:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache -f /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache/apache2.conf -D FOREGROUND
+  22002     8288  0.0  0.1 250780  7024 ?        S    14:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache -f /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache/apache2.conf -D FOREGROUND
+  22002     8343  0.0  0.1 250780  7024 ?        S    14:45   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache -f /var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e/apache/apache2.conf -D FOREGROUND
+  22001    12617  0.7  1.3 294876 53920 ?        S    15:11   0:29 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache -f /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache/apache2.conf -D FOREGROUND
+  22001    14249  0.6  1.3 294436 53508 ?        S    15:20   0:23 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache -f /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache/apache2.conf -D FOREGROUND
+  22003    15714  0.0  0.3 250780 14428 ?        S    15:28   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache -f /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache/apache2.conf -D FOREGROUND
+  22003    15716  0.0  0.1 250780  6532 ?        S    15:28   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache -f /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache/apache2.conf -D FOREGROUND
+  22003    15717  0.0  0.1 250780  6280 ?        S    15:28   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache -f /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache/apache2.conf -D FOREGROUND
+  22003    15718  0.0  0.1 250780  6280 ?        S    15:28   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache -f /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache/apache2.conf -D FOREGROUND
+  22003    15719  0.0  0.1 250780  6280 ?        S    15:28   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache -f /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache/apache2.conf -D FOREGROUND
+  22003    15720  0.0  0.1 250780  6280 ?        S    15:28   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache -f /var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee/apache/apache2.conf -D FOREGROUND
+  22001    18219  0.5  1.3 294356 53120 ?        S    15:42   0:11 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache -f /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache/apache2.conf -D FOREGROUND
+  22001    20171  0.0  0.3 250780 14436 ?        S    12:44   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache -f /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache/apache2.conf -D FOREGROUND
+  22001    20175  0.5  1.3 294428 53508 ?        S    12:44   1:14 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache -f /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache/apache2.conf -D FOREGROUND
+  22001    20176  0.6  1.3 294476 53548 ?        S    12:44   1:23 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache -f /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache/apache2.conf -D FOREGROUND
+  22001    20177  0.6  1.3 294504 53552 ?        S    12:44   1:22 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache -f /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache/apache2.conf -D FOREGROUND
+  22001    22882  0.3  1.1 287828 47308 ?        S    16:10   0:01 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache -f /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache/apache2.conf -D FOREGROUND
+  22001    22980  0.6  1.1 288664 47156 ?        S    16:10   0:02 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache -f /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache/apache2.conf -D FOREGROUND
+  22004    23016  0.0  0.3 250780 14432 ?        S    16:10   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache -f /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache/apache2.conf -D FOREGROUND
+  22004    23018  0.6  0.9 280928 39356 ?        S    16:10   0:02 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache -f /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache/apache2.conf -D FOREGROUND
+  22004    23019  0.6  0.9 280904 39400 ?        S    16:10   0:02 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache -f /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache/apache2.conf -D FOREGROUND
+  22004    23020  0.3  0.8 276080 34384 ?        S    16:10   0:01 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache -f /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache/apache2.conf -D FOREGROUND
+  22004    23021  0.4  0.9 280024 38492 ?        S    16:10   0:01 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache -f /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache/apache2.conf -D FOREGROUND
+  22004    23022  0.3  0.9 277944 37124 ?        S    16:10   0:01 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache -f /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache/apache2.conf -D FOREGROUND
+  22004    23048  1.7  0.9 281016 39408 ?        S    16:11   0:06 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache -f /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache/apache2.conf -D FOREGROUND
+  22004    23383  0.3  0.6 267188 26412 ?        S    16:12   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache -f /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache/apache2.conf -D FOREGROUND
+  22004    23388  0.6  0.8 274292 32636 ?        S    16:12   0:01 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache -f /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache/apache2.conf -D FOREGROUND
+  22004    23389  0.9  0.9 282124 40356 ?        S    16:12   0:02 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache -f /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache/apache2.conf -D FOREGROUND
+  22004    23398  0.0  0.2 252036  9644 ?        S    16:12   0:00 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache -f /var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67/apache/apache2.conf -D FOREGROUND
+  root     24245  0.0  0.0  10772  1316 ?        Ss   16:17   0:00 bash -c ps aux | grep dea/apps
+  root     24247  0.0  0.0   7676   836 ?        S    16:17   0:00 grep dea/apps
+  22001    26431  0.6  1.1 289536 48612 ?        S    13:21   1:04 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache -f /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache/apache2.conf -D FOREGROUND
+  22001    26489  0.6  1.3 294540 53616 ?        S    13:21   1:08 /usr/sbin/apache2 -d /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache -f /var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f/apache/apache2.conf -D FOREGROUND
 deaprocessmemory: |
   ---
-  root      8898  0.0  0.0  10776  1320 ?        Ss   22:28   0:00 bash -c ps aux | grep jobs/dea
-  root      6769  1.6  1.0 208844 41912 ?        S<l  19:59   2:31 /var/vcap/packages/ruby/bin/ruby /var/vcap/packages/dea/bin/dea -c /var/vcap/jobs/dea/config/dea.yml
-  root      8900  0.0  0.0   7676   832 ?        S    22:28   0:00 grep jobs/dea
+  root     24252  0.0  0.0  10772  1316 ?        Ss   16:17   0:00 bash -c ps aux | grep jobs/dea
+  root     24254  0.0  0.0   7672   836 ?        S    16:17   0:00 grep jobs/dea
+  root     29599  1.8  1.0 263584 41668 ?        S<l  03:38  13:52 /var/vcap/packages/ruby/bin/ruby /var/vcap/packages/dea/bin/dea -c /var/vcap/jobs/dea/config/dea.yml
 config: |
   ---
   ---
@@ -117,74 +183,177 @@ config: |
 dropletdata: |
   ---
   {
-    "72278": {
-      "6e48eb96559725428f134b1758657f89": {
-        "droplet_id": "72278",
-        "instance_id": "6e48eb96559725428f134b1758657f89",
-        "private_instance_id": "837f2c67206c62ac92334c6e578e279ac621e73a9125cc41da6f13133042209a",
+    "6944": {
+      "f9c02d7b44a55b569dea3ec0a01a7cc9": {
+        "droplet_id": "6944",
+        "instance_id": "f9c02d7b44a55b569dea3ec0a01a7cc9",
+        "private_instance_id": "474f3458deef86be1bd1c7e361c6491772a4bba7e480b527fe77c8659f8cd7f3",
         "instance_index": 0,
-        "name": "testappzc",
-        "dir": "/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89",
-        "uhurufs_dir": "/var/vcap/data/dea/uhurufs/testappzc-0-6e48eb96559725428f134b1758657f89",
+        "name": "yourmagneto",
+        "dir": "/var/vcap/data/dea/apps/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9",
+        "uhurufs_dir": "/var/vcap/data/dea/uhurufs/yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9",
         "uris": [
-          "testappzc.uhurucloud.com"
+          "yourmagneto.uhurucloud.com"
         ],
         "users": [
-          "20beaaf805584f47b480d3a953286e66@uhurucloud.com"
+          "a6ec50c604fa41e2b7d237666d670150@uhurucloud.com"
         ],
-        "version": "cf3ab2c4a2a5a6fdde731b3b6ba5f74adc9135fc-1",
-        "mem_quota": 536870912,
+        "version": "3add36afdf63150e12ec4217dfc6599dde99a281-1",
+        "mem_quota": 268435456,
         "disk_quota": 2147483648,
         "fds_quota": 256,
         "state": "RUNNING",
-        "runtime": "java",
-        "framework": "spring",
-        "start": "2012-11-29 21:25:28 +0000",
-        "state_timestamp": 1354224339,
-        "log_id": "(name=testappzc app_id=72278 instance=6e48eb96559725428f134b1758657f89 index=0)",
+        "runtime": "php",
+        "framework": "php",
+        "start": "2012-11-30 07:39:11 +0000",
+        "state_timestamp": 1354261509,
+        "log_id": "(name=yourmagneto app_id=6944 instance=f9c02d7b44a55b569dea3ec0a01a7cc9 index=0)",
         "flapping": false,
         "cc_partition": "default",
-        "secure_user": "vcap-user-2",
+        "secure_user": "vcap-user-8",
         "resources_tracked": true,
-        "port": 13971,
-        "staged": "testappzc-0-6e48eb96559725428f134b1758657f89",
-        "pid": 29922,
-        "nice": 19
+        "port": 2316,
+        "staged": "yourmagneto-0-f9c02d7b44a55b569dea3ec0a01a7cc9",
+        "pid": 994
       }
     },
-    "115347": {
-      "995e1fe699d4ab1dde01f776885215a0": {
-        "droplet_id": "115347",
-        "instance_id": "995e1fe699d4ab1dde01f776885215a0",
-        "private_instance_id": "8dcaa5fc82f1f2fe926e06424bc59df8ab51b148bb8874d8a6ec05971307a8d8",
+    "223": {
+      "da070aff9c6b64f13504c7ff9680151f": {
+        "droplet_id": "223",
+        "instance_id": "da070aff9c6b64f13504c7ff9680151f",
+        "private_instance_id": "a5b5e52be224251ce54a2b6b19435f777e888cea5aab6179ff8a241218a8d073",
         "instance_index": 0,
-        "name": "cardGameService",
-        "dir": "/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0",
-        "uhurufs_dir": "/var/vcap/data/dea/uhurufs/cardGameService-0-995e1fe699d4ab1dde01f776885215a0",
+        "name": "uhurusoftware10",
+        "dir": "/var/vcap/data/dea/apps/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f",
+        "uhurufs_dir": "/var/vcap/data/dea/uhurufs/uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f",
         "uris": [
-          "cardgameservice.uhurucloud.com"
+          "uhurusoftware.com",
+          "uhurusoftware.net",
+          "uhurusoftware10.uhurucloud.com",
+          "www.uhurusoftware.com"
         ],
         "users": [
-          "20beaaf805584f47b480d3a953286e66@uhurucloud.com"
+          "a28a4de56c3343519582f3fc82f630a5@uhurucloud.com"
         ],
-        "version": "fd89a9bd5567e733c7aa584d7cc50f50b0d2ea7b-1",
-        "mem_quota": 536870912,
+        "version": "b15e94807bdd6fc19e3b5b2b2bd5c6f637be0d4c-5",
+        "mem_quota": 734003200,
         "disk_quota": 2147483648,
         "fds_quota": 256,
         "state": "RUNNING",
-        "runtime": "java",
-        "framework": "spring",
-        "start": "2012-11-29 21:31:41 +0000",
-        "state_timestamp": 1354224716,
-        "log_id": "(name=cardGameService app_id=115347 instance=995e1fe699d4ab1dde01f776885215a0 index=0)",
+        "runtime": "php",
+        "framework": "php",
+        "start": "2012-11-30 12:44:20 +0000",
+        "state_timestamp": 1354279464,
+        "log_id": "(name=uhurusoftware10 app_id=223 instance=da070aff9c6b64f13504c7ff9680151f index=0)",
         "flapping": false,
         "cc_partition": "default",
         "secure_user": "vcap-user-1",
         "resources_tracked": true,
-        "port": 29741,
-        "staged": "cardGameService-0-995e1fe699d4ab1dde01f776885215a0",
-        "pid": 31501,
-        "nice": 19
+        "port": 9306,
+        "staged": "uhurusoftware10-0-da070aff9c6b64f13504c7ff9680151f",
+        "pid": 20171
+      }
+    },
+    "117883": {
+      "d404df81731ed3f3b5ebf98f0e106b7e": {
+        "droplet_id": "117883",
+        "instance_id": "d404df81731ed3f3b5ebf98f0e106b7e",
+        "private_instance_id": "2c3300b84aecb2dc478b1fc1671379105e2f86719e9dec7582c8cc74941c555c",
+        "instance_index": 0,
+        "name": "simpleCloudService",
+        "dir": "/var/vcap/data/dea/apps/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e",
+        "uhurufs_dir": "/var/vcap/data/dea/uhurufs/simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e",
+        "uris": [
+          "simplecloudservice.uhurucloud.com"
+        ],
+        "users": [
+          "eb2f49bbeef94ca69f8fa7a7eb2062d2@uhurucloud.com"
+        ],
+        "version": "d1e2c6e7b2472289ef3ef3cdd497f7900c727384-1",
+        "mem_quota": 1040187392,
+        "disk_quota": 2147483648,
+        "fds_quota": 256,
+        "state": "RUNNING",
+        "runtime": "php",
+        "framework": "php",
+        "start": "2012-11-30 14:45:22 +0000",
+        "state_timestamp": 1354286734,
+        "log_id": "(name=simpleCloudService app_id=117883 instance=d404df81731ed3f3b5ebf98f0e106b7e index=0)",
+        "flapping": false,
+        "cc_partition": "default",
+        "secure_user": "vcap-user-2",
+        "resources_tracked": true,
+        "port": 54996,
+        "staged": "simpleCloudService-0-d404df81731ed3f3b5ebf98f0e106b7e",
+        "pid": 8282
+      }
+    },
+    "117931": {
+      "57933d9a1ff87dc567227e0802a75aee": {
+        "droplet_id": "117931",
+        "instance_id": "57933d9a1ff87dc567227e0802a75aee",
+        "private_instance_id": "7330c85a52b484c11b843aaeebbbe7a200c007acbebbfc3eb8295495d32f1905",
+        "instance_index": 0,
+        "name": "indiealerts",
+        "dir": "/var/vcap/data/dea/apps/indiealerts-0-57933d9a1ff87dc567227e0802a75aee",
+        "uhurufs_dir": "/var/vcap/data/dea/uhurufs/indiealerts-0-57933d9a1ff87dc567227e0802a75aee",
+        "uris": [
+          "indiealerts.uhurucloud.com"
+        ],
+        "users": [
+          "9c0a5b975fdc4733b66e5f1b11138faf@uhurucloud.com"
+        ],
+        "version": "7bf1b0de2ab1ea656ab7ee150acfdf8187ae648f-1",
+        "mem_quota": 536870912,
+        "disk_quota": 2147483648,
+        "fds_quota": 256,
+        "state": "RUNNING",
+        "runtime": "php",
+        "framework": "php",
+        "start": "2012-11-30 15:28:11 +0000",
+        "state_timestamp": 1354289297,
+        "log_id": "(name=indiealerts app_id=117931 instance=57933d9a1ff87dc567227e0802a75aee index=0)",
+        "flapping": false,
+        "cc_partition": "default",
+        "secure_user": "vcap-user-3",
+        "resources_tracked": true,
+        "port": 7345,
+        "staged": "indiealerts-0-57933d9a1ff87dc567227e0802a75aee",
+        "pid": 15714
+      }
+    },
+    "117981": {
+      "f77bb1460e33b649752e2965e85e0f67": {
+        "droplet_id": "117981",
+        "instance_id": "f77bb1460e33b649752e2965e85e0f67",
+        "private_instance_id": "b02c56e6655b2a66ea22a45fd75cd8abb9300bad4d2a9325651f36efb07a3bb1",
+        "instance_index": 0,
+        "name": "myfbapp",
+        "dir": "/var/vcap/data/dea/apps/myfbapp-0-f77bb1460e33b649752e2965e85e0f67",
+        "uhurufs_dir": "/var/vcap/data/dea/uhurufs/myfbapp-0-f77bb1460e33b649752e2965e85e0f67",
+        "uris": [
+          "myfbapp.uhurucloud.com"
+        ],
+        "users": [
+          "0cea27c10d9e4ae78d76f17ae95ea7b5@uhurucloud.com"
+        ],
+        "version": "3384ba1faf8a19f2dcc0a60f81cf5226e3dcd6ac-1",
+        "mem_quota": 536870912,
+        "disk_quota": 2147483648,
+        "fds_quota": 256,
+        "state": "RUNNING",
+        "runtime": "php",
+        "framework": "php",
+        "start": "2012-11-30 16:10:31 +0000",
+        "state_timestamp": 1354291853,
+        "log_id": "(name=myfbapp app_id=117981 instance=f77bb1460e33b649752e2965e85e0f67 index=0)",
+        "flapping": false,
+        "cc_partition": "default",
+        "secure_user": "vcap-user-4",
+        "resources_tracked": true,
+        "port": 39567,
+        "staged": "myfbapp-0-f77bb1460e33b649752e2965e85e0f67",
+        "pid": 23016
       }
     }
   }
