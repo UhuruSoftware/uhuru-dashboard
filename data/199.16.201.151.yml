@@ -1,0 +1,190 @@
+cpu_time: |
+  ---
+  Cpu(s):  1.6%us,  4.6%sy,  0.1%ni, 93.1%id,  0.6%wa,  0.0%hi,  0.1%si,  0.0%st
+system_info: |
+  ---
+               total       used       free     shared    buffers     cached
+  Mem:          3963       1909       2053          0        461        631
+  -/+ buffers/cache:        816       3146
+  Swap:         3969          2       3966
+disk_usage: |
+  ---
+  Filesystem            Size  Used Avail Use% Mounted on
+  /dev/sda1             2.8G  1.2G  1.5G  46% /
+  none                  2.0G  156K  2.0G   1% /dev
+  none                  2.0G     0  2.0G   0% /dev/shm
+  none                  2.0G   52K  2.0G   1% /var/run
+  none                  2.0G     0  2.0G   0% /var/lock
+  none                  2.0G     0  2.0G   0% /lib/init/rw
+  /dev/sdb2              59G  2.0G   54G   4% /var/vcap/data
+  /dev/loop0            124M  5.7M  118M   5% /tmp
+  //192.168.6.2/D4Ta5566d5552e274df8b586cab63846564b
+                        400G   73G  328G  19% /var/vcap/data/dea/uhurufs/testappzc-0-6e48eb96559725428f134b1758657f89/TestFs
+  //192.168.6.2/D4Tae2c2c452d7f14608aca7b87bcbb86fbc
+                        400G   73G  328G  19% /var/vcap/data/dea/uhurufs/Testapp1-0-aae75e8da805e21f7ddb96391586b038/Testapp1FS
+  //192.168.6.2/D4Tade6e407013e44df3b51bcece1ac8b031
+                        400G   73G  328G  19% /var/vcap/data/dea/uhurufs/svr01-0-97a3ec90ff0257645cde75dc39396e81/svr01FS
+  //192.168.6.2/D4Ta2e13be9ab0534f6bb0aa3810af4a45ad
+                        400G   73G  328G  19% /var/vcap/data/dea/uhurufs/start-0-9572d07bf76da61a0bfcf198575ea4cf/startFS
+  //192.168.6.2/D4Tafbb360482fbf41b1a778c30f6da078ee
+                        400G   73G  328G  19% /var/vcap/data/dea/uhurufs/manni-0-4fe2fe81975bf125766f77c1c4c30f17/manniFS
+check: |
+  ---
+  Linux DEA
+dropletcountfolder: |
+  ---
+  total 76
+  drwx--x--x 15 root         root     20480 2012-11-29 22:27 .
+  drwx--x--x  6 root         root      4096 2012-08-31 09:26 ..
+  drwx------  6 vcap-user-1  vcap-dea  4096 2012-11-29 21:31 cardGameService-0-995e1fe699d4ab1dde01f776885215a0
+  drwx------  3 vcap-user-43 vcap-dea  4096 2012-10-03 18:37 kaniz-0-1a905799f6c256c8c7f4721844f14cf6
+  drwx------  6 vcap-user-7  vcap-dea  4096 2012-11-29 22:28 manni-0-4fe2fe81975bf125766f77c1c4c30f17
+  drwx------  6 vcap-user-6  vcap-dea  4096 2012-11-29 22:28 omstest-0-67144157b33002a0da989f1d01bc2535
+  drwx------  3 vcap-user-48 vcap-dea  4096 2012-09-14 13:26 prueba-0-2a66cafc9f0ed93db39d47f78a8dcae4
+  drwx------  3 vcap-user-36 vcap-dea  4096 2012-10-03 18:37 rajneeshverma-0-a39c54c767ece3d8a5a87aa341ddc391
+  drwx------  6 vcap-user-5  vcap-dea  4096 2012-11-29 22:27 start-0-9572d07bf76da61a0bfcf198575ea4cf
+  drwx------  6 vcap-user-4  vcap-dea  4096 2012-11-29 22:27 svr01-0-97a3ec90ff0257645cde75dc39396e81
+  drwx------  3 vcap-user-40 vcap-dea  4096 2012-09-14 13:26 test2wordpress-0-89fa817b6651665769768fe39d6bc136
+  drwx------  6 vcap-user-3  vcap-dea  4096 2012-11-29 22:28 Testapp1-0-aae75e8da805e21f7ddb96391586b038
+  drwx------  6 vcap-user-2  vcap-dea  4096 2012-11-29 21:25 testappzc-0-6e48eb96559725428f134b1758657f89
+  drwx------  3 vcap-user-41 vcap-dea  4096 2012-10-03 18:37 wirelessmedia-0-65637a9a4b366f1f533cfc601b3f6fa5
+  drwx------  3 vcap-user-49 vcap-dea  4096 2012-09-14 13:26 wordpress1e-0-e93af0656df48cc6f43a2fcc3e616ac3
+workerprocessesiiscount: |
+  ---
+  root      8734  2.2  0.0  12520   668 ?        D<   22:27   0:01 cp -Rn /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/LICENSE.html /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/LICENSE.txt /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/LICENSE_AFL.txt /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/RELEASE_NOTES.txt /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/api.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/app /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/cron.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/cron.sh /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/downloader /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/errors /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/favicon.ico /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/get.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/includes /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/index-install.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/index.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/index.php.sample /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/install.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/install.sh /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/js /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/lib /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/mage /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/media /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/not_installed.lock /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/php.ini.sample /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/pkginfo /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/shell /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/skin /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/var /var/vcap/data/dea/uhurufs/svr01-0-97a3ec90ff0257645cde75dc39396e81/svr01FS/svr01
+  root      8780  0.0  0.0   4144   568 ?        S<   22:28   0:00 sh -c du -skhx /var/vcap/data/dea/apps/* > /var/vcap/sys/log/dea/apps.du.20121129_2228.summary 2>&1; du -hx --max-depth 6 /var/vcap/data/dea/apps > /var/vcap/sys/log/dea/apps.du.20121129_2228.details
+  root      8784 11.5  0.0   4220   836 ?        D<   22:28   0:00 du -skhx /var/vcap/data/dea/apps/Testapp1-0-aae75e8da805e21f7ddb96391586b038 /var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0 /var/vcap/data/dea/apps/kaniz-0-1a905799f6c256c8c7f4721844f14cf6 /var/vcap/data/dea/apps/manni-0-4fe2fe81975bf125766f77c1c4c30f17 /var/vcap/data/dea/apps/omstest-0-67144157b33002a0da989f1d01bc2535 /var/vcap/data/dea/apps/prueba-0-2a66cafc9f0ed93db39d47f78a8dcae4 /var/vcap/data/dea/apps/rajneeshverma-0-a39c54c767ece3d8a5a87aa341ddc391 /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81 /var/vcap/data/dea/apps/test2wordpress-0-89fa817b6651665769768fe39d6bc136 /var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89 /var/vcap/data/dea/apps/wirelessmedia-0-65637a9a4b366f1f533cfc601b3f6fa5 /var/vcap/data/dea/apps/wordpress1e-0-e93af0656df48cc6f43a2fcc3e616ac3
+  root      8800  1.0  0.0  12520   668 ?        D<   22:28   0:00 cp -Rn /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/LICENSE.html /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/LICENSE.txt /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/LICENSE_AFL.txt /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/RELEASE_NOTES.txt /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/api.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/app /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/cron.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/cron.sh /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/downloader /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/errors /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/favicon.ico /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/get.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/includes /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/index-install.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/index.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/index.php.sample /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/install.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/install.sh /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/js /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/lib /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/mage /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/media /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/not_installed.lock /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/php.ini.sample /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/pkginfo /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/shell /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/skin /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/var /var/vcap/data/dea/uhurufs/start-0-9572d07bf76da61a0bfcf198575ea4cf/startFS/start
+  22003     8806  0.8  0.0  26468  3952 ?        Dl   22:28   0:00 ruby resources/generate_apache_conf 29851 /var/vcap/data/dea/apps/Testapp1-0-aae75e8da805e21f7ddb96391586b038 {"uhurufs-0.9":[{"name":"Testapp1FS","label":"uhurufs-0.9","plan":"free","tags":["Persistent filesystem service","uhurufs-0.9","uhurufs"],"credentials":{"name":"D4Tae2c2c452d7f14608aca7b87bcbb86fbc","username":"US3R6b3rQBj0gDTs","user":"US3R6b3rQBj0gDTs","password":"P4SSds3eWYj5eSiB","hostname":"192.168.6.2","port":54658,"bind_opts":{}}}],"mysql-5.1":[{"name":"Testapp1DB","label":"mysql-5.1","plan":"free","tags":["relational","mysql-5.1","mysql"],"credentials":{"name":"d259db90455a8408da885b31d35921e74","hostname":"192.168.4.101","host":"192.168.4.101","port":3306,"user":"ujM9x1mXaUtIy","username":"ujM9x1mXaUtIy","password":"p7EZppxwDx0zS"}}]} 256m
+  root      8890  0.0  0.0  10776  1320 ?        Ss   22:28   0:00 bash -c ps aux | grep dea/apps
+  root      8892  0.0  0.0   7676   836 ?        S    22:28   0:00 grep dea/apps
+  22002    29922  0.7  5.7 877372 234972 ?       SNl  21:25   0:28 /var/vcap/packages/dea_jvm/bin/java -Djava.util.logging.config.file=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Xms512m -Xmx512m -Djava.io.tmpdir=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tmp -Djava.endorsed.dirs=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat/endorsed -classpath /var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat/bin/bootstrap.jar -Dcatalina.base=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat -Dcatalina.home=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat -Djava.io.tmpdir=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat/temp org.apache.catalina.startup.Bootstrap start
+  22001    31501  1.0  6.8 877768 276848 ?       SNl  21:31   0:35 /var/vcap/packages/dea_jvm/bin/java -Djava.util.logging.config.file=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Xms512m -Xmx512m -Djava.io.tmpdir=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tmp -Djava.endorsed.dirs=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat/endorsed -classpath /var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat/bin/bootstrap.jar -Dcatalina.base=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat -Dcatalina.home=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat -Djava.io.tmpdir=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat/temp org.apache.catalina.startup.Bootstrap start
+workerprocessesmemory: |
+  ---
+  root      8734  2.2  0.0  12520   668 ?        D<   22:27   0:01 cp -Rn /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/LICENSE.html /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/LICENSE.txt /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/LICENSE_AFL.txt /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/RELEASE_NOTES.txt /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/api.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/app /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/cron.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/cron.sh /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/downloader /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/errors /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/favicon.ico /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/get.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/includes /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/index-install.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/index.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/index.php.sample /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/install.php /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/install.sh /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/js /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/lib /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/mage /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/media /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/not_installed.lock /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/php.ini.sample /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/pkginfo /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/shell /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/skin /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81/app/var /var/vcap/data/dea/uhurufs/svr01-0-97a3ec90ff0257645cde75dc39396e81/svr01FS/svr01
+  root      8780  0.0  0.0   4144   568 ?        S<   22:28   0:00 sh -c du -skhx /var/vcap/data/dea/apps/* > /var/vcap/sys/log/dea/apps.du.20121129_2228.summary 2>&1; du -hx --max-depth 6 /var/vcap/data/dea/apps > /var/vcap/sys/log/dea/apps.du.20121129_2228.details
+  root      8784  9.8  0.0   4220   836 ?        D<   22:28   0:00 du -skhx /var/vcap/data/dea/apps/Testapp1-0-aae75e8da805e21f7ddb96391586b038 /var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0 /var/vcap/data/dea/apps/kaniz-0-1a905799f6c256c8c7f4721844f14cf6 /var/vcap/data/dea/apps/manni-0-4fe2fe81975bf125766f77c1c4c30f17 /var/vcap/data/dea/apps/omstest-0-67144157b33002a0da989f1d01bc2535 /var/vcap/data/dea/apps/prueba-0-2a66cafc9f0ed93db39d47f78a8dcae4 /var/vcap/data/dea/apps/rajneeshverma-0-a39c54c767ece3d8a5a87aa341ddc391 /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf /var/vcap/data/dea/apps/svr01-0-97a3ec90ff0257645cde75dc39396e81 /var/vcap/data/dea/apps/test2wordpress-0-89fa817b6651665769768fe39d6bc136 /var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89 /var/vcap/data/dea/apps/wirelessmedia-0-65637a9a4b366f1f533cfc601b3f6fa5 /var/vcap/data/dea/apps/wordpress1e-0-e93af0656df48cc6f43a2fcc3e616ac3
+  root      8800  0.8  0.0  12520   668 ?        D<   22:28   0:00 cp -Rn /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/LICENSE.html /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/LICENSE.txt /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/LICENSE_AFL.txt /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/RELEASE_NOTES.txt /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/api.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/app /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/cron.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/cron.sh /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/downloader /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/errors /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/favicon.ico /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/get.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/includes /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/index-install.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/index.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/index.php.sample /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/install.php /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/install.sh /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/js /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/lib /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/mage /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/media /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/not_installed.lock /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/php.ini.sample /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/pkginfo /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/shell /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/skin /var/vcap/data/dea/apps/start-0-9572d07bf76da61a0bfcf198575ea4cf/app/var /var/vcap/data/dea/uhurufs/start-0-9572d07bf76da61a0bfcf198575ea4cf/startFS/start
+  22003     8806  0.8  0.0  26468  3952 ?        Dl   22:28   0:00 ruby resources/generate_apache_conf 29851 /var/vcap/data/dea/apps/Testapp1-0-aae75e8da805e21f7ddb96391586b038 {"uhurufs-0.9":[{"name":"Testapp1FS","label":"uhurufs-0.9","plan":"free","tags":["Persistent filesystem service","uhurufs-0.9","uhurufs"],"credentials":{"name":"D4Tae2c2c452d7f14608aca7b87bcbb86fbc","username":"US3R6b3rQBj0gDTs","user":"US3R6b3rQBj0gDTs","password":"P4SSds3eWYj5eSiB","hostname":"192.168.6.2","port":54658,"bind_opts":{}}}],"mysql-5.1":[{"name":"Testapp1DB","label":"mysql-5.1","plan":"free","tags":["relational","mysql-5.1","mysql"],"credentials":{"name":"d259db90455a8408da885b31d35921e74","hostname":"192.168.4.101","host":"192.168.4.101","port":3306,"user":"ujM9x1mXaUtIy","username":"ujM9x1mXaUtIy","password":"p7EZppxwDx0zS"}}]} 256m
+  root      8894  0.0  0.0  10776  1316 ?        Ss   22:28   0:00 bash -c ps aux | grep dea/apps
+  root      8896  0.0  0.0   7676   832 ?        S    22:28   0:00 grep dea/apps
+  22002    29922  0.7  5.7 877372 234972 ?       SNl  21:25   0:28 /var/vcap/packages/dea_jvm/bin/java -Djava.util.logging.config.file=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Xms512m -Xmx512m -Djava.io.tmpdir=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tmp -Djava.endorsed.dirs=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat/endorsed -classpath /var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat/bin/bootstrap.jar -Dcatalina.base=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat -Dcatalina.home=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat -Djava.io.tmpdir=/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89/tomcat/temp org.apache.catalina.startup.Bootstrap start
+  22001    31501  1.0  6.8 877768 276848 ?       SNl  21:31   0:35 /var/vcap/packages/dea_jvm/bin/java -Djava.util.logging.config.file=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Xms512m -Xmx512m -Djava.io.tmpdir=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tmp -Djava.endorsed.dirs=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat/endorsed -classpath /var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat/bin/bootstrap.jar -Dcatalina.base=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat -Dcatalina.home=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat -Djava.io.tmpdir=/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0/tomcat/temp org.apache.catalina.startup.Bootstrap start
+deaprocessmemory: |
+  ---
+  root      8898  0.0  0.0  10776  1320 ?        Ss   22:28   0:00 bash -c ps aux | grep jobs/dea
+  root      6769  1.6  1.0 208844 41912 ?        S<l  19:59   2:31 /var/vcap/packages/ruby/bin/ruby /var/vcap/packages/dea/bin/dea -c /var/vcap/jobs/dea/config/dea.yml
+  root      8900  0.0  0.0   7676   832 ?        S    22:28   0:00 grep jobs/dea
+config: |
+  ---
+  ---
+  mbus: nats://cBRNHfCWOCae:cJ9OYfpDG03z@192.168.2.104:4222
+  local_route: 192.168.3.103
+  dea_ruby: /var/vcap/packages/ruby/bin/ruby
+  pid: /var/vcap/sys/run/dea/dea.pid
+  base_dir: /var/vcap/data/dea
+  filer_port: 12345
+  logging:
+    file: /var/vcap/sys/log/dea/dea.log
+    
+    syslog: vcap.dea
+    
+    level: info
+  multi_tenant: true
+  max_memory: 64000
+  max_concurrent_starts: 3
+  secure: true
+  index: 0
+  intervals:
+    heartbeat: 10
+    advertise: 5
+  
+  prod: false
+  
+  # This is where the execution agent determines its available runtimes.
+  # version flags are assumed to be '-v' unless noted below.
+  
+  runtimes:
+    - ruby18
+    - ruby19
+    - node
+    - node06
+    - node08
+    - java
+    - java7
+    - php
+dropletdata: |
+  ---
+  {
+    "72278": {
+      "6e48eb96559725428f134b1758657f89": {
+        "droplet_id": "72278",
+        "instance_id": "6e48eb96559725428f134b1758657f89",
+        "private_instance_id": "837f2c67206c62ac92334c6e578e279ac621e73a9125cc41da6f13133042209a",
+        "instance_index": 0,
+        "name": "testappzc",
+        "dir": "/var/vcap/data/dea/apps/testappzc-0-6e48eb96559725428f134b1758657f89",
+        "uhurufs_dir": "/var/vcap/data/dea/uhurufs/testappzc-0-6e48eb96559725428f134b1758657f89",
+        "uris": [
+          "testappzc.uhurucloud.com"
+        ],
+        "users": [
+          "20beaaf805584f47b480d3a953286e66@uhurucloud.com"
+        ],
+        "version": "cf3ab2c4a2a5a6fdde731b3b6ba5f74adc9135fc-1",
+        "mem_quota": 536870912,
+        "disk_quota": 2147483648,
+        "fds_quota": 256,
+        "state": "RUNNING",
+        "runtime": "java",
+        "framework": "spring",
+        "start": "2012-11-29 21:25:28 +0000",
+        "state_timestamp": 1354224339,
+        "log_id": "(name=testappzc app_id=72278 instance=6e48eb96559725428f134b1758657f89 index=0)",
+        "flapping": false,
+        "cc_partition": "default",
+        "secure_user": "vcap-user-2",
+        "resources_tracked": true,
+        "port": 13971,
+        "staged": "testappzc-0-6e48eb96559725428f134b1758657f89",
+        "pid": 29922,
+        "nice": 19
+      }
+    },
+    "115347": {
+      "995e1fe699d4ab1dde01f776885215a0": {
+        "droplet_id": "115347",
+        "instance_id": "995e1fe699d4ab1dde01f776885215a0",
+        "private_instance_id": "8dcaa5fc82f1f2fe926e06424bc59df8ab51b148bb8874d8a6ec05971307a8d8",
+        "instance_index": 0,
+        "name": "cardGameService",
+        "dir": "/var/vcap/data/dea/apps/cardGameService-0-995e1fe699d4ab1dde01f776885215a0",
+        "uhurufs_dir": "/var/vcap/data/dea/uhurufs/cardGameService-0-995e1fe699d4ab1dde01f776885215a0",
+        "uris": [
+          "cardgameservice.uhurucloud.com"
+        ],
+        "users": [
+          "20beaaf805584f47b480d3a953286e66@uhurucloud.com"
+        ],
+        "version": "fd89a9bd5567e733c7aa584d7cc50f50b0d2ea7b-1",
+        "mem_quota": 536870912,
+        "disk_quota": 2147483648,
+        "fds_quota": 256,
+        "state": "RUNNING",
+        "runtime": "java",
+        "framework": "spring",
+        "start": "2012-11-29 21:31:41 +0000",
+        "state_timestamp": 1354224716,
+        "log_id": "(name=cardGameService app_id=115347 instance=995e1fe699d4ab1dde01f776885215a0 index=0)",
+        "flapping": false,
+        "cc_partition": "default",
+        "secure_user": "vcap-user-1",
+        "resources_tracked": true,
+        "port": 29741,
+        "staged": "cardGameService-0-995e1fe699d4ab1dde01f776885215a0",
+        "pid": 31501,
+        "nice": 19
+      }
+    }
+  }
