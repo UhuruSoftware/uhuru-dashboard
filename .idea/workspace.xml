@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="982a80a2-bb73-4734-84e4-3b04f50aa944" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/private-uhuru-dashboard.iml" afterPath="$PROJECT_DIR$/.idea/private-uhuru-dashboard.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/199.16.201.151.yml" afterPath="$PROJECT_DIR$/data/199.16.201.151.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/get-metric.sh" afterPath="$PROJECT_DIR$/bin/get-metric.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/get_linux_stats.rb" afterPath="$PROJECT_DIR$/lib/get_linux_stats.rb" />
     </list>
     <ignored path="private-uhuru-dashboard.iws" />
@@ -27,7 +26,7 @@
       <file leaf-file-name="get_linux_stats.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/get_linux_stats.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="322" column="195" selection-start="10412" selection-end="10412" vertical-scroll-proportion="0.0">
+            <state line="30" column="67" selection-start="692" selection-end="692" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -36,7 +35,7 @@
       <file leaf-file-name="uhuru-hosts.cfg" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/uhuru-hosts.cfg">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="88" selection-start="467" selection-end="467" vertical-scroll-proportion="0.0">
+            <state line="23" column="100" selection-start="1193" selection-end="1193" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -45,16 +44,7 @@
       <file leaf-file-name="get-metric.sh" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bin/get-metric.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="7" selection-start="44" selection-end="44" vertical-scroll-proportion="0.03329634">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="localhost_nagios2.cfg" pinned="false" current="false" current-in-tab="false">
-        <entry file="file:///etc/nagios3/conf.d/localhost_nagios2.cfg">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="84" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0">
+            <state line="1" column="79" selection-start="112" selection-end="112" vertical-scroll-proportion="0.020961776">
               <folding />
             </state>
           </provider>
@@ -95,17 +85,17 @@
         <option value="$PROJECT_DIR$/config/output.erb" />
         <option value="$PROJECT_DIR$/data/199.16.201.75.yml" />
         <option value="$PROJECT_DIR$/data/199.16.201.151.yml" />
-        <option value="$PROJECT_DIR$/lib/get_linux_stats.rb" />
         <option value="$PROJECT_DIR$/config/uhuru-hosts.cfg" />
+        <option value="$PROJECT_DIR$/lib/get_linux_stats.rb" />
         <option value="$PROJECT_DIR$/bin/get-metric.sh" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
-    <option name="y" value="-10" />
-    <option name="width" value="1934" />
-    <option name="height" value="1062" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="972" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -298,14 +288,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-10" width="1934" height="1062" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="972" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12593383" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12166489" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -375,6 +365,41 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/lib/get_linux_stats.rb">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="322" column="195" selection-start="10412" selection-end="10412" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/uhuru-hosts.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="88" selection-start="467" selection-end="467" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/get-metric.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="7" selection-start="44" selection-end="44" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/uhuru-dashboard.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="35" selection-start="460" selection-end="460" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/199.16.201.151.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="257" column="202" selection-start="30284" selection-end="30284" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/get_linux_stats.rb">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="110" column="132" selection-start="3572" selection-end="3572" vertical-scroll-proportion="0.0">
           <folding />
         </state>
@@ -390,13 +415,6 @@
     <entry file="file://$PROJECT_DIR$/config/uhuru-dashboard.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="132" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///etc/nagios3/conf.d/services_nagios2.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -417,28 +435,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/get_linux_stats.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="322" column="195" selection-start="10412" selection-end="10412" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///etc/nagios3/conf.d/localhost_nagios2.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="84" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0">
+        <state line="30" column="67" selection-start="692" selection-end="692" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/uhuru-hosts.cfg">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="88" selection-start="467" selection-end="467" vertical-scroll-proportion="0.0">
+        <state line="23" column="100" selection-start="1193" selection-end="1193" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bin/get-metric.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="7" selection-start="44" selection-end="44" vertical-scroll-proportion="0.03329634">
+        <state line="1" column="79" selection-start="112" selection-end="112" vertical-scroll-proportion="0.020961776">
           <folding />
         </state>
       </provider>
