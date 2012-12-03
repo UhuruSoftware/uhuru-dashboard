@@ -1,7 +1,7 @@
 define ngraph {
        service_name        cpu
-       graph_log_regex     cpu=(\d+)
-       graph_value         CPU Usage
+       graph_perf_regex    cpu=(\d+\.+\d+)
+       graph_value         usage
        graph_units         %
        graph_legend        CPU Usage
        graph_legend_eol    none
