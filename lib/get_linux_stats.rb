@@ -136,31 +136,31 @@ if base == nil
                  }
                when "provisioned_services"
                  {
-                     :mu => '%',
+                     :mu => 'QT',
                      :min => 0,
-                     :max => 100,
-                     :value => data['servicedb'].scan(/d\w{33}/).size
+                     :max => data['config'].scan(/capacity:\s+\d*/),
+                     :value => data['servicedb'].scan(/\w{33}/).size
                  }
                when "services_disk_size"
                  {
-                     :mu => 'Qt',
+                     :mu => 'GB',
                      :min => 0,
-                     :max => data['config'].scan(/capacity:\s+\d*/),
+                     :max => /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f,
                      :value => val[0] = data['databasesondrive'].scan(/\d*\s*\d*-\d*-\d*\s*\d\d:\d\d\s*d\w{32}/).map {|x| x.split(/\s+/)[0].to_i}.inject {|sum, x| sum += x}
 
                  }
                when "mysql_server_memory"
                  {
-                     :mu => 'KB',
+                     :mu => 'MB',
                      :min => 0,
-                     :max => 100,
+                     :max => /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f,
                      :value => data['servermemory'].scan(/vcap[^\r]*\?/).size
                  }
                when "mysql_node_memory"
                  {
-                     :mu => 'KB',
+                     :mu => 'MB',
                      :min => 0,
-                     :max => 100,
+                     :max => /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f,
                      :value => data['nodeprocessmemory'].scan(/\d*\s*\d*\s*\?[^\r]*ruby/).size
                  }
              end
@@ -172,31 +172,31 @@ if base == nil
                  }
                when "provisioned_services"
                  {
-                     :mu => '%',
+                     :mu => 'QT',
                      :min => 0,
-                     :max => 100,
-                     :value => 12
+                     :max => data['config'].scan(/capacity:\s+\d*/),
+                     :value => data['servicedb'].scan(/\w{33}/).size
                  }
                when "services_disk_size"
                  {
-                     :mu => 'KB',
+                     :mu => 'GB',
                      :min => 0,
-                     :max => data['config'].scan(/capacity:\s+\d*/),
+                     :max => /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f,
                      :value => val[0] = data['databasesondrive'].scan(/\d*\s*\d*-\d*-\d*\s*\d\d:\d\d\s*\w{8}\-\w{4}/).map {|x| x.split(/\s+/)[0].to_i}.inject {|sum, x| sum += x}
                  }
                when "postgresql_server_memory"
                  {
-                     :mu => 'KB',
+                     :mu => 'MB',
                      :min => 0,
-                     :max => 100,
-                     :value => 12
+                     :max => /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f,
+                     :value => data['servermemory'].scan(/vcap[^\r]*\?/).size
                  }
                when "postgresql_node_memory"
                  {
-                     :mu => 'KB',
+                     :mu => 'MB',
                      :min => 0,
-                     :max => 100,
-                     :value => 12
+                     :max => /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f,
+                     :value => data['nodeprocessmemory'].scan(/\d*\s*\d*\s*\?[^\r]*ruby/).size
                  }
              end
            when 'mongodb_node'
@@ -207,30 +207,30 @@ if base == nil
                  }
                when "provisioned_services"
                  {
-                     :mu => '%',
+                     :mu => 'QT',
                      :min => 0,
-                     :max => 100,
-                     :value => data['servicedb'].scan(/d\w{33}/).size
+                     :max => data['config'].scan(/capacity:\s+\d*/),
+                     :value => data['servicedb'].scan(/\w{33}/).size
                  }
                when "services_disk_size"
                  {
-                     :mu => 'KB',
+                     :mu => 'GB',
                      :min => 0,
-                     :max => data['config'].scan(/capacity:\s+\d*/),
+                     :max => /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f,
                      :value => val[0] = data['databasesondrive'].scan(/\d*\s*\d*-\d*-\d*\s*\d\d:\d\d\s*\w{8}\-\w{4}/).map {|x| x.split(/\s+/)[0].to_i}.inject {|sum, x| sum += x}
                  }
                when "mongodb_server_memory"
                  {
-                     :mu => 'KB',
+                     :mu => 'MB',
                      :min => 0,
-                     :max => 100,
-                     :value => 12
+                     :max => /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f,
+                     :value => data['servermemory'].scan(/vcap[^\r]*\?/).size
                  }
                when "mongodb_node_memory"
                  {
-                     :mu => 'KB',
+                     :mu => 'MB',
                      :min => 0,
-                     :max => 100,
+                     :max => /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f,
                      :value => data['nodeprocessmemory'].scan(/\d*\s*\d*\s*\?[^\r]*ruby/).size
                  }
              end
@@ -242,30 +242,30 @@ if base == nil
                  }
                when "provisioned_services"
                  {
-                     :mu => '%',
+                     :mu => 'QT',
                      :min => 0,
-                     :max => 100,
-                     :value => data['servicedb'].scan(/d\w{33}/).size
+                     :max => data['config'].scan(/capacity:\s+\d*/),
+                     :value => data['servicedb'].scan(/\w{33}/).size
                  }
                when "services_disk_size"
                  {
-                     :mu => 'KB',
+                     :mu => 'GB',
                      :min => 0,
-                     :max => data['config'].scan(/capacity:\s+\d*/),
+                     :max => /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f,
                      :value => val[0] = data['databasesondrive'].scan(/\d*\s*\d*-\d*-\d*\s*\d\d:\d\d\s*\w{8}\-\w{4}/).map {|x| x.split(/\s+/)[0].to_i}.inject {|sum, x| sum += x}
                  }
                when "redis_server_memory"
                  {
-                     :mu => 'KB',
+                     :mu => 'MB',
                      :min => 0,
-                     :max => 100,
-                     :value => 12
+                     :max => /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f,
+                     :value => data['servermemory'].scan(/vcap[^\r]*\?/).size
                  }
                when "redis_node_memory"
                  {
-                     :mu => 'KB',
+                     :mu => 'MB',
                      :min => 0,
-                     :max => 100,
+                     :max => /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f,
                      :value => data['nodeprocessmemory'].scan(/\d*\s*\d*\s*\?[^\r]*ruby/).size
                  }
              end
@@ -277,30 +277,30 @@ if base == nil
                  }
                when "provisioned_services"
                  {
-                     :mu => '%',
+                     :mu => 'QT',
                      :min => 0,
-                     :max => 100,
-                     :value => data['servicedb'].scan(/d\w{33}/).size
+                     :max => data['config'].scan(/capacity:\s+\d*/),
+                     :value => data['servicedb'].scan(/\w{33}/).size
                  }
                when "services_disk_size"
                  {
-                     :mu => 'KB',
+                     :mu => 'GB',
                      :min => 0,
-                     :max => data['config'].scan(/capacity:\s+\d*/),
+                     :max => /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f,
                      :value => val[0] = data['databasesondrive'].scan(/\d*\s*\d*-\d*-\d*\s*\d\d:\d\d\s*\w{8}\-\w{4}/).map {|x| x.split(/\s+/)[0].to_i}.inject {|sum, x| sum += x}
                  }
                when "rabbitmq_server_memory"
                  {
-                     :mu => 'KB',
+                     :mu => 'MB',
                      :min => 0,
-                     :max => 100,
-                     :value => data['servermemory'].scan(/\w{8}-\w{4}-\w{4}/).size
+                     :max => /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f,
+                     :value => data['servermemory'].scan(/vcap[^\r]*\?/).size
                  }
                when "rabbitmq_node_memory"
                  {
-                     :mu => 'KB',
+                     :mu => 'MB',
                      :min => 0,
-                     :max => 100,
+                     :max => /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f,
                      :value => data['nodeprocessmemory'].scan(/\d*\s*\d*\s*\?[^\r]*ruby/).size
                  }
              end
