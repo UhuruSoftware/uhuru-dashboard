@@ -1,0 +1,178 @@
+<% @deployments.each do |deployment| %>
+<%if @hosts.select {|host| [deployment[:description]].include? host[:deployment] }.size > 0 %>
+define hostgroup{
+    hostgroup_name  <%= deployment[:name] %>
+    alias           <%= deployment[:description] %>
+    members         <%= @hosts.select {|host| [deployment[:description]].include? host[:deployment] }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+<% end %>
+
+<%if @hosts.select {|host| ['linux'].include? host[:os]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  linux
+    alias           Linux VMs
+    members         <%= @hosts.select {|host| ['linux'].include? host[:os]}.map{|host| host[:name] }.join(',')  %>
+}
+
+define service{
+    name                    Linux Status
+    use                     cf-service
+    hostgroup_name          linux
+    service_description     Linux VM Status
+    check_command           get_cf_metric!linux!$HOSTADDRESS$!base!status!$HOSTNAME$!$_HOSTDEPLOYMENT$!$_HOSTJOB!$_HOSTINDEX$
+}
+
+<% end %>
+
+<%if @hosts.select {|host| ['windows'].include? host[:os]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  windows
+    alias           Windows VMs
+    members         <%= @hosts.select {|host| ['windows'].include? host[:os]}.map{|host| host[:name] }.join(',')  %>
+}
+
+define service{
+    name                    Windows Status
+    use                     cf-service
+    hostgroup_name          windows
+    service_description     Windows VM Status
+    check_command           get_cf_metric!windows!$HOSTADDRESS$!base!status!$HOSTNAME$!$_HOSTdeployment$!$_HOSTjob$!$_HOSTindex$
+}
+
+<% end %>
+
+
+<%if @hosts.select {|host| ['dea'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  dea
+    alias           Linux DEAs
+    members         <%= @hosts.select {|host| ['dea'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['cloud_controller'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  cloud_controller
+    alias           Cloud Controllers
+    members         <%= @hosts.select {|host| ['cloud_controller'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['mysql_node'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  mysql_node
+    alias           MySQL Nodes
+    members         <%= @hosts.select {|host| ['mysql_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['postgresql_node'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  postgresql_node
+    alias           PostgreSQL Nodes
+    members         <%= @hosts.select {|host| ['postgresql_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['mongodb_node'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  mongodb_node
+    alias           MongoDB Nodes
+    members         <%= @hosts.select {|host| ['mongodb_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['redis_node'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  redis_node
+    alias           Redis Nodes
+    members         <%= @hosts.select {|host| ['redis_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['rabbit_node'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  rabbit_node
+    alias           RabbitMQ Nodes
+    members         <%= @hosts.select {|host| ['rabbit_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['routers'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  routers
+    alias           Routers
+    members         <%= @hosts.select {|host| ['routers'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['windea'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  windea
+    alias           Windows DEAs
+    members         <%= @hosts.select {|host| ['windea'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['mssql_node'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  mssql_node
+    alias           MS SQL Nodes
+    members         <%= @hosts.select {|host| ['mssql_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['uhurufs_node'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  uhurufs_node
+    alias           Uhuru FS Nodes
+    members         <%= @hosts.select {|host| ['uhurufs_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| !['dea', 'cloud_controller', 'mysql_node', 'postgresql_node', 'mongodb_node', 'redis_node', 'rabbit_node', 'routers', 'windea', 'mssql_node', 'uhurufs_node'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  cloudfoundry_internals
+    alias           CloudFoundry Core
+    members         <%= @hosts.select {|host| !['dea', 'cloud_controller', 'mysql_node', 'postgresql_node', 'mongodb_node', 'redis_node', 'rabbit_node', 'routers', 'windea', 'mssql_node', 'uhurufs_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+
+<% @hosts.each do |host| %>
+define host{
+    use         generic-host
+    host_name   <%= host[:name] %>
+    alias       <%= host[:alias] %>
+    address     <%= host[:address] %>
+    _DEPLOYMENT <%= host[:deployment] %>
+    _JOB        <%= host[:component] %>
+    _INDEX      <%= host[:index] %>
+}
+<% end %>
+
+<% @services.each do |service| %>
+define service{
+    name                    <%= service[:name] %>
+    use                     cf-service
+    hostgroup_name          <%= service[:hostgroup] %>
+    service_description     <%= service[:name] %>
+<%#    servicegroups           <%= service[:servicegroups].join(',') %>
+    check_command           get_cf_metric!<%= service[:os] %>!$HOSTADDRESS$!<%= service[:component] %>!<%= service[:metric] %>!$HOSTNAME$!$_HOSTDEPLOYMENT$!$_HOSTJOB!$_HOSTINDEX$
+}
+<% end %>
+
+define command{
+    command_name            get_cf_metric
+    command_line            <%= @command_path %> $ARG1$ $ARG2$ $ARG3$ $ARG4$ $ARG5$ $ARG6$ $ARG7$ $ARG8$
+}
+
+define service{
+    name				            cf-service 		    ; The name of this service template
+    use				                generic-service		; Inherit default values from the generic-service definition
+    max_check_attempts              1			        ; Re-check the service up to 4 times in order to determine its final (hard) state
+    normal_check_interval           10			        ; Check the service every 5 minutes under normal conditions
+    retry_check_interval            1			        ; Re-check the service every minute until a hard state can be determined
+    register                        0       		    ; DONT REGISTER THIS DEFINITION - ITS NOT A REAL SERVICE, JUST A TEMPLATE!
+}

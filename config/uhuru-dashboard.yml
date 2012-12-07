@@ -1,3 +1,28 @@
+
+nats: nats://nats:nats@10.0.5.114:4222/
+bosh_db:
+  user: bosh
+  password: bosh
+  address:  10.0.5.112
+  port: 5432
+  database: bosh
+
+director:
+  address: 10.0.5.110
+  port: 25555
+  user: nagiosuser
+  password: nagiospass
+
+default_warn_level: 80
+default_critical_level: 90
+
+
+windows:
+  base:
+  dea:
+  mssql:
+  uhurufs:
+
 linux:
   base:
     cpu_time: top -b -n 1 |grep ^Cpu
@@ -17,35 +42,49 @@ linux:
     servermemory: ps aux | grep libexec/mysqld
     nodeprocessmemory: ps aux | grep bin/mysql_node
     config: cat /var/vcap/jobs/mysql_node/config/mysql_node.yml
-    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/mysql_node.db "select name,plan,quota_exceeded from vcap_services_mysql_node_provisioned_services"
+    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/mysql_node.db 'select name,plan,quota_exceeded from vcap_services_mysql_node_provisioned_services'
   postgresql_node:
     check: if [ -d /var/vcap/jobs/postgresql_node ]; then echo PostgreSQL Node ; fi
     databasesondrive: ls -la /var/vcap/store/postgresql/base/
     servermemory: ps aux | grep 'postgres:\|5.1/bin/postgres'
     nodeprocessmemory: ps aux | grep bin/postgresql_node
     config: cat /var/vcap/jobs/postgresql_node/config/postgresql_node.yml
-    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/postgresql_node.db "select name,plan,quota_exceeded from vcap_services_postgresql_node_provisionedservices"
+    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/postgresql_node.db 'select name,plan,quota_exceeded from vcap_services_postgresql_node_provisionedservices'
   mongodb_node:
     check: if [ -d /var/vcap/jobs/mongodb_node ]; then echo MongoDB Node ; fi
     databasesondrive: ls -la /var/vcap/store/mongodb/
-    servermemory: ps aux | grep "bin/mongod -f"
-    nodeprocessmemory: ps aux | grep "mongodb_node"
+    servermemory: ps aux | grep 'bin/mongod -f'
+    nodeprocessmemory: ps aux | grep 'mongodb_node'
     config: cat /var/vcap/jobs/mongodb_node/config/mongodb_node.yml
-    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/mongodb_node.db "select name,plan,quota_exceeded from vcap_services_mongodb_node_provisioned_services"
+    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/mongodb_node.db 'select name,plan,quota_exceeded from vcap_services_mongodb_node_provisioned_services'
   redis_node:
     check: if [ -d /var/vcap/jobs/redis_node ]; then echo Redis Node ; fi
     databasesondrive: ls -la /var/vcap/store/redis/instances/
     servermemory: ps aux | grep redis-server
     nodeprocessmemory: ps aux | grep redis_node
     config: cat /var/vcap/jobs/redis_node/config/redis_node.yml
-    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/redis_node.db "select name,plan,quota_exceeded from vcap_services_redis_node_provisioned_services"
+    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/redis_node.db 'select name,plan,quota_exceeded from vcap_services_redis_node_provisioned_services'
   rabbit_node:
     check: if [ -d /var/vcap/jobs/rabbit_node ]; then echo RabbitMQ Node ; fi
     databasesondrive: ls -la /var/vcap/store/rabbit/instances/
     servermemory: ps aux | grep /var/vcap/store/rabbit/instances/
     nodeprocessmemory: ps aux | grep rabbit_node
     config: cat /var/vcap/jobs/rabbit_node/config/rabbit_node.yml
-    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/rabbit_node.db "select name,plan,quota_exceeded from vcap_services_rabbit_node_provisioned_services"
+    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/rabbit_node.db 'select name,plan,quota_exceeded from vcap_services_rabbit_node_provisioned_services'
+  simple_webui:
+    check: if [ -d /var/vcap/jobs/simple_webui ]; then echo Web UI ; fi
+  webui:
+    check: if [ -d /var/vcap/jobs/webui ]; then echo Simple Web UI ; fi
+  vcap_postgres:
+    check: if [ -d /var/vcap/jobs/vcap_postgres ]; then echo UAA ; fi
+  uaa:
+    check: if [ -d /var/vcap/jobs/uaa ]; then echo UAA ; fi
+  cloud_controller_ng:
+    check: if [ -d /var/vcap/jobs/cloud_controller_ng ]; then echo Cloud Controller NG ; fi
+  health_manager_next:
+    check: if [ -d /var/vcap/jobs/health_manager_next ]; then echo Health Manager Next ; fi
+  health_manager:
+    check: if [ -d /var/vcap/jobs/health_manager ]; then echo Health ; fi
   cloud_controller:
     check: if [ -d /var/vcap/jobs/cloud_controller ]; then echo Cloud Controller ; fi
   stager:
@@ -53,9 +92,13 @@ linux:
   ccdb_postgres:
     check: if [ -d /var/vcap/jobs/ccdb_postgres ]; then echo Cloud Controller Database ; fi
   collector:
-    CHECK: if [ -d /var/vcap/jobs/collector ]; then echo Collector ; fi
+    check: if [ -d /var/vcap/jobs/collector ]; then echo Collector ; fi
+  hbase_master:
+    check: if [ -d /var/vcap/jobs/hbase_master ]; then echo HBase Master ; fi
+  hbase_slave:
+    check: if [ -d /var/vcap/jobs/collector ]; then echo HBase Slave ; fi
   dashboard:
-    check: if [ -d /var/vcap/jobs/dashboard ]; then echo Dashboard ; fi
+    check: if [ -d /var/vcap/jobs/hbase_slave ]; then echo Dashboard ; fi
   debian_nfs_server:
     check: if [ -d /var/vcap/jobs/debian_nfs_server ]; then echo Network File System ; fi
   opentsdb:
@@ -76,10 +119,19 @@ linux:
     check: if [ -d /var/vcap/jobs/mongodb_gateway ]; then echo MongoDB Gateway ; fi
   redis_gateway:
     check: if [ -d /var/vcap/jobs/redis_gateway ]; then echo Redis Gateway ; fi
-  rabbit_mq:
+  rabbit_gateway:
     check: if [ -d /var/vcap/jobs/rabbit_gateway ]; then echo RabbitMQ Gateway ; fi
-  sqlserver_gateway:
-    check: if [ -d /var/vcap/jobs/sqlserver_gateway ]; then echo SqlServer Gateway ; fi
+  mssql_gateway:
+    check: if [ -d /var/vcap/jobs/mssql_gateway ]; then echo MS SqlServer Gateway ; fi
   uhurufs_gateway:
     check: if [ -d /var/vcap/jobs/uhurufs_gateway ]; then echo UhuruFS Gateway ; fi
- 
+  trafficlog_aggregator:
+      check: if [ -d /var/vcap/jobs/trafficlog_aggregator ]; then echo Traffic Log Aggregator ; fi
+  uaadb:
+      check: if [ -d /var/vcap/jobs/uaadb ]; then echo UAA Database ; fi
+
+windows:
+  base:
+  uhurufs_node:
+  mssql_node:
+  windea:
