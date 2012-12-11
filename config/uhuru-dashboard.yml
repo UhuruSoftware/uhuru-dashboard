@@ -41,9 +41,17 @@ windows:
     datafolders: dir C:\Data
     workerprocessesiiscound: tasklist | find "w3wp"
     workerprocessesmemory: typeperf -sc 1 "\process(w3wp)\working set - private"
-    diskusage: fsutil volume diskfree c:
+    diskusage: fsutil volume diskfree c#{:}
     iiswebsitecount: %systemroot%\system32\inetsrv\appcmd list app
     config: type "C:\Program Files\Uhuru Software\Uhuru FileService\uhuru.config"
+  api:
+    workerprocessesmemory: typeperf -sc 1 "\process(w3wp)\working set - private"
+    SQLSERVERMEMORY: typeperf -sc 1 "\process(sqlservr)\working set - private"
+    diskusage: fsutil volume diskfree c#{:}
+  dataanalysis:
+    workerprocessesmemory: typeperf -sc 1 "\process(w3wp)\working set - private"
+    sqlservermemory: typeperf -sc 1 "\process(sqlservr)\working set - private"
+    diskusage: fsutil volume diskfree c#{:}
 
 linux:
   base:
