@@ -27,19 +27,19 @@ $states = {
                 :value => lambda{ |data|  /Swap:\s*\d*\s*\d*\s*\d*/.match(data['system_info'])[0].split(/\s+/)[2].to_f }
             },
             "system_disk" => {
-                :mu => 'GB',
+                :mu => 'MB',
                 :warn => 90,
                 :critical => 95,
                 :max => lambda{ |data|  /\/dev\/sda1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f },
                 :value => lambda{ |data|  /\/dev\/sda1\s*\S*\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[2].to_f / 1024 }
             },
             "ephemeral_disk" => {
-                :mu => 'GB',
+                :mu => 'MB',
                 :max => lambda{ |data|  /\/dev\/sdb2\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f },
                 :value => lambda{ |data|  /\/dev\/sdb2\s*\S*\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[2].to_f / 1024 }
             },
             "persistent_disk" => {
-                :mu => 'GB',
+                :mu => 'MB',
                 :max => lambda{ |data|  /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f },
                 :value => lambda{ |data|  /\/dev\/sdc1\s*\S*\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[2].to_f }
             },
@@ -50,12 +50,12 @@ $states = {
         "dea" => {
             "droplets_on_disk" =>
                 {
-                    :mu => 'QT',
+                    :mu => 'QTY',
                     :value => lambda{ |data|  data['dropletcountfolder'].scan(/vcap-user/).size }
                 },
             "worker_processes_count" =>
                 {
-                    :mu => 'QT',
+                    :mu => 'QTY',
                     :value => lambda{ |data|  data['workerprocessesiiscount'].scan(/\/var\/vcap\/data\/dea\/apps/).size }
                 },
             "worker_processes_memory" =>
@@ -73,12 +73,13 @@ $states = {
             "dea_provisionable_memory" =>
                 {
                     :mu => 'GB',
+                    :min => 0,
                     :max => lambda{ |data|  data['config'].scan(/max_memory:\s*\d*/)[0].split(/\s+/)[1].to_f },
                     :value => lambda{ |data|  data['dropletdata'].scan(/"mem_quota":\s*\d*/).map {|x| x.split(/\s+/)[1].to_i }.inject {|sum, x| sum += x} }
                 },
             "dea_droplets" =>
                 {
-                    :mu => 'QT',
+                    :mu => 'QTY',
                     :value => lambda{ |data|  data['dropletdata'].scan(/"droplet_id"/).size }
                 }
         },
@@ -86,31 +87,31 @@ $states = {
         "mysql_node" => {
             "services_on_disk" =>
                 {
-                    :mu => 'QT',
+                    :mu => 'QTY',
                     :value => lambda{ |data|  data['databasesondrive'].scan(/\d*\s*d\w{32}/).size }
                 },
             "provisioned_services" =>
                 {
-                    :mu => 'QT',
+                    :mu => 'QTY',
                     :max => lambda{ |data|  data['config'].scan(/capacity:\s+\d*/)[0].split(/\s+/)[1].to_f },
                     :value => lambda{ |data|  data['servicedb'].scan(/\w{33}/).size }
                 },
             "services_disk_size" =>
                 {
-                    :mu => 'GB',
+                    :mu => 'MB',
                     :max => lambda{ |data|  /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f },
                     :value => lambda{ |data|  val[0] = data['databasesondrive'].scan(/\d*\s*\d*-\d*-\d*\s*\d\d:\d\d\s*d\w{32}/).map {|x| x.split(/\s+/)[0].to_i}.inject {|sum, x| sum += x} }
 
                 },
             "mysql_server_memory" =>
                 {
-                    :mu => 'MB',
+                    :mu => 'KB',
                     :max => lambda{ |data|  /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f },
                     :value => lambda{ |data|  data['servermemory'].scan(/vcap[^\r]*\?/).size }
                 },
             "mysql_node_memory" =>
                 {
-                    :mu => 'MB',
+                    :mu => 'KB',
                     :max => lambda{ |data|  /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f },
                     :value => lambda{ |data|  data['nodeprocessmemory'].scan(/\d*\s*\d*\s*\?[^\r]*ruby/).size }
                 },
@@ -118,30 +119,30 @@ $states = {
         "postgresql_node" => {
             "services_on_disk" =>
                 {
-                    :mu => 'QT',
+                    :mu => 'QTY',
                     :value => lambda{ |data|  data['databasesondrive'].scan(/\w{4}-\w{2}-\w{2}/).size }
                 },
             "provisioned_services" =>
                 {
-                    :mu => 'QT',
+                    :mu => 'QTY',
                     :max => lambda{ |data|  data['config'].scan(/capacity:\s+\d*/)[0].split(/\s+/)[1].to_f },
                     :value => lambda{ |data|  data['servicedb'].scan(/\w{33}/).size }
                 },
             "services_disk_size" =>
                 {
-                    :mu => 'GB',
+                    :mu => 'MB',
                     :max => lambda{ |data|  /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f },
                     :value => lambda{ |data|  val[0] = data['databasesondrive'].scan(/\d*\s*\d*-\d*-\d*\s*\d\d:\d\d\s*\w{8}\-\w{4}/).map {|x| x.split(/\s+/)[0].to_i}.inject {|sum, x| sum += x} }
                 },
             "postgresql_server_memory" =>
                 {
-                    :mu => 'MB',
+                    :mu => 'KB',
                     :max => lambda{ |data|  /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f },
                     :value => lambda{ |data|  data['servermemory'].scan(/vcap[^\r]*\?/).size }
                 },
             "postgresql_node_memory" =>
                 {
-                    :mu => 'MB',
+                    :mu => 'KB',
                     :max => lambda{ |data|  /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f },
                     :value => lambda{ |data|  data['nodeprocessmemory'].scan(/\d*\s*\d*\s*\?[^\r]*ruby/).size }
                 }
@@ -149,30 +150,30 @@ $states = {
         "mongodb_node" => {
             "services_on_disk" =>
                 {
-                    :mu => 'QT',
+                    :mu => 'QTY',
                     :value => lambda{ |data|  data['databasesondrive'].scan(/\w{8}-\w{4}-\w{4}/).size }
                 },
             "provisioned_services" =>
                 {
-                    :mu => 'QT',
+                    :mu => 'QTY',
                     :max => lambda{ |data|  data['config'].scan(/capacity:\s+\d*/)[0].split(/\s+/)[1].to_f },
                     :value => lambda{ |data|  data['servicedb'].scan(/\w{33}/).size }
                 },
             "services_disk_size" =>
                 {
-                    :mu => 'GB',
+                    :mu => 'MB',
                     :max => lambda{ |data|  /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f },
                     :value => lambda{ |data|  val[0] = data['databasesondrive'].scan(/\d*\s*\d*-\d*-\d*\s*\d\d:\d\d\s*\w{8}\-\w{4}/).map {|x| x.split(/\s+/)[0].to_i}.inject {|sum, x| sum += x} }
                 },
             "mongodb_server_memory" =>
                 {
-                    :mu => 'MB',
+                    :mu => 'KB',
                     :max => lambda{ |data|  /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f },
                     :value => lambda{ |data|  data['servermemory'].scan(/vcap[^\r]*\?/).size }
                 },
             "mongodb_node_memory" =>
                 {
-                    :mu => 'MB',
+                    :mu => 'KB',
                     :max => lambda{ |data|  /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f },
                     :value => lambda{ |data|  data['nodeprocessmemory'].scan(/\d*\s*\d*\s*\?[^\r]*ruby/).size }
                 }
@@ -180,30 +181,30 @@ $states = {
         "redis_node" => {
             "services_on_disk" =>
                 {
-                    :mu => 'QT',
+                    :mu => 'QTY',
                     :value => lambda{ |data|  data['databasesondrive'].scan(/\w{8}-\w{4}-\w{4}/).size }
                 },
             "provisioned_services" =>
                 {
-                    :mu => 'QT',
+                    :mu => 'QTY',
                     :max => lambda{ |data|  data['config'].scan(/capacity:\s+\d*/)[0].split(/\s+/)[1].to_f },
                     :value => lambda{ |data|  data['servicedb'].scan(/\w{33}/).size }
                 },
             "services_disk_size" =>
                 {
-                    :mu => 'GB',
+                    :mu => 'MB',
                     :max => lambda{ |data|  /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f },
                     :value => lambda{ |data|  val[0] = data['databasesondrive'].scan(/\d*\s*\d*-\d*-\d*\s*\d\d:\d\d\s*\w{8}\-\w{4}/).map {|x| x.split(/\s+/)[0].to_i}.inject {|sum, x| sum += x} }
                 },
             "redis_server_memory" =>
                 {
-                    :mu => 'MB',
+                    :mu => 'KB',
                     :max => lambda{ |data|  /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f },
                     :value => lambda{ |data|  data['servermemory'].scan(/vcap[^\r]*\?/).size }
                 },
             "redis_node_memory" =>
                 {
-                    :mu => 'MB',
+                    :mu => 'KB',
                     :max => lambda{ |data|  /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f },
                     :value => lambda{ |data|  data['nodeprocessmemory'].scan(/\d*\s*\d*\s*\?[^\r]*ruby/).size }
                 }
@@ -211,30 +212,30 @@ $states = {
         "rabbit_node" => {
             "services_on_disk" =>
                 {
-                    :mu => 'QT',
+                    :mu => 'QTY',
                     :value => lambda{ |data|  data['databasesondrive'].scan(/\w{8}-\w{4}-\w{4}/).size }
                 },
             "provisioned_services" =>
                 {
-                    :mu => 'QT',
+                    :mu => 'QTY',
                     :max => lambda{ |data|  data['config'].scan(/capacity:\s+\d*/)[0].split(/\s+/)[1].to_f },
                     :value => lambda{ |data|  data['servicedb'].scan(/\w{33}/).size }
                 },
             "services_disk_size" =>
                 {
-                    :mu => 'GB',
+                    :mu => 'MB',
                     :max => lambda{ |data|  /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f },
                     :value => lambda{ |data|  val[0] = data['databasesondrive'].scan(/\d*\s*\d*-\d*-\d*\s*\d\d:\d\d\s*\w{8}\-\w{4}/).map {|x| x.split(/\s+/)[0].to_i}.inject {|sum, x| sum += x} }
                 },
             "rabbitmq_server_memory" =>
                 {
-                    :mu => 'MB',
+                    :mu => 'KB',
                     :max => lambda{ |data|  /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f },
                     :value => lambda{ |data|  data['servermemory'].scan(/vcap[^\r]*\?/).size }
                 },
             "rabbitmq_node_memory" =>
                 {
-                    :mu => 'MB',
+                    :mu => 'KB',
                     :max => lambda{ |data|  /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f },
                     :value => lambda{ |data|  data['nodeprocessmemory'].scan(/\d*\s*\d*\s*\?[^\r]*ruby/).size }
                 }
@@ -263,12 +264,12 @@ $states = {
                 #:value => /Swap:\s*\d*\s*\d*\s*\d*/.match(data['system_info'])[0].split(/\s+/)[2].to_f
             },
             "system_disk" => {
-                :mu => 'GB',
+                :mu => 'MB',
                 #:max => /\/dev\/sda1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f,
                 #:value => /\/dev\/sda1\s*\S*\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[2].to_f
             },
             "ephemeral_disk" => {
-                :mu => 'GB',
+                :mu => 'MB',
                 #:max => /\/dev\/sdb2\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f,
                 #:value => /\/dev\/sdb2\s*\S*\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[2].to_f
             },
@@ -282,9 +283,11 @@ $states = {
             },
             "dea" => {
                 "droplets_on_disk" => {
+                    :mu => 'QTY',
                     :value => lambda{ |data|  data['dropletcountfolder'].scan(/<DIR>\s+\w{25}/).size }
                 },
                 "worker_processes_count" => {
+                    :mu => 'QTY',
                     #:value => data['workerprocessesiiscount'].scan(/\/var\/vcap\/data\/dea\/apps/).size
                 },
                 "worker_processes_memory" => {
@@ -298,24 +301,27 @@ $states = {
                     :value => lambda{ |data|  data['deaprocessmemory'].scan(/\d*\s*\d*\s*\?[^(\r|\n)]+dea.yml/)[0].split(/\s+/)[0].to_f }
                 },
                 "dea_provisionable_memory" => {
+                    :mu => 'KB',
                     :max => lambda{ |data|  data['config'].scan(/Total Physical Memory:\s*\d*/)[0].split(/\s+/)[1].to_f },
                     :value => lambda{ |data|  data['dropletdata'].scan(/"mem_quota":\s*\d*/).map {|x| x.split(/\s+/)[1].to_i }.inject {|sum, x| sum += x} }
                 },
                 "dea_droplets" => {
+                    :mu => 'QTY'
                     #:value => data['dropletdata'].scan(/"droplet_id"/).size
                 }
             },
             "mssql_node" => {
                 "services_on_disk" => {
+                    :mu => 'QTY',
                     :value => lambda{ |data|  data['databasesondrive'].scan(/D4Ta\w{20}/).size }
                 },
                 "provisioned_services" => {
-                    :mu => 'QT',
+                    :mu => 'QTY',
                     :max => lambda{ |data|  data['config'].scan(/capacity="\d*"/) },
                     #:value => data['servicedb'].scan(/\w{33}/).size
                 },
                 "services_disk_size" => {
-                    :mu => 'GB',
+                    :mu => 'MB',
                     :max => lambda{ |data|  /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f },
                     #:value => val[0] = data['databasesondrive'].scan(/\d*\s*\d*-\d*-\d*\s*\d\d:\d\d\s*d\w{32}/).map {|x| x.split(/\s+/)[0].to_i}.inject {|sum, x| sum += x}
                 },
@@ -325,7 +331,7 @@ $states = {
                     #:value => data['servermemory'].scan(/vcap[^\r]*\?/).size
                 },
                 "mssql_node_memory" => {
-                    :mu => 'MB',
+                    :mu => 'KB',
                     :max => lambda{ |data|  /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f },
                     #:value => data['nodeprocessmemory'].scan(/\d*\s*\d*\s*\?[^\r]*ruby/).size
                 },
@@ -335,12 +341,12 @@ $states = {
                     :value => lambda{ |data|  data['databasesondrive'].scan(/APP\s+/).size }
                 },
                 "provisioned_services" => {
-                    :mu => 'QT',
+                    :mu => 'QTY',
                     :max => lambda{ |data|  data['config'].scan(/capacity:\s+\d*/) },
                     #:value => data['servicedb'].scan(/\w{33}/).size
                 },
                 "services_disk_size" => {
-                    :mu => 'GB',
+                    :mu => 'MB',
                     :max => lambda{ |data|  /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f },
                     #:value => val[0] = data['databasesondrive'].scan(/\d*\s*\d*-\d*-\d*\s*\d\d:\d\d\s*\w{8}\-\w{4}/).map {|x| x.split(/\s+/)[0].to_i}.inject {|sum, x| sum += x}
                 },
@@ -350,7 +356,7 @@ $states = {
                     #:value => data['servermemory'].scan(/vcap[^\r]*\?/).size
                 },
                 "filesystem_node_memory" => {
-                    :mu => 'MB',
+                    :mu => 'KB',
                     :max => lambda{ |data|  /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f },
                     #:value => data['nodeprocessmemory'].scan(/\d*\s*\d*\s*\?[^\r]*ruby/).size
                 }
