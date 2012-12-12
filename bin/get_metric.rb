@@ -19,52 +19,71 @@ index =             ARGV[7] # 0
 
 datafile =     File.expand_path("../../data/#{ip}.yml", __FILE__)
 
+
 begin
   if metric == 'status'
     user = rand(36**9).to_s(36)
     password = rand(36**9).to_s(36)
     sshkey = File.open(File.expand_path("../../config/sshkey.pub", __FILE__)).read
 
-    begin
-      Uhuru::BOSHHelper.open_ssh(deployment, job, index, sshkey, user, password )
-    rescue Exception => e
-      raise "Cannot open SSH\n#{e.message}"
-    end
+    if os == 'windows' && $config['legacy']['enabled'] == true
+      winexebin = File.expand_path('../../bin/winexe', __FILE__)
 
-
-    begin
       filemode = ARGV[5] == '--onscreen' ? "r" : "w"
 
       File.open(File.expand_path(datafile, __FILE__), filemode) do |file|
-        Net::SSH.start(ip, "bosh_#{user}", :password => password, :keys => [File.expand_path("../../config/sshkey", __FILE__)] ) do |ssh|
-          ['base', job].each { |group|
-            value = ssh.exec!("echo #{password} | sudo -S ps")
-            unless $config[os][group] == nil
-              $config[os][group].each { |script_name, script|
-                value = ssh.exec!("sudo bash -c \"#{script}\"")
-                if ARGV[5] == '--onscreen'
-                  puts "#{script_name}: |\n  ---\n"
-                  value.lines.each {|line| puts "  #{line}"}
-                  $stdout.flush
-                else
-                  file.write "#{script_name}: |\n  ---\n"
-                  value.lines.each {|line| file.write "  #{line}"}
-                end
-              }
-            end
-          }
-        end
+        ['base', job].each { |group|
+          unless $config[os][group] == nil
+            $config[os][group].each { |script_name, script|
+              value = `#{winexebin} -U #{$config['legacy']['user']} --password="#{$config['legacy']['password']}" //#{ip} 'cmd /C #{script}'`
+              file.write "#{script_name}: |\n  ---\n"
+              value.lines.each {|line| file.write "  #{line}"}
+            }
+          end
+        }
       end
-    rescue Exception => e
-      raise "SSH Connection Failed\n#{e.message}"
-    end
+    else
+      begin
+        Uhuru::BOSHHelper.open_ssh(deployment, job, index, sshkey, user, password )
+      rescue Exception => e
+        raise "Cannot open SSH\n#{e.message}"
+      end
 
-    begin
-      Uhuru::BOSHHelper.stop_ssh(deployment, job, index, user)
-    rescue Exception => e
-      raise "Cannot close SSH\n#{e.Message}"
-    end
 
+      begin
+        filemode = ARGV[5] == '--onscreen' ? "r" : "w"
+
+        File.open(File.expand_path(datafile, __FILE__), filemode) do |file|
+          Net::SSH.start(ip, "bosh_#{user}", :password => password, :keys => [File.expand_path("../../config/sshkey", __FILE__)] ) do |ssh|
+            ['base', job].each { |group|
+              value = ssh.exec!("echo #{password} | sudo -S ps")
+              unless $config[os][group] == nil
+                $config[os][group].each { |script_name, script|
+                  value = ssh.exec!("sudo bash -c \"#{script}\"")
+                  if ARGV[5] == '--onscreen'
+                    puts "#{script_name}: |\n  ---\n"
+                    value.lines.each {|line| puts "  #{line}"}
+                    $stdout.flush
+                  else
+                    file.write "#{script_name}: |\n  ---\n"
+                    value.lines.each {|line| file.write "  #{line}"}
+                  end
+                }
+              end
+            }
+          end
+        end
+
+      rescue Exception => e
+        raise "SSH Connection Failed\n#{e.message}"
+      end
+
+      begin
+        Uhuru::BOSHHelper.stop_ssh(deployment, job, index, user)
+      rescue Exception => e
+        raise "Cannot close SSH\n#{e.Message}"
+      end
+    end
     output = "Status is OK"
     exitcode = 0
   else
@@ -119,7 +138,7 @@ begin
 
         pct = (metric_value / metric_max) * 100
 
-        performance = "|#{metric}=#{"%.3g" % metric_value}#{metric_mu}, max=#{"%.3g" % metric_max}#{metric_mu}, pct=#{"%.3g" % pct}%"
+        performance = "|#{metric}=#{"%.3f" % metric_value}#{metric_mu}, max=#{"%.3f" % metric_max}#{metric_mu}, pct=#{"%.3f" % pct}%"
 
         if pct > metric_critical
           output = "CRITICAL - Metric #{metric} is above #{metric_critical}%#{performance}"

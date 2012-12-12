@@ -9,7 +9,7 @@ require 'bosh_helper'
 require 'string_helper'
 require 'erb'
 
-
+require 'config'
 
 
 @vms = Uhuru::BOSHHelper.get_vms
@@ -33,6 +33,22 @@ require 'erb'
   if host[:address] != nil && host[:address].size > 0
     @hosts << host
   end
+end
+
+if $config['legacy']['enabled'] == true
+  $config['legacy']['machines'].each {|machine|
+    host = {}
+    host[:deployment] = machine['deployment']
+    host[:name] = machine['name']
+    host[:alias] = machine['alias']
+    host[:address] = machine['address']
+    host[:component] = machine['component']
+    host[:index] = machine['index']
+    host[:os] = machine['os']
+    if host[:address] != nil && host[:address].size > 0
+      @hosts << host
+    end
+  }
 end
 
 @services = []

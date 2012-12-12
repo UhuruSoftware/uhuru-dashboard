@@ -94,7 +94,7 @@ define ngraph {
        service_name        linux_base_system_disk
        graph_perf_regex    system_disk=(\d+\.?\d+)
        graph_value         value
-       graph_units         GB
+       graph_units         MB
        graph_legend        Linux Base System Disk
        graph_legend_eol    none
        page                1 Linux Base System Disk
@@ -106,7 +106,7 @@ define ngraph {
        service_name        linux_base_system_disk
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         GB
+       graph_units         MB
        graph_legend        Linux Base System Disk Max
        graph_legend_eol    none
        page                1 Linux Base System Disk
@@ -117,7 +117,7 @@ define ngraph {
        service_name        linux_base_ephemeral_disk
        graph_perf_regex    ephemeral_disk=(\d+\.?\d+)
        graph_value         value
-       graph_units         GB
+       graph_units         MB
        graph_legend        Linux Base Ephemeral Disk
        graph_legend_eol    none
        page                1 Linux Base Ephemeral Disk
@@ -129,7 +129,7 @@ define ngraph {
        service_name        linux_base_ephemeral_disk
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         GB
+       graph_units         MB
        graph_legend        Linux Base Ephemeral Disk Max
        graph_legend_eol    none
        page                1 Linux Base Ephemeral Disk
@@ -140,7 +140,7 @@ define ngraph {
        service_name        linux_base_persistent_disk
        graph_perf_regex    persistent_disk=(\d+\.?\d+)
        graph_value         value
-       graph_units         GB
+       graph_units         MB
        graph_legend        Linux Base Persistent Disk
        graph_legend_eol    none
        page                1 Linux Base Persistent Disk
@@ -152,7 +152,7 @@ define ngraph {
        service_name        linux_base_persistent_disk
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         GB
+       graph_units         MB
        graph_legend        Linux Base Persistent Disk Max
        graph_legend_eol    none
        page                1 Linux Base Persistent Disk
@@ -163,7 +163,7 @@ define ngraph {
        service_name        linux_dea_droplets_on_disk
        graph_perf_regex    droplets_on_disk=(\d+\.?\d+)
        graph_value         value
-       graph_units         QT
+       graph_units         QTY
        graph_legend        Linux Dea Droplets On Disk
        graph_legend_eol    none
        page                1 Linux Dea Droplets On Disk
@@ -175,7 +175,7 @@ define ngraph {
        service_name        linux_dea_droplets_on_disk
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         QT
+       graph_units         QTY
        graph_legend        Linux Dea Droplets On Disk Max
        graph_legend_eol    none
        page                1 Linux Dea Droplets On Disk
@@ -186,7 +186,7 @@ define ngraph {
        service_name        linux_dea_worker_processes_count
        graph_perf_regex    worker_processes_count=(\d+\.?\d+)
        graph_value         value
-       graph_units         QT
+       graph_units         QTY
        graph_legend        Linux Dea Worker Processes Count
        graph_legend_eol    none
        page                1 Linux Dea Worker Processes Count
@@ -198,7 +198,7 @@ define ngraph {
        service_name        linux_dea_worker_processes_count
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         QT
+       graph_units         QTY
        graph_legend        Linux Dea Worker Processes Count Max
        graph_legend_eol    none
        page                1 Linux Dea Worker Processes Count
@@ -278,7 +278,7 @@ define ngraph {
        service_name        linux_dea_dea_droplets
        graph_perf_regex    dea_droplets=(\d+\.?\d+)
        graph_value         value
-       graph_units         QT
+       graph_units         QTY
        graph_legend        Linux Dea Dea Droplets
        graph_legend_eol    none
        page                1 Linux Dea Dea Droplets
@@ -290,7 +290,7 @@ define ngraph {
        service_name        linux_dea_dea_droplets
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         QT
+       graph_units         QTY
        graph_legend        Linux Dea Dea Droplets Max
        graph_legend_eol    none
        page                1 Linux Dea Dea Droplets
@@ -301,7 +301,7 @@ define ngraph {
        service_name        linux_mysql_node_services_on_disk
        graph_perf_regex    services_on_disk=(\d+\.?\d+)
        graph_value         value
-       graph_units         QT
+       graph_units         QTY
        graph_legend        Linux Mysql Node Services On Disk
        graph_legend_eol    none
        page                1 Linux Mysql Node Services On Disk
@@ -313,7 +313,7 @@ define ngraph {
        service_name        linux_mysql_node_services_on_disk
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         QT
+       graph_units         QTY
        graph_legend        Linux Mysql Node Services On Disk Max
        graph_legend_eol    none
        page                1 Linux Mysql Node Services On Disk
@@ -324,7 +324,7 @@ define ngraph {
        service_name        linux_mysql_node_provisioned_services
        graph_perf_regex    provisioned_services=(\d+\.?\d+)
        graph_value         value
-       graph_units         QT
+       graph_units         QTY
        graph_legend        Linux Mysql Node Provisioned Services
        graph_legend_eol    none
        page                1 Linux Mysql Node Provisioned Services
@@ -336,7 +336,7 @@ define ngraph {
        service_name        linux_mysql_node_provisioned_services
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         QT
+       graph_units         QTY
        graph_legend        Linux Mysql Node Provisioned Services Max
        graph_legend_eol    none
        page                1 Linux Mysql Node Provisioned Services
@@ -347,7 +347,7 @@ define ngraph {
        service_name        linux_mysql_node_services_disk_size
        graph_perf_regex    services_disk_size=(\d+\.?\d+)
        graph_value         value
-       graph_units         GB
+       graph_units         MB
        graph_legend        Linux Mysql Node Services Disk Size
        graph_legend_eol    none
        page                1 Linux Mysql Node Services Disk Size
@@ -359,7 +359,7 @@ define ngraph {
        service_name        linux_mysql_node_services_disk_size
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         GB
+       graph_units         MB
        graph_legend        Linux Mysql Node Services Disk Size Max
        graph_legend_eol    none
        page                1 Linux Mysql Node Services Disk Size
@@ -370,7 +370,7 @@ define ngraph {
        service_name        linux_mysql_node_mysql_server_memory
        graph_perf_regex    mysql_server_memory=(\d+\.?\d+)
        graph_value         value
-       graph_units         MB
+       graph_units         KB
        graph_legend        Linux Mysql Node Mysql Server Memory
        graph_legend_eol    none
        page                1 Linux Mysql Node Mysql Server Memory
@@ -382,7 +382,7 @@ define ngraph {
        service_name        linux_mysql_node_mysql_server_memory
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         MB
+       graph_units         KB
        graph_legend        Linux Mysql Node Mysql Server Memory Max
        graph_legend_eol    none
        page                1 Linux Mysql Node Mysql Server Memory
@@ -393,7 +393,7 @@ define ngraph {
        service_name        linux_mysql_node_mysql_node_memory
        graph_perf_regex    mysql_node_memory=(\d+\.?\d+)
        graph_value         value
-       graph_units         MB
+       graph_units         KB
        graph_legend        Linux Mysql Node Mysql Node Memory
        graph_legend_eol    none
        page                1 Linux Mysql Node Mysql Node Memory
@@ -405,7 +405,7 @@ define ngraph {
        service_name        linux_mysql_node_mysql_node_memory
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         MB
+       graph_units         KB
        graph_legend        Linux Mysql Node Mysql Node Memory Max
        graph_legend_eol    none
        page                1 Linux Mysql Node Mysql Node Memory
@@ -416,7 +416,7 @@ define ngraph {
        service_name        linux_mongodb_node_services_on_disk
        graph_perf_regex    services_on_disk=(\d+\.?\d+)
        graph_value         value
-       graph_units         QT
+       graph_units         QTY
        graph_legend        Linux Mongodb Node Services On Disk
        graph_legend_eol    none
        page                1 Linux Mongodb Node Services On Disk
@@ -428,7 +428,7 @@ define ngraph {
        service_name        linux_mongodb_node_services_on_disk
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         QT
+       graph_units         QTY
        graph_legend        Linux Mongodb Node Services On Disk Max
        graph_legend_eol    none
        page                1 Linux Mongodb Node Services On Disk
@@ -439,7 +439,7 @@ define ngraph {
        service_name        linux_mongodb_node_provisioned_services
        graph_perf_regex    provisioned_services=(\d+\.?\d+)
        graph_value         value
-       graph_units         QT
+       graph_units         QTY
        graph_legend        Linux Mongodb Node Provisioned Services
        graph_legend_eol    none
        page                1 Linux Mongodb Node Provisioned Services
@@ -451,7 +451,7 @@ define ngraph {
        service_name        linux_mongodb_node_provisioned_services
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         QT
+       graph_units         QTY
        graph_legend        Linux Mongodb Node Provisioned Services Max
        graph_legend_eol    none
        page                1 Linux Mongodb Node Provisioned Services
@@ -462,7 +462,7 @@ define ngraph {
        service_name        linux_mongodb_node_services_disk_size
        graph_perf_regex    services_disk_size=(\d+\.?\d+)
        graph_value         value
-       graph_units         GB
+       graph_units         MB
        graph_legend        Linux Mongodb Node Services Disk Size
        graph_legend_eol    none
        page                1 Linux Mongodb Node Services Disk Size
@@ -474,7 +474,7 @@ define ngraph {
        service_name        linux_mongodb_node_services_disk_size
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         GB
+       graph_units         MB
        graph_legend        Linux Mongodb Node Services Disk Size Max
        graph_legend_eol    none
        page                1 Linux Mongodb Node Services Disk Size
@@ -485,7 +485,7 @@ define ngraph {
        service_name        linux_mongodb_node_mongodb_server_memory
        graph_perf_regex    mongodb_server_memory=(\d+\.?\d+)
        graph_value         value
-       graph_units         MB
+       graph_units         KB
        graph_legend        Linux Mongodb Node Mongodb Server Memory
        graph_legend_eol    none
        page                1 Linux Mongodb Node Mongodb Server Memory
@@ -497,7 +497,7 @@ define ngraph {
        service_name        linux_mongodb_node_mongodb_server_memory
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         MB
+       graph_units         KB
        graph_legend        Linux Mongodb Node Mongodb Server Memory Max
        graph_legend_eol    none
        page                1 Linux Mongodb Node Mongodb Server Memory
@@ -508,7 +508,7 @@ define ngraph {
        service_name        linux_mongodb_node_mongodb_node_memory
        graph_perf_regex    mongodb_node_memory=(\d+\.?\d+)
        graph_value         value
-       graph_units         MB
+       graph_units         KB
        graph_legend        Linux Mongodb Node Mongodb Node Memory
        graph_legend_eol    none
        page                1 Linux Mongodb Node Mongodb Node Memory
@@ -520,7 +520,7 @@ define ngraph {
        service_name        linux_mongodb_node_mongodb_node_memory
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         MB
+       graph_units         KB
        graph_legend        Linux Mongodb Node Mongodb Node Memory Max
        graph_legend_eol    none
        page                1 Linux Mongodb Node Mongodb Node Memory
@@ -531,7 +531,7 @@ define ngraph {
        service_name        linux_redis_node_services_on_disk
        graph_perf_regex    services_on_disk=(\d+\.?\d+)
        graph_value         value
-       graph_units         QT
+       graph_units         QTY
        graph_legend        Linux Redis Node Services On Disk
        graph_legend_eol    none
        page                1 Linux Redis Node Services On Disk
@@ -543,7 +543,7 @@ define ngraph {
        service_name        linux_redis_node_services_on_disk
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         QT
+       graph_units         QTY
        graph_legend        Linux Redis Node Services On Disk Max
        graph_legend_eol    none
        page                1 Linux Redis Node Services On Disk
@@ -554,7 +554,7 @@ define ngraph {
        service_name        linux_redis_node_provisioned_services
        graph_perf_regex    provisioned_services=(\d+\.?\d+)
        graph_value         value
-       graph_units         QT
+       graph_units         QTY
        graph_legend        Linux Redis Node Provisioned Services
        graph_legend_eol    none
        page                1 Linux Redis Node Provisioned Services
@@ -566,7 +566,7 @@ define ngraph {
        service_name        linux_redis_node_provisioned_services
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         QT
+       graph_units         QTY
        graph_legend        Linux Redis Node Provisioned Services Max
        graph_legend_eol    none
        page                1 Linux Redis Node Provisioned Services
@@ -577,7 +577,7 @@ define ngraph {
        service_name        linux_redis_node_services_disk_size
        graph_perf_regex    services_disk_size=(\d+\.?\d+)
        graph_value         value
-       graph_units         GB
+       graph_units         MB
        graph_legend        Linux Redis Node Services Disk Size
        graph_legend_eol    none
        page                1 Linux Redis Node Services Disk Size
@@ -589,7 +589,7 @@ define ngraph {
        service_name        linux_redis_node_services_disk_size
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         GB
+       graph_units         MB
        graph_legend        Linux Redis Node Services Disk Size Max
        graph_legend_eol    none
        page                1 Linux Redis Node Services Disk Size
@@ -600,7 +600,7 @@ define ngraph {
        service_name        linux_redis_node_redis_server_memory
        graph_perf_regex    redis_server_memory=(\d+\.?\d+)
        graph_value         value
-       graph_units         MB
+       graph_units         KB
        graph_legend        Linux Redis Node Redis Server Memory
        graph_legend_eol    none
        page                1 Linux Redis Node Redis Server Memory
@@ -612,7 +612,7 @@ define ngraph {
        service_name        linux_redis_node_redis_server_memory
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         MB
+       graph_units         KB
        graph_legend        Linux Redis Node Redis Server Memory Max
        graph_legend_eol    none
        page                1 Linux Redis Node Redis Server Memory
@@ -623,7 +623,7 @@ define ngraph {
        service_name        linux_redis_node_redis_node_memory
        graph_perf_regex    redis_node_memory=(\d+\.?\d+)
        graph_value         value
-       graph_units         MB
+       graph_units         KB
        graph_legend        Linux Redis Node Redis Node Memory
        graph_legend_eol    none
        page                1 Linux Redis Node Redis Node Memory
@@ -635,7 +635,7 @@ define ngraph {
        service_name        linux_redis_node_redis_node_memory
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         MB
+       graph_units         KB
        graph_legend        Linux Redis Node Redis Node Memory Max
        graph_legend_eol    none
        page                1 Linux Redis Node Redis Node Memory
@@ -646,7 +646,7 @@ define ngraph {
        service_name        linux_rabbit_node_services_on_disk
        graph_perf_regex    services_on_disk=(\d+\.?\d+)
        graph_value         value
-       graph_units         QT
+       graph_units         QTY
        graph_legend        Linux Rabbit Node Services On Disk
        graph_legend_eol    none
        page                1 Linux Rabbit Node Services On Disk
@@ -658,7 +658,7 @@ define ngraph {
        service_name        linux_rabbit_node_services_on_disk
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         QT
+       graph_units         QTY
        graph_legend        Linux Rabbit Node Services On Disk Max
        graph_legend_eol    none
        page                1 Linux Rabbit Node Services On Disk
@@ -669,7 +669,7 @@ define ngraph {
        service_name        linux_rabbit_node_provisioned_services
        graph_perf_regex    provisioned_services=(\d+\.?\d+)
        graph_value         value
-       graph_units         QT
+       graph_units         QTY
        graph_legend        Linux Rabbit Node Provisioned Services
        graph_legend_eol    none
        page                1 Linux Rabbit Node Provisioned Services
@@ -681,7 +681,7 @@ define ngraph {
        service_name        linux_rabbit_node_provisioned_services
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         QT
+       graph_units         QTY
        graph_legend        Linux Rabbit Node Provisioned Services Max
        graph_legend_eol    none
        page                1 Linux Rabbit Node Provisioned Services
@@ -692,7 +692,7 @@ define ngraph {
        service_name        linux_rabbit_node_services_disk_size
        graph_perf_regex    services_disk_size=(\d+\.?\d+)
        graph_value         value
-       graph_units         GB
+       graph_units         MB
        graph_legend        Linux Rabbit Node Services Disk Size
        graph_legend_eol    none
        page                1 Linux Rabbit Node Services Disk Size
@@ -704,7 +704,7 @@ define ngraph {
        service_name        linux_rabbit_node_services_disk_size
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         GB
+       graph_units         MB
        graph_legend        Linux Rabbit Node Services Disk Size Max
        graph_legend_eol    none
        page                1 Linux Rabbit Node Services Disk Size
@@ -715,7 +715,7 @@ define ngraph {
        service_name        linux_rabbit_node_rabbitmq_server_memory
        graph_perf_regex    rabbitmq_server_memory=(\d+\.?\d+)
        graph_value         value
-       graph_units         MB
+       graph_units         KB
        graph_legend        Linux Rabbit Node Rabbitmq Server Memory
        graph_legend_eol    none
        page                1 Linux Rabbit Node Rabbitmq Server Memory
@@ -727,7 +727,7 @@ define ngraph {
        service_name        linux_rabbit_node_rabbitmq_server_memory
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         MB
+       graph_units         KB
        graph_legend        Linux Rabbit Node Rabbitmq Server Memory Max
        graph_legend_eol    none
        page                1 Linux Rabbit Node Rabbitmq Server Memory
@@ -738,7 +738,7 @@ define ngraph {
        service_name        linux_rabbit_node_rabbitmq_node_memory
        graph_perf_regex    rabbitmq_node_memory=(\d+\.?\d+)
        graph_value         value
-       graph_units         MB
+       graph_units         KB
        graph_legend        Linux Rabbit Node Rabbitmq Node Memory
        graph_legend_eol    none
        page                1 Linux Rabbit Node Rabbitmq Node Memory
@@ -750,10 +750,240 @@ define ngraph {
        service_name        linux_rabbit_node_rabbitmq_node_memory
        graph_perf_regex    max=(\d+\.?\d+)
        graph_value         max
-       graph_units         MB
+       graph_units         KB
        graph_legend        Linux Rabbit Node Rabbitmq Node Memory Max
        graph_legend_eol    none
        page                1 Linux Rabbit Node Rabbitmq Node Memory
+       rrd_plottype        LINE2
+       rrd_color           aa0000
+}
+define ngraph {
+       service_name        windows_base_cpu
+       graph_perf_regex    cpu=(\d+\.?\d+)
+       graph_value         value
+       graph_units         %
+       graph_legend        Windows Base Cpu
+       graph_legend_eol    none
+       page                1 Windows Base Cpu
+       rrd_plottype        AREA
+       rrd_color           0000aa
+}
+
+define ngraph {
+       service_name        windows_base_cpu
+       graph_perf_regex    max=(\d+\.?\d+)
+       graph_value         max
+       graph_units         %
+       graph_legend        Windows Base Cpu Max
+       graph_legend_eol    none
+       page                1 Windows Base Cpu
+       rrd_plottype        LINE2
+       rrd_color           aa0000
+}
+define ngraph {
+       service_name        windows_base_physical_ram
+       graph_perf_regex    physical_ram=(\d+\.?\d+)
+       graph_value         value
+       graph_units         MB
+       graph_legend        Windows Base Physical Ram
+       graph_legend_eol    none
+       page                1 Windows Base Physical Ram
+       rrd_plottype        AREA
+       rrd_color           0000aa
+}
+
+define ngraph {
+       service_name        windows_base_physical_ram
+       graph_perf_regex    max=(\d+\.?\d+)
+       graph_value         max
+       graph_units         MB
+       graph_legend        Windows Base Physical Ram Max
+       graph_legend_eol    none
+       page                1 Windows Base Physical Ram
+       rrd_plottype        LINE2
+       rrd_color           aa0000
+}
+define ngraph {
+       service_name        windows_base_virtual_ram
+       graph_perf_regex    virtual_ram=(\d+\.?\d+)
+       graph_value         value
+       graph_units         MB
+       graph_legend        Windows Base Virtual Ram
+       graph_legend_eol    none
+       page                1 Windows Base Virtual Ram
+       rrd_plottype        AREA
+       rrd_color           0000aa
+}
+
+define ngraph {
+       service_name        windows_base_virtual_ram
+       graph_perf_regex    max=(\d+\.?\d+)
+       graph_value         max
+       graph_units         MB
+       graph_legend        Windows Base Virtual Ram Max
+       graph_legend_eol    none
+       page                1 Windows Base Virtual Ram
+       rrd_plottype        LINE2
+       rrd_color           aa0000
+}
+define ngraph {
+       service_name        windows_base_system_disk
+       graph_perf_regex    system_disk=(\d+\.?\d+)
+       graph_value         value
+       graph_units         GB
+       graph_legend        Windows Base System Disk
+       graph_legend_eol    none
+       page                1 Windows Base System Disk
+       rrd_plottype        AREA
+       rrd_color           0000aa
+}
+
+define ngraph {
+       service_name        windows_base_system_disk
+       graph_perf_regex    max=(\d+\.?\d+)
+       graph_value         max
+       graph_units         GB
+       graph_legend        Windows Base System Disk Max
+       graph_legend_eol    none
+       page                1 Windows Base System Disk
+       rrd_plottype        LINE2
+       rrd_color           aa0000
+}
+define ngraph {
+       service_name        windows_windea_droplets_on_disk
+       graph_perf_regex    droplets_on_disk=(\d+\.?\d+)
+       graph_value         value
+       graph_units         QTY
+       graph_legend        Windows Windea Droplets On Disk
+       graph_legend_eol    none
+       page                1 Windows Windea Droplets On Disk
+       rrd_plottype        AREA
+       rrd_color           0000aa
+}
+
+define ngraph {
+       service_name        windows_windea_droplets_on_disk
+       graph_perf_regex    max=(\d+\.?\d+)
+       graph_value         max
+       graph_units         QTY
+       graph_legend        Windows Windea Droplets On Disk Max
+       graph_legend_eol    none
+       page                1 Windows Windea Droplets On Disk
+       rrd_plottype        LINE2
+       rrd_color           aa0000
+}
+define ngraph {
+       service_name        windows_windea_worker_processes_count
+       graph_perf_regex    worker_processes_count=(\d+\.?\d+)
+       graph_value         value
+       graph_units         QTY
+       graph_legend        Windows Windea Worker Processes Count
+       graph_legend_eol    none
+       page                1 Windows Windea Worker Processes Count
+       rrd_plottype        AREA
+       rrd_color           0000aa
+}
+
+define ngraph {
+       service_name        windows_windea_worker_processes_count
+       graph_perf_regex    max=(\d+\.?\d+)
+       graph_value         max
+       graph_units         QTY
+       graph_legend        Windows Windea Worker Processes Count Max
+       graph_legend_eol    none
+       page                1 Windows Windea Worker Processes Count
+       rrd_plottype        LINE2
+       rrd_color           aa0000
+}
+define ngraph {
+       service_name        windows_windea_worker_processes_memory
+       graph_perf_regex    worker_processes_memory=(\d+\.?\d+)
+       graph_value         value
+       graph_units         KB
+       graph_legend        Windows Windea Worker Processes Memory
+       graph_legend_eol    none
+       page                1 Windows Windea Worker Processes Memory
+       rrd_plottype        AREA
+       rrd_color           0000aa
+}
+
+define ngraph {
+       service_name        windows_windea_worker_processes_memory
+       graph_perf_regex    max=(\d+\.?\d+)
+       graph_value         max
+       graph_units         KB
+       graph_legend        Windows Windea Worker Processes Memory Max
+       graph_legend_eol    none
+       page                1 Windows Windea Worker Processes Memory
+       rrd_plottype        LINE2
+       rrd_color           aa0000
+}
+define ngraph {
+       service_name        windows_windea_dea_service_memory
+       graph_perf_regex    dea_service_memory=(\d+\.?\d+)
+       graph_value         value
+       graph_units         KB
+       graph_legend        Windows Windea Dea Service Memory
+       graph_legend_eol    none
+       page                1 Windows Windea Dea Service Memory
+       rrd_plottype        AREA
+       rrd_color           0000aa
+}
+
+define ngraph {
+       service_name        windows_windea_dea_service_memory
+       graph_perf_regex    max=(\d+\.?\d+)
+       graph_value         max
+       graph_units         KB
+       graph_legend        Windows Windea Dea Service Memory Max
+       graph_legend_eol    none
+       page                1 Windows Windea Dea Service Memory
+       rrd_plottype        LINE2
+       rrd_color           aa0000
+}
+define ngraph {
+       service_name        windows_windea_dea_provisionable_memory
+       graph_perf_regex    dea_provisionable_memory=(\d+\.?\d+)
+       graph_value         value
+       graph_units         KB
+       graph_legend        Windows Windea Dea Provisionable Memory
+       graph_legend_eol    none
+       page                1 Windows Windea Dea Provisionable Memory
+       rrd_plottype        AREA
+       rrd_color           0000aa
+}
+
+define ngraph {
+       service_name        windows_windea_dea_provisionable_memory
+       graph_perf_regex    max=(\d+\.?\d+)
+       graph_value         max
+       graph_units         KB
+       graph_legend        Windows Windea Dea Provisionable Memory Max
+       graph_legend_eol    none
+       page                1 Windows Windea Dea Provisionable Memory
+       rrd_plottype        LINE2
+       rrd_color           aa0000
+}
+define ngraph {
+       service_name        windows_windea_dea_droplets
+       graph_perf_regex    dea_droplets=(\d+\.?\d+)
+       graph_value         value
+       graph_units         QTY
+       graph_legend        Windows Windea Dea Droplets
+       graph_legend_eol    none
+       page                1 Windows Windea Dea Droplets
+       rrd_plottype        AREA
+       rrd_color           0000aa
+}
+
+define ngraph {
+       service_name        windows_windea_dea_droplets
+       graph_perf_regex    max=(\d+\.?\d+)
+       graph_value         max
+       graph_units         QTY
+       graph_legend        Windows Windea Dea Droplets Max
+       graph_legend_eol    none
+       page                1 Windows Windea Dea Droplets
        rrd_plottype        LINE2
        rrd_color           aa0000
 }

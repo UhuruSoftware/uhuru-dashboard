@@ -16,42 +16,45 @@ director:
 default_warn_level: 80
 default_critical_level: 90
 
+legacy:
+  enabled: true
+  user: administrator
+  password: gusto1234!
+  machines:
+    - machine:
+      deployment: cloud-foundry
+      component: windea
+      index: 0
+      address: 10.0.5.81
+      name: cloud-foundry_windea_0
+      alias: Cloud Foundry Windea 0
+      os: windows
 
 windows:
   base:
-    cpu_time: typeperf -sc 1 "\processor(_total)\%% processor time"
-    systeminfo: systeminfo
-  dea:
-    check: if exist "C:\Program Files\Uhuru Software\Uhuru .NET Droplet Execution Agent\dea.exe" goto dea
-    dropletcountfolder: dir C:\Droplets\apps
-    workerprocessesiiscount: tasklist | find "w3wp"
-    workerprocessesmemory: typeperf -sc 1 "\process(w3wp)\working set - private"
-    deaprocessmemory: typeperf -sc 1 "\process(dea)\working set - private"
-    diskusagec: fsutil volume diskfree c#{:}
-    iiswebsitecount: %systemroot%\system32\inetsrv\appcmd list app
-  mssql:
-    check: if exist "C:\Program Files\Uhuru Software\Uhuru Services for Microsoft SQL Server\mssqlnode.exe" goto mssql
-    databasesondrive: dir C:\mssql\data
-    sqlservermemory: typeperf -sc 1 "\process(sqlservr)\working set - private"
-    sqlnodeprocessmemory: typeperf -sc 1 "\process(mssqlnode)\working set - private"
-    diskusage: fsutil volume diskfree c#{:}
-    config: type "C:\Program Files\Uhuru Software\Uhuru Services for Microsoft SQL Server\uhuru.config"
-  uhurufs:
-    check: if exist "C:\Program Files\Uhuru Software\Uhuru FileService\FileServiceNode.exe" goto uhurufs
-    datafolders: dir C:\Data
-    workerprocessesiiscound: tasklist | find "w3wp"
-    workerprocessesmemory: typeperf -sc 1 "\process(w3wp)\working set - private"
-    diskusage: fsutil volume diskfree c#{:}
-    iiswebsitecount: %systemroot%\system32\inetsrv\appcmd list app
-    config: type "C:\Program Files\Uhuru Software\Uhuru FileService\uhuru.config"
-  api:
-    workerprocessesmemory: typeperf -sc 1 "\process(w3wp)\working set - private"
-    SQLSERVERMEMORY: typeperf -sc 1 "\process(sqlservr)\working set - private"
-    diskusage: fsutil volume diskfree c#{:}
-  dataanalysis:
-    workerprocessesmemory: typeperf -sc 1 "\process(w3wp)\working set - private"
-    sqlservermemory: typeperf -sc 1 "\process(sqlservr)\working set - private"
-    diskusage: fsutil volume diskfree c#{:}
+    cpu_time: 'typeperf -sc 1 "\processor(_total)\% processor time"'
+    system_info: 'systeminfo'
+    diskusagec: 'fsutil volume diskfree c:'
+  windea:
+    check: 'if exist "C:\Program Files\Uhuru Software\Uhuru .NET Droplet Execution Agent\dea.exe" echo Windows DEA'
+    dropletcountfolder: 'dir C:\Droplets\apps'
+    workerprocessesiiscount: 'tasklist | find "w3wp"'
+    workerprocessesmemory: 'typeperf -sc 1 "\process(w3wp)\working set - private"'
+    deaprocessmemory: 'typeperf -sc 1 "\process(dea)\working set - private"'
+    iiswebsitecount: '%systemroot%\system32\inetsrv\appcmd list app'
+  mssql_node:
+    check: 'if exist "C:\Program Files\Uhuru Software\Uhuru Services for Microsoft SQL Server\mssqlnode.exe" goto MS SQL Server Node'
+    databasesondrive: 'dir C:\mssql\data'
+    sqlservermemory: 'typeperf -sc 1 "\process(sqlservr)\working set - private"'
+    sqlnodeprocessmemory: 'typeperf -sc 1 "\process(mssqlnode)\working set - private"'
+    config: 'type "C:\Program Files\Uhuru Software\Uhuru Services for Microsoft SQL Server\uhuru.config"'
+  uhurufs_node:
+    check: 'if exist "C:\Program Files\Uhuru Software\Uhuru FileService\FileServiceNode.exe" goto Uhuru FileSystem'
+    datafolders: 'dir C:\Data'
+    workerprocessesiiscound: 'tasklist | find "w3wp"'
+    workerprocessesmemory: 'typeperf -sc 1 "\process(w3wp)\working set - private"'
+    iiswebsitecount: '%systemroot%\system32\inetsrv\appcmd list app'
+    config: 'type "C:\Program Files\Uhuru Software\Uhuru FileService\uhuru.config"'
 
 linux:
   base:
@@ -106,7 +109,7 @@ linux:
   webui:
     check: if [ -d /var/vcap/jobs/webui ]; then echo Simple Web UI ; fi
   vcap_postgres:
-    check: if [ -d /var/vcap/jobs/vcap_postgres ]; then echo UAA ; fi
+    check: if [ -d /var/vcap/jobs/vcap_postgres ]; then echo VCAP Postgres ; fi
   uaa:
     check: if [ -d /var/vcap/jobs/uaa ]; then echo UAA ; fi
   cloud_controller_ng:
@@ -159,9 +162,3 @@ linux:
       check: if [ -d /var/vcap/jobs/trafficlog_aggregator ]; then echo Traffic Log Aggregator ; fi
   uaadb:
       check: if [ -d /var/vcap/jobs/uaadb ]; then echo UAA Database ; fi
-
-windows:
-  base:
-  uhurufs_node:
-  mssql_node:
-  windea:
