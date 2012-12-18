@@ -139,10 +139,18 @@ define hostgroup{
 }
 <% end %>
 
+define host{
+    name cf-host
+    use generic-host
+    check_period 24x7
+    check_interval 5
+    max_check_attempts 10
+    register 0
+}
 
 <% @hosts.each do |host| %>
 define host{
-    use         generic-host
+    use         cf-host
     host_name   <%= host[:name] %>
     alias       <%= host[:alias] %>
     address     <%= host[:address] %>
@@ -175,4 +183,5 @@ define service{
     normal_check_interval           10			        ; Check the service every 5 minutes under normal conditions
     retry_check_interval            1			        ; Re-check the service every minute until a hard state can be determined
     register                        0       		    ; DONT REGISTER THIS DEFINITION - ITS NOT A REAL SERVICE, JUST A TEMPLATE!
+    process_perf_data               1
 }

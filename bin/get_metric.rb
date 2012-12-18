@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-
+ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../../Gemfile", __FILE__)
 $:.unshift(File.expand_path("../../lib", __FILE__))
 
 require "rubygems"

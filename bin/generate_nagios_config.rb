@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-
+ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../../Gemfile", __FILE__)
 $:.unshift(File.expand_path("../../lib", __FILE__))
 
 require "rubygems"
@@ -11,6 +11,19 @@ require 'erb'
 
 require 'config'
 
+require 'optparse'
+
+options = {}
+OptionParser.new do |opts|
+  opts.separator ''
+  opts.on('-s [ARG]', '--serviceext_dir [ARG]', 'Specify serviceext directory') do |v|
+    options[:serviceext_dir] = v
+  end
+  opts.on('-h', '--help', 'Display this help') do
+    puts opts
+    exit
+  end
+end.parse!
 
 @vms = Uhuru::BOSHHelper.get_vms
 
@@ -51,6 +64,16 @@ if $config['legacy']['enabled'] == true
   }
 end
 
+if options[:serviceext_dir]
+  ext_config_files = Dir[options[:serviceext_dir] + "/*.cfg"]
+  ext_config_files.each do |file|
+    if @hosts.any? { |host| host[:name] == Pathname.new(file).basename.to_s.chomp('.cfg') } == false
+      File.delete(file)
+    end
+  end
+end
+
+
 @services = []
 
 $states.each do |os, components|
@@ -76,7 +99,7 @@ $states.each do |os, components|
 end
 
 
-@command_path = File.expand_path("bin/get_metric.sh")
+@command_path = File.expand_path("../../bin/get_metric.sh", __FILE__)
 
 template = ERB.new File.open(File.expand_path("../../config/uhuru-hosts.cfg.erb", __FILE__)).read
 
