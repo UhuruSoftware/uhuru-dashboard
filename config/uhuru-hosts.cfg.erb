@@ -37,7 +37,7 @@ define service{
     use                     cf-service
     hostgroup_name          windows
     service_description     Windows VM Status
-    check_command           get_cf_metric!windows!$HOSTADDRESS$!base!status!$HOSTNAME$!$_HOSTdeployment$!$_HOSTjob$!$_HOSTindex$
+    check_command           get_cf_metric!windows!$HOSTADDRESS$!base!status!$HOSTNAME$!$_HOSTDEPLOYMENT$!$_HOSTJOB!$_HOSTINDEX$
 }
 
 <% end %>
@@ -107,11 +107,11 @@ define hostgroup{
 }
 <% end %>
 
-<%if @hosts.select {|host| ['windea'].include? host[:component]  }.size > 0 %>
+<%if @hosts.select {|host| ['win_dea'].include? host[:component]  }.size > 0 %>
 define hostgroup{
-    hostgroup_name  windea
+    hostgroup_name  win_dea
     alias           Windows DEAs
-    members         <%= @hosts.select {|host| ['windea'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+    members         <%= @hosts.select {|host| ['win_dea'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
 }
 <% end %>
 
@@ -131,11 +131,11 @@ define hostgroup{
 }
 <% end %>
 
-<%if @hosts.select {|host| !['dea', 'cloud_controller', 'mysql_node', 'postgresql_node', 'mongodb_node', 'redis_node', 'rabbit_node', 'routers', 'windea', 'mssql_node', 'uhurufs_node'].include? host[:component]  }.size > 0 %>
+<%if @hosts.select {|host| !['dea', 'cloud_controller', 'mysql_node', 'postgresql_node', 'mongodb_node', 'redis_node', 'rabbit_node', 'routers', 'win_dea', 'mssql_node', 'uhurufs_node'].include? host[:component]  }.size > 0 %>
 define hostgroup{
     hostgroup_name  cloudfoundry_internals
     alias           CloudFoundry Core
-    members         <%= @hosts.select {|host| !['dea', 'cloud_controller', 'mysql_node', 'postgresql_node', 'mongodb_node', 'redis_node', 'rabbit_node', 'routers', 'windea', 'mssql_node', 'uhurufs_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+    members         <%= @hosts.select {|host| !['dea', 'cloud_controller', 'mysql_node', 'postgresql_node', 'mongodb_node', 'redis_node', 'rabbit_node', 'routers', 'win_dea', 'mssql_node', 'uhurufs_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
 }
 <% end %>
 
@@ -144,6 +144,7 @@ define host{
     use generic-host
     check_period 24x7
     check_interval 5
+    check_command check_host
     max_check_attempts 10
     register 0
 }
@@ -170,6 +171,11 @@ define service{
     check_command           get_cf_metric!<%= service[:os] %>!$HOSTADDRESS$!<%= service[:component] %>!<%= service[:metric] %>!$HOSTNAME$!$_HOSTDEPLOYMENT$!$_HOSTJOB!$_HOSTINDEX$
 }
 <% end %>
+
+define command{
+    command_name            check_host
+    command_line            <%= @check_host_path %> $HOSTADDRESS$
+}
 
 define command{
     command_name            get_cf_metric
