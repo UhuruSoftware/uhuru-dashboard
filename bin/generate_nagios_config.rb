@@ -42,7 +42,7 @@ end.parse!
   host[:address] = vm['ips'][0]
   host[:component] = vm['job_name']
   host[:index] = vm['index']
-  host[:os] = ['mssql_node', 'windea', 'uhurufs_node'].include?(host[:component]) ? "windows" : "linux"
+  host[:os] = ['mssql_node', 'win_dea', 'uhurufs_node'].include?(host[:component]) ? "windows" : "linux"
   if host[:address] != nil && host[:address].size > 0
     @hosts << host
   end
@@ -100,6 +100,7 @@ end
 
 
 @command_path = File.expand_path("../../bin/get_metric.sh", __FILE__)
+@check_host_path = File.expand_path("../../bin/check_host.sh", __FILE__)
 
 template = ERB.new File.open(File.expand_path("../../config/uhuru-hosts.cfg.erb", __FILE__)).read
 
