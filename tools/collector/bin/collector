@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+$:.unshift(File.expand_path("../lib", File.dirname(__FILE__)))
+
+require "collector"
+require "endpoint"
+
+require "thin"
+
+config_file = ENV["CONFIG_FILE"] || File.expand_path("../config/config.yml", File.dirname(__FILE__))
+Collector::Config.configure(YAML.load_file(config_file))
+
+EM.run do
+
+
+
+  collector = Collector::Collector.new
+
+  endpoint = Endpoint.new(nil, collector)
+
+  Thin::Server.start(endpoint, "0.0.0.0", ENV['VCAP_APP_PORT'] || 8080)
+end

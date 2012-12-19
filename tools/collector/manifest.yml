@@ -1,0 +1,11 @@
+---
+applications:
+- name: collect
+  framework: standalone
+  runtime: ruby19
+  command: ruby bin/collector
+  memory: 256M
+  instances: 1
+  url: collect.${target-base}
+  env: {}
+  path: .

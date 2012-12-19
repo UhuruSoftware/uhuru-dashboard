@@ -1,0 +1,16 @@
+---
+index: 0
+logging:
+  level: debug
+tsdb:
+  host: 10.0.15.179
+  port: 4242
+mbus: nats://9RejfzNe3512:lAcVi2bjW1ww@10.0.5.157:4222
+
+intervals:
+  discover: 60
+  varz: 10
+  healthz: 5
+  local_metrics: 10
+  prune: 300
+  nats_ping: 10

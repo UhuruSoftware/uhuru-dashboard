@@ -1,0 +1,4 @@
+Tsdb target can can be set with OPENTSDB_HOST env var.
+
+e.g.
+`vmcu env-add sys-stats OPENTSDB_HOST  192.168.2.122`

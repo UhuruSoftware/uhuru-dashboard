@@ -1,0 +1,15 @@
+---
+applications:
+  .:
+    name: collect
+    framework:
+      name: standalone
+      info:
+        mem: 64M
+        description: Standalone Application
+        exec: !!null 
+    runtime: ruby19
+    command: ruby bin/collector
+    url: collect-bamby.uhurucloud.com
+    mem: 128M
+    instances: 1

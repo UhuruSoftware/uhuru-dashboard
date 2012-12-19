@@ -1,0 +1,124 @@
+<!--
+You are free to copy and use this sample in accordance with the terms of the
+Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title>
+    Google Visualization API Sample
+  </title>
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+      google.load('visualization', '1', {packages: ['corechart']});
+  </script>
+  <script type="text/javascript">
+      function drawVisualization() {
+          // Some raw data (not necessarily accurate)
+          var cpuData = google.visualization.arrayToDataTable(
+                  <%= Yajl.dump(cpu_chart_data, :pretty => true) %>
+          );
+
+          // Create and draw the visualization.
+          var ac = new google.visualization.AreaChart(document.getElementById('cpuDataDiv'));
+          ac.draw(cpuData, {
+              title : 'Cpu stats',
+              isStacked: true,
+              // width: 800,
+              // height: 400,
+              vAxis: {title: "Cpu %"},
+              hAxis: {title: "Time"}
+          });
+
+          // Some raw data (not necessarily accurate)
+          var loadData = google.visualization.arrayToDataTable(
+                  <%= Yajl.dump(load_chart_data, :pretty => true) %>
+          );
+
+          // Create and draw the visualization.
+          var loadc = new google.visualization.AreaChart(document.getElementById('loadDataDiv'));
+          loadc.draw(loadData, {
+              title : 'Load avg stats',
+              isStacked: true,
+              // width: 800,
+              // height: 400,
+              vAxis: {title: "Load avg"},
+              hAxis: {title: "Time"}
+          });
+
+          // Some raw data (not necessarily accurate)
+          var healthData = google.visualization.arrayToDataTable(
+                  <%= Yajl.dump(health_chart_data, :pretty => true) %>
+          );
+
+          // Create and draw the visualization.
+          var healthc = new google.visualization.AreaChart(document.getElementById('healthDataDiv'));
+          healthc.draw(healthData, {
+              title : 'Health',
+              isStacked: true,
+              // width: 800,
+              // height: 400,
+              vAxis: {title: "Healhty"},
+              hAxis: {title: "Time"}
+          });
+
+          // Some raw data (not necessarily accurate)
+          var memData = google.visualization.arrayToDataTable(
+                  <%= Yajl.dump(mem_chart_data, :pretty => true) %>
+          );
+
+          // Create and draw the visualization.
+          var memc = new google.visualization.LineChart(document.getElementById('memoryDataDiv'));
+          memc.draw(memData, {
+              title : 'Memory Usage Percent',
+              isStacked: true,
+              // width: 800,
+              // height: 400,
+              vAxis: {title: "%", maxValue: 105},
+              hAxis: {title: "Time"}
+          });
+
+
+          // Some raw data (not necessarily accurate)
+          var diskData = google.visualization.arrayToDataTable(
+                  <%= Yajl.dump(disk_chart_data, :pretty => true) %>
+          );
+
+          // Create and draw the visualization.
+          var diskc = new google.visualization.LineChart(document.getElementById('diskDataDiv'));
+          diskc.draw(diskData, {
+              title : 'Disk Usage Percent',
+              // width: 800,
+              // height: 400,
+              vAxis: {title: "%", maxValue: 105},
+              hAxis: {title: "Time"}
+          });
+      }
+
+
+      google.setOnLoadCallback(drawVisualization);
+  </script>
+</head>
+
+<body style="font-family: Arial;border: 0 none;">
+  <div id="cpuDataDiv" style="height: 400px;">
+  </div>
+
+  <div id="loadDataDiv" style="height: 400px;">
+  </div>
+
+  <div id="healthDataDiv" style="height: 400px;">
+  </div>
+
+  <div id="memoryDataDiv" style="height: 400px;">
+  </div>
+
+  <div id="diskDataDiv" style="height: 400px;">
+  </div>
+
+</body>
+
+</html>
+​
