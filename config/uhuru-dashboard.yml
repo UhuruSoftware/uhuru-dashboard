@@ -16,6 +16,16 @@ director:
 default_warn_level: 80
 default_critical_level: 90
 
+email:
+  from: "uhurusoftw@gmail.com"
+  from_alias: "Nagios"
+  server: "smtp.gmail.com"
+  port: 587
+  user: "uhurusoft@gmail.com"
+  secret: "Uhuruv0ice!"
+  auth_method: :login
+  enable_tls: true
+
 legacy:
   enabled: true
   user: administrator

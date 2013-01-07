@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="982a80a2-bb73-4734-84e4-3b04f50aa944" name="Default" comment="" />
+    <list default="true" id="982a80a2-bb73-4734-84e4-3b04f50aa944" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/generate_nagios_config.rb" afterPath="$PROJECT_DIR$/bin/generate_nagios_config.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/uhuru-dashboard.yml" afterPath="$PROJECT_DIR$/config/uhuru-dashboard.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/uhuru-hosts.cfg.erb" afterPath="$PROJECT_DIR$/config/uhuru-hosts.cfg.erb" />
+    </list>
     <ignored path="private-uhuru-dashboard.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,10 +28,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="uhuru-dashboard.yml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config/uhuru-dashboard.yml">
+      <file leaf-file-name="email.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/email.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="55" selection-start="725" selection-end="725" vertical-scroll-proportion="-0.07234043">
+            <state line="18" column="24" selection-start="394" selection-end="394" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="send_mail.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/send_mail.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="37" selection-start="802" selection-end="802" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="uhuru-hosts.cfg.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config/uhuru-hosts.cfg.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="187" column="57" selection-start="6996" selection-end="6996" vertical-scroll-proportion="0.32254046">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="get_metric.sh" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/get_metric.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="67" selection-start="0" selection-end="179" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="send_mail.sh" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/send_mail.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="149" selection-start="139" selection-end="183" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -35,7 +76,16 @@
       <file leaf-file-name="get_metric.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/get_metric.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="56" selection-start="1542" selection-end="1542" vertical-scroll-proportion="0.0">
+            <state line="28" column="31" selection-start="861" selection-end="861" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bosh_helper.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/bosh_helper.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="137" column="24" selection-start="3987" selection-end="3987" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -44,70 +94,16 @@
       <file leaf-file-name="config.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/config.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="55" selection-start="2274" selection-end="2274" vertical-scroll-proportion="0.0">
+            <state line="2" column="0" selection-start="16" selection-end="16" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="generate_nagios_config.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bin/generate_nagios_config.rb">
+      <file leaf-file-name="uhuru-dashboard.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/uhuru-dashboard.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="102" column="57" selection-start="3144" selection-end="3144" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="uhuru-hosts.cfg.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/uhuru-hosts.cfg.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="75" selection-start="1511" selection-end="1517" vertical-scroll-proportion="-11.04">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="enumerable.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/rubystubs19/enumerable.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="494" column="14" selection-start="18813" selection-end="18817" vertical-scroll-proportion="-10.52">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dir.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/rubystubs19/dir.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="13" selection-start="2141" selection-end="2141" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="uhuru-ngraph.ncfg.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/uhuru-ngraph.ncfg.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="75" selection-start="591" selection-end="591" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="uhuru-hosts.cfg" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/uhuru-hosts.cfg">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="73" selection-start="3020" selection-end="3026" vertical-scroll-proportion="-13.08">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="uhuru-ngraph.ncfg" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/uhuru-ngraph.ncfg">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="93" column="40" selection-start="3017" selection-end="3017" vertical-scroll-proportion="0.0">
+            <state line="24" column="47" selection-start="427" selection-end="427" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -127,22 +123,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/data/10.0.5.180.yml" />
-        <option value="$PROJECT_DIR$/lib/get_linux_stats.rb" />
-        <option value="$PROJECT_DIR$/data/10.0.5.205.yml" />
         <option value="$PROJECT_DIR$/config/uhuru-hosts.cfg" />
         <option value="$PROJECT_DIR$/config/uhuru-ngraph.ncfg" />
         <option value="$PROJECT_DIR$/bin/get_metric.sh" />
         <option value="$PROJECT_DIR$/config/uhuru-ngraph.ncfg.erb" />
         <option value="$PROJECT_DIR$/bin/.gitignore" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/config/uhuru-dashboard.yml" />
         <option value="$PROJECT_DIR$/lib/config.rb" />
         <option value="$PROJECT_DIR$/lib/get_windows_stats.rb" />
         <option value="$PROJECT_DIR$/bin/check_host.sh" />
-        <option value="$PROJECT_DIR$/bin/generate_nagios_config.rb" />
-        <option value="$PROJECT_DIR$/config/uhuru-hosts.cfg.erb" />
         <option value="$PROJECT_DIR$/bin/get_metric.rb" />
+        <option value="$PROJECT_DIR$/config/uhuru-dashboard.yml" />
+        <option value="$PROJECT_DIR$/bin/generate_nagios_config.rb" />
+        <option value="$PROJECT_DIR$/bin/send_mail.rb" />
+        <option value="$PROJECT_DIR$/lib/email.rb" />
+        <option value="$PROJECT_DIR$/bin/send_mail.sh" />
+        <option value="$PROJECT_DIR$/config/uhuru-hosts.cfg.erb" />
       </list>
     </option>
   </component>
@@ -197,6 +193,48 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="private-uhuru-dashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="private-uhuru-dashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="private-uhuru-dashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="private-uhuru-dashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="private-uhuru-dashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="private-uhuru-dashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Favorites" />
@@ -208,6 +246,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\_code\private-uhuru-dashboard\lib" />
       <recent name="$PROJECT_DIR$/config" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -366,14 +405,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="972" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15015806" sideWeight="0.67098165" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11643836" sideWeight="0.67098165" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -435,114 +474,94 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/get_windows_stats.rb">
+    <entry file="file://$PROJECT_DIR$/config/uhuru-ngraph.ncfg">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="69" selection-start="89" selection-end="89" vertical-scroll-proportion="-1.0416666">
-          <folding />
-        </state>
+        <state line="93" column="40" selection-start="3017" selection-end="3017" vertical-scroll-proportion="0.020833334" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/get_linux_stats.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/get_metric.sh">
+    <entry file="file://$PROJECT_DIR$/lib/get_windows_stats.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="44" selection-start="94" selection-end="94" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="1" column="69" selection-start="89" selection-end="89" vertical-scroll-proportion="0.020833334" />
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/rubystubs19/dir.rb">
+    <entry file="file://$PROJECT_DIR$/lib/string_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="13" selection-start="2141" selection-end="2141" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/rubystubs19/enumerable.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="494" column="14" selection-start="18813" selection-end="18817" vertical-scroll-proportion="-10.52">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/rubystubs19/kernel.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="8" selection-start="3365" selection-end="3365" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/check_host.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="158" selection-end="158" vertical-scroll-proportion="0.1875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/uhuru-ngraph.ncfg.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="75" selection-start="591" selection-end="591" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/uhuru-ngraph.ncfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="40" selection-start="3017" selection-end="3017" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/uhuru-hosts.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="73" selection-start="3020" selection-end="3026" vertical-scroll-proportion="-13.08">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/uhuru-hosts.cfg.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="75" selection-start="1511" selection-end="1517" vertical-scroll-proportion="-11.04">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bin/generate_nagios_config.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="102" column="57" selection-start="3144" selection-end="3144" vertical-scroll-proportion="0.0">
+        <state line="108" column="39" selection-start="3418" selection-end="3454" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/rfc822.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/get_metric.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="67" selection-start="0" selection-end="179" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/get_metric.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="31" selection-start="861" selection-end="861" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/bosh_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/get_metric.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="56" selection-start="1542" selection-end="1542" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="137" column="24" selection-start="3987" selection-end="3987" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/config.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="55" selection-start="2274" selection-end="2274" vertical-scroll-proportion="0.0">
+        <state line="2" column="0" selection-start="16" selection-end="16" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/email.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="24" selection-start="394" selection-end="394" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/send_mail.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="37" selection-start="802" selection-end="802" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/send_mail.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="149" selection-start="139" selection-end="183" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/uhuru-dashboard.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="55" selection-start="725" selection-end="725" vertical-scroll-proportion="-0.07234043">
+        <state line="24" column="47" selection-start="427" selection-end="427" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/check_host.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/uhuru-hosts.cfg.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="187" column="57" selection-start="6996" selection-end="6996" vertical-scroll-proportion="0.32254046">
           <folding />
         </state>
       </provider>

@@ -101,6 +101,7 @@ end
 
 @command_path = File.expand_path("../../bin/get_metric.sh", __FILE__)
 @check_host_path = File.expand_path("../../bin/check_host.sh", __FILE__)
+@send_mail_path = File.expand_path("../../bin/send_mail.sh", __FILE__)
 
 template = ERB.new File.open(File.expand_path("../../config/uhuru-hosts.cfg.erb", __FILE__)).read
 
