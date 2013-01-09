@@ -17,8 +17,7 @@ deployment =        ARGV[5] # cloud_foundry
 job =               ARGV[6] # mongodb_gateway
 index =             ARGV[7] # 0
 
-datafile =     File.expand_path("../../data/#{ip}.yml", __FILE__)
-
+datafile =     File.expand_path(File.join($config['data_dir'],"#{ip}.yml"), __FILE__)
 
 begin
   if metric == 'status'

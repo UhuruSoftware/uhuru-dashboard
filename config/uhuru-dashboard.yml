@@ -15,6 +15,7 @@ director:
 
 default_warn_level: 80
 default_critical_level: 90
+data_dir: ../../data/
 
 email:
   from: "uhurusoftw@gmail.com"
@@ -42,40 +43,41 @@ legacy:
 
 windows:
   base:
-    cpu_time: 'typeperf -sc 1 "\processor(_total)\% processor time"'
+    cpu_time: 'typeperf -sc 1 "\processor(_total)\% processor time" & echo done'
     system_info: 'systeminfo'
-    diskusagec: 'fsutil volume diskfree c:'
-  windea:
+    disk_usage_c: 'fsutil volume diskfree c:'
+  win_dea:
     check: 'if exist "C:\Program Files\Uhuru Software\Uhuru .NET Droplet Execution Agent\dea.exe" echo Windows DEA'
     dropletcountfolder: 'dir C:\Droplets\apps'
-    workerprocessesiiscount: 'tasklist | find "w3wp"'
-    workerprocessesmemory: 'typeperf -sc 1 "\process(w3wp)\working set - private"'
-    deaprocessmemory: 'typeperf -sc 1 "\process(dea)\working set - private"'
+    workerprocesses: 'tasklist'
+    deaprocessmemory: 'typeperf -sc 1 "\process(dea)\working set - private" & echo done'
     iiswebsitecount: '%systemroot%\system32\inetsrv\appcmd list app'
+    config: 'type "C:\Program Files\Uhuru Software\Uhuru .NET Droplet Execution Agent\uhuru.config"'
+    dropletdata: 'type "C:\Droplets\db\applications.json"'
   mssql_node:
-    check: 'if exist "C:\Program Files\Uhuru Software\Uhuru Services for Microsoft SQL Server\mssqlnode.exe" goto MS SQL Server Node'
+    check: 'if exist "C:\Program Files\Uhuru Software\Uhuru Services for Microsoft SQL Server\mssqlnode.exe" echo MS SQL Server Node'
     databasesondrive: 'dir C:\mssql\data'
-    sqlservermemory: 'typeperf -sc 1 "\process(sqlservr)\working set - private"'
-    sqlnodeprocessmemory: 'typeperf -sc 1 "\process(mssqlnode)\working set - private"'
+    sqlservermemory: 'typeperf -sc 1 "\process(sqlservr)\working set - private" & echo done'
+    nodeprocessmemory: 'typeperf -sc 1 "\process(mssqlnode)\working set - private" & echo done'
     config: 'type "C:\Program Files\Uhuru Software\Uhuru Services for Microsoft SQL Server\uhuru.config"'
+    servicedb: 'type "C:\Program Files\Uhuru Software\Uhuru Services for Microsoft SQL Server\localDb.xml"'
   uhurufs_node:
-    check: 'if exist "C:\Program Files\Uhuru Software\Uhuru FileService\FileServiceNode.exe" goto Uhuru FileSystem'
+    check: 'if exist "C:\Program Files\Uhuru Software\Uhuru FileService\FileServiceNode.exe" echo Uhuru FileSystem'
     datafolders: 'dir C:\Data'
-    workerprocessesiiscound: 'tasklist | find "w3wp"'
-    workerprocessesmemory: 'typeperf -sc 1 "\process(w3wp)\working set - private"'
     iiswebsitecount: '%systemroot%\system32\inetsrv\appcmd list app'
-    config: 'type "C:\Program Files\Uhuru Software\Uhuru FileService\uhuru.config"'
+    config: 'type "C:\Program Files\Uhuru Software\Uhuru FileService\uhuru.config" & echo done'
+    nodeprocessmemory: 'typeperf -sc 1 "\process(fileservicenode)\working set - private" & echo done'
+    servicedb: 'type "C:\Program Files\Uhuru Software\Uhuru FileService\localDb.xml"'
 
 linux:
   base:
     cpu_time: top -b -n 1 |grep ^Cpu
     system_info: free -m
-    disk_usage: df -h
+    disk_usage: df
   dea:
     check: if [ -d /var/vcap/jobs/dea ]; then echo Linux DEA ; fi
     dropletcountfolder: ls -la /var/vcap/data/dea/apps/
-    workerprocessesiiscount: ps aux | grep dea/apps
-    workerprocessesmemory: ps aux | grep dea/apps
+    workerprocesses: ps aux | grep dea/apps
     deaprocessmemory: ps aux | grep jobs/dea
     config: cat /var/vcap/jobs/dea/config/dea.yml
     dropletdata: cat /var/vcap/data/dea/db/applications.json
@@ -84,36 +86,41 @@ linux:
     databasesondrive: ls /var/vcap/store/mysql/ -la
     servermemory: ps aux | grep libexec/mysqld
     nodeprocessmemory: ps aux | grep bin/mysql_node
+    servicesdisksize: du -s /var/vcap/store/mysql/
     config: cat /var/vcap/jobs/mysql_node/config/mysql_node.yml
-    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/mysql_node.db 'select name,plan,quota_exceeded from vcap_services_mysql_node_provisioned_services'
+    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/mysql_node.db 'select name,plan,quota_exceeded from vcap_services_mysql_node_provisioned_services' ; echo done
   postgresql_node:
     check: if [ -d /var/vcap/jobs/postgresql_node ]; then echo PostgreSQL Node ; fi
     databasesondrive: ls -la /var/vcap/store/postgresql/base/
-    servermemory: ps aux | grep 'postgres:\|5.1/bin/postgres'
+    servermemory: ps aux | grep '/bin/postgres'
     nodeprocessmemory: ps aux | grep bin/postgresql_node
+    servicesdisksize: du -s /var/vcap/store/postgresql/
     config: cat /var/vcap/jobs/postgresql_node/config/postgresql_node.yml
-    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/postgresql_node.db 'select name,plan,quota_exceeded from vcap_services_postgresql_node_provisionedservices'
+    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/postgresql_node.db 'select name,plan,quota_exceeded from vcap_services_postgresql_node_provisionedservices' ; echo done
   mongodb_node:
     check: if [ -d /var/vcap/jobs/mongodb_node ]; then echo MongoDB Node ; fi
     databasesondrive: ls -la /var/vcap/store/mongodb/
-    servermemory: ps aux | grep 'bin/mongod -f'
+    servermemory: ps aux | grep 'bin/mongod'
     nodeprocessmemory: ps aux | grep 'mongodb_node'
     config: cat /var/vcap/jobs/mongodb_node/config/mongodb_node.yml
-    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/mongodb_node.db 'select name,plan,quota_exceeded from vcap_services_mongodb_node_provisioned_services'
+    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/mongodb_node.db 'select name,plan,quota_exceeded from vcap_services_mongodb_node_provisioned_services' ; echo done
+    servicesdisksize: du -s /var/vcap/store/mongodb/
   redis_node:
     check: if [ -d /var/vcap/jobs/redis_node ]; then echo Redis Node ; fi
     databasesondrive: ls -la /var/vcap/store/redis/instances/
     servermemory: ps aux | grep redis-server
     nodeprocessmemory: ps aux | grep redis_node
     config: cat /var/vcap/jobs/redis_node/config/redis_node.yml
-    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/redis_node.db 'select name,plan,quota_exceeded from vcap_services_redis_node_provisioned_services'
+    servicesdisksize: du -s /var/vcap/store/redis/instances/
+    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/redis/redis_node.db 'select name,plan from vcap_services_redis_node_provisioned_services' ; echo done
   rabbit_node:
     check: if [ -d /var/vcap/jobs/rabbit_node ]; then echo RabbitMQ Node ; fi
     databasesondrive: ls -la /var/vcap/store/rabbit/instances/
     servermemory: ps aux | grep /var/vcap/store/rabbit/instances/
     nodeprocessmemory: ps aux | grep rabbit_node
+    servicesdisksize: du -s /var/vcap/store/rabbit/instances/
     config: cat /var/vcap/jobs/rabbit_node/config/rabbit_node.yml
-    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/rabbit_node.db 'select name,plan,quota_exceeded from vcap_services_rabbit_node_provisioned_services'
+    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/rabbit/rabbit_node.db 'select name,plan from vcap_services_rabbit_node_provisioned_services' ; echo done
   simple_webui:
     check: if [ -d /var/vcap/jobs/simple_webui ]; then echo Web UI ; fi
   webui:
@@ -172,3 +179,5 @@ linux:
       check: if [ -d /var/vcap/jobs/trafficlog_aggregator ]; then echo Traffic Log Aggregator ; fi
   uaadb:
       check: if [ -d /var/vcap/jobs/uaadb ]; then echo UAA Database ; fi
+  serialization_data_server:
+      check: if [ -d /var/vcap/jobs/serialization_data_server ]; then echo Serialization Data Server ; fi
