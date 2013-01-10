@@ -37,9 +37,6 @@ $states = {
                 :mu => 'GB',
                 :max => lambda{ |data|  /\/dev\/sdb2\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f / (1024.0 * 1024.0) },
                 :value => lambda{ |data|  /\/dev\/sdb2\s*\S*\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[2].to_f / (1024.0 * 1024.0) }
-            },
-            "component" => {
-                :value => lambda{ |data|  data['check'].gsub(/---/, "").strip! }
             }
         },
         "dea" => {
@@ -279,21 +276,18 @@ $states = {
             },
             "system_disk" => {
                 :mu => 'GB',
-                :max => lambda{ |data|  (data['diskusagec']).scan(/of bytes\D+\d+/)[0].split(/\s+/)[3].gsub(/\D/, '').to_f / (1024 * 1024 * 1024) },
-                :value => lambda{ |data|  (data['diskusagec']).scan(/avail free bytes\D+\d+/)[0].split(/\s+/)[4].gsub(/\D/, '').to_f / (1024 * 1024 * 1024) },
-            },
-            "component" => {
-                :value => lambda{ |data| data['check'].scan(/[^\r\n]+\Z/)[0] }
+                :max => lambda{ |data|  (data['disk_usage_c']).scan(/of bytes\D+\d+/)[0].split(/\s+/)[3].gsub(/\D/, '').to_f / (1024 * 1024 * 1024) },
+                :value => lambda{ |data|  (data['disk_usage_c']).scan(/avail free bytes\D+\d+/)[0].split(/\s+/)[4].gsub(/\D/, '').to_f / (1024 * 1024 * 1024) },
             }
         },
         "win_dea" => {
             "droplets_on_disk" => {
                 :mu => 'QTY',
-                :value => lambda{ |data|  data['dropletcountfolder'].scan(/<DIR>\s+\w{25}/).size }
+                :value => lambda{ |data|  data['dropletcountfolder'].scan(/<DIR>\s+\w{14}/).size }
             },
             "worker_processes_count" => {
                 :mu => 'QTY',
-                :value => data['workerprocesses'].scan(/w3wp.exe/).size
+                :value => lambda{ |data| data['workerprocesses'].scan(/w3wp.exe/).size }
             },
             "worker_processes_memory" => {
                 :mu => 'MB',
@@ -308,7 +302,7 @@ $states = {
             "dea_provisionable_memory" => {
                 :mu => 'GB',
                 :max => lambda{ |data|  data['config'].scan(/maxMemory="\d*"/)[0].split('"')[1].to_f / 1024.0 },
-                :value => lambda{ |data|  data['dropletdata'].scan(/"mem_quota":\s*\d*/).map {|x| x.split(':')[1].to_i }.inject{|sum, x| sum += x}.to_f / (1024.0 * 1024.0 * 1024.0) }
+                :value => lambda{ |data|  data['dropletdata'].scan(/"mem_quota":\s*\d*/).map {|x| x.split(':')[1].to_i }.inject(0){|sum, x| sum += x}.to_f / (1024.0 * 1024.0 * 1024.0) }
             },
             "dea_droplets" => {
                 :mu => 'QTY',

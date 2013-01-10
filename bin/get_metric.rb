@@ -36,7 +36,10 @@ begin
             $config[os][group].each { |script_name, script|
               value = `#{winexebin} -U #{$config['legacy']['user']} --password="#{$config['legacy']['password']}" //#{ip} 'cmd /C #{script}'`
               file.write "#{script_name}: |\n  ---\n"
-              value.lines.each {|line| file.write "  #{line}"}
+              if !value.nil?
+                value.lines.each {|line| file.write "  #{line}"}
+              end
+              file.write "\n"
             }
           end
         }
@@ -61,11 +64,16 @@ begin
                   value = ssh.exec!("sudo bash -c \"#{script}\"")
                   if ARGV[5] == '--onscreen'
                     puts "#{script_name}: |\n  ---\n"
-                    value.lines.each {|line| puts "  #{line}"}
+                    if !value.nil?
+                      value.lines.each {|line| puts "  #{line}"}
+                    end
                     $stdout.flush
                   else
                     file.write "#{script_name}: |\n  ---\n"
-                    value.lines.each {|line| file.write "  #{line}"}
+                    if !value.nil?
+                      value.lines.each {|line| file.write "  #{line}"}
+                    end
+                    file.write "\n"
                   end
                 }
               end

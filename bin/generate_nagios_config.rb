@@ -35,16 +35,18 @@ end.parse!
 @hosts = []
 
 @vms.each do |vm|
-  host = {}
-  host[:deployment] = vm['deployment']
-  host[:name] = vm['job_name'] != nil ? "#{vm['deployment']}_#{vm['job_name']}_#{vm['index']}" : "#{vm['deployment']}_#{vm['ips'][0]}"
-  host[:alias] = "#{Uhuru::StringHelper.humanize(host[:name].gsub(/-/, "_")).split(' ').map {|w| w.capitalize }.join(' ') }"
-  host[:address] = vm['ips'][0]
-  host[:component] = vm['job_name']
-  host[:index] = vm['index']
-  host[:os] = ['mssql_node', 'win_dea', 'uhurufs_node'].include?(host[:component]) ? "windows" : "linux"
-  if host[:address] != nil && host[:address].size > 0
-    @hosts << host
+  if !vm['job_name'].nil?
+    host = {}
+    host[:deployment] = vm['deployment']
+    host[:name] = vm['job_name'] != nil ? "#{vm['deployment']}_#{vm['job_name']}_#{vm['index']}" : "#{vm['deployment']}_#{vm['ips'][0]}"
+    host[:alias] = "#{Uhuru::StringHelper.humanize(host[:name].gsub(/-/, "_")).split(' ').map {|w| w.capitalize }.join(' ') }"
+    host[:address] = vm['ips'][0]
+    host[:component] = vm['job_name']
+    host[:index] = vm['index']
+    host[:os] = ['mssql_node', 'win_dea', 'uhurufs_node'].include?(host[:component]) ? "windows" : "linux"
+    if host[:address] != nil && host[:address].size > 0
+      @hosts << host
+    end
   end
 end
 
