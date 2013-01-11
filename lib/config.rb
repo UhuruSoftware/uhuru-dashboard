@@ -14,7 +14,7 @@ $states = {
             "physical_ram" => {
                 :mu => 'MB',
                 :max => lambda{ |data|  /Mem:\s*\d*/.match(data['system_info'])[0].gsub(/(Mem:)/, '').strip!.to_f },
-                :value => lambda{ |data|  /Mem:\s*\d*\s*\d*\s*\d*/.match(data['system_info'])[0].split(/\s+/)[2].to_f }
+                :value => lambda{ |data|  /buffers.cache:\s*\d*\s*\d*\s*\d*/.match(data['system_info'])[0].split(/\s+/)[1].to_f }
             },
             "cached_ram" => {
                 :mu => 'MB',
@@ -60,7 +60,7 @@ $states = {
                 {
                     :mu => 'MB',
                     :max => 200,
-                    :value => lambda{ |data|  data['deaprocessmemory'].scan(/\d*\s*\d*\s*\?[^(\r|\n)]+dea.yml/)[0].split(/\s+/)[0].to_f / 1024.0 }
+                    :value => lambda{ |data|  data['deaprocessmemory'].scan(/\d*\s*\d*\s*\?[^(\r|\n)]+dea.yml/)[0].split(/\s+/)[1].to_f / 1024.0 }
                 },
             "dea_provisionable_memory" =>
                 {
@@ -116,7 +116,7 @@ $states = {
             "services_on_disk" =>
                 {
                     :mu => 'QTY',
-                    :value => lambda{ |data|  data['databasesondrive'].scan(/\d{2}:\d{2}\s\d{5}/).size -2 }
+                    :value => lambda{ |data|  data['databasesondrive'].scan(/\d{2}:\d{2}\s\d{5}/).size - 2 }
                 },
             "provisioned_services" =>
                 {

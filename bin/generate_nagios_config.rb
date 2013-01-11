@@ -4,14 +4,12 @@ $:.unshift(File.expand_path("../../lib", __FILE__))
 
 require "rubygems"
 require 'bundler/setup'
-
 require 'bosh_helper'
 require 'string_helper'
 require 'erb'
-
 require 'config'
-
 require 'optparse'
+require 'json'
 
 options = {}
 OptionParser.new do |opts|
@@ -105,16 +103,37 @@ end
 @check_host_path = File.expand_path("../../bin/check_host.sh", __FILE__)
 @send_mail_path = File.expand_path("../../bin/send_mail.sh", __FILE__)
 
-template = ERB.new File.open(File.expand_path("../../config/uhuru-hosts.cfg.erb", __FILE__)).read
-
-File.open(File.expand_path("../../config/uhuru-hosts.cfg", __FILE__), "w") do |file|
-  file.write(template.result(binding))
+old_hosts = []
+if File.exist? File.expand_path("../../config/hosts", __FILE__)
+  buffer = File.open(File.expand_path("../../config/hosts", __FILE__)).read
+  old_hosts = JSON.parse(buffer, :symbolize_names => true)
 end
 
-template = ERB.new File.open(File.expand_path("../../config/uhuru-ngraph.ncfg.erb", __FILE__)).read
-
-File.open(File.expand_path("../../config/uhuru-ngraph.ncfg", __FILE__), "w") do |file|
-  file.write(template.result(binding))
+old_services = []
+if File.exist? File.expand_path("../../config/services", __FILE__)
+ buffer = File.open(File.expand_path("../../config/services", __FILE__)).read
+ old_services = JSON.parse(buffer, :symbolize_names => true)
 end
 
+FileUtils.cp(File.expand_path("../../config/uhuru-hosts.cfg", __FILE__), File.expand_path("../../config/uhuru-hosts.cfg.old", __FILE__))
+FileUtils.cp(File.expand_path("../../config/uhuru-ngraph.ncfg", __FILE__), File.expand_path("../../config/uhuru-ngraph.ncfg.old", __FILE__))
 
+if (@hosts - old_hosts != []) or (old_hosts - @hosts != []) or (old_services - @services != []) or (@services - old_services != [])
+  template = ERB.new File.open(File.expand_path("../../config/uhuru-hosts.cfg.erb", __FILE__)).read
+
+  File.open(File.expand_path("../../config/uhuru-hosts.cfg", __FILE__), "w") do |file|
+    file.write(template.result(binding))
+  end
+  File.open(File.expand_path("../../config/hosts", __FILE__), "w") do |file|
+    file.write(@hosts.to_json)
+  end
+  File.open(File.expand_path("../../config/services", __FILE__), "w") do |file|
+    file.write(@services.to_json)
+  end
+
+  template = ERB.new File.open(File.expand_path("../../config/uhuru-ngraph.ncfg.erb", __FILE__)).read
+
+  File.open(File.expand_path("../../config/uhuru-ngraph.ncfg", __FILE__), "w") do |file|
+    file.write(template.result(binding))
+  end
+end
