@@ -54,13 +54,13 @@ windows:
     config: 'type "C:\Program Files\Uhuru Software\Uhuru .NET Droplet Execution Agent\uhuru.config" & echo done'
     dropletdata: 'type "C:\Droplets\db\applications.json"'
   mssql_node:
-    databasesondrive: 'dir C:\mssql\data'
+    databasesondrive: 'dir C:\nagios\data'
     sqlservermemory: 'typeperf -sc 1 "\process(sqlservr)\working set - private" & echo done'
     nodeprocessmemory: 'typeperf -sc 1 "\process(mssqlnode)\working set - private" & echo done'
     config: 'type "C:\Program Files\Uhuru Software\Uhuru Services for Microsoft SQL Server\uhuru.config"'
     servicedb: 'type "C:\Program Files\Uhuru Software\Uhuru Services for Microsoft SQL Server\localDb.xml"'
   uhurufs_node:
-    datafolders: 'dir C:\Data'
+    datafolders: 'dir C:\nagios\data'
     iiswebsitecount: '%systemroot%\system32\inetsrv\appcmd list app'
     config: 'type "C:\Program Files\Uhuru Software\Uhuru FileService\uhuru.config" & echo done'
     nodeprocessmemory: 'typeperf -sc 1 "\process(fileservicenode)\working set - private" & echo done'
@@ -96,7 +96,7 @@ linux:
     servermemory: ps aux | grep 'bin/mongod'
     nodeprocessmemory: ps aux | grep 'mongodb_node'
     config: cat /var/vcap/jobs/mongodb_node/config/mongodb_node.yml
-    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/mongodb_node.db 'select name,plan,quota_exceeded from vcap_services_mongodb_node_provisioned_services' ; echo done
+    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/mongodb_node.db 'select name,plan from vcap_services_mongo_db_node_provisioned_services' ; echo done
     servicesdisksize: du -s /var/vcap/store/mongodb/
   redis_node:
     databasesondrive: ls -la /var/vcap/store/redis/instances/
