@@ -3,9 +3,19 @@ GEM
   specs:
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
+    daemons (1.1.4)
+    eventmachine (0.12.10)
+    json_pure (1.5.3)
+    nats (0.4.10)
+      daemons (>= 1.1.4)
+      eventmachine (= 0.12.10)
+      json_pure (>= 1.5.3)
     net-ssh (2.6.2)
     pg (0.14.1)
     pg (0.14.1-x86-mingw32)
+    vcap_logging (0.1.0)
+    yajl-ruby (0.8.2)
+    yajl-ruby (0.8.2-x86-mingw32)
 
 PLATFORMS
   ruby
@@ -13,5 +23,9 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby
+  eventmachine
+  nats
   net-ssh
   pg
+  vcap_logging
+  yajl-ruby
