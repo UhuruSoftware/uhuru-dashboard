@@ -91,6 +91,11 @@ $states.each do |os, components|
         service[:critical] = 90
         service[:metric] = metric
         service[:mu] = metric_data[:mu]
+        if(metric_data[:max] != nil)
+          service[:has_max] = true
+        else
+          service[:has_max] = false
+        end
         service
         @services << service
       end

@@ -9,7 +9,7 @@
        rrd_plottype        AREA
        rrd_color           0000aa
 }
-
+<% if service[:has_max] == true %>
 define ngraph {
        service_name        <%= service[:name] %>
        graph_perf_regex    max=(\d+\.?\d+)
@@ -21,4 +21,4 @@ define ngraph {
        rrd_plottype        LINE2
        rrd_color           aa0000
 }
-<% end %><% end %>
+<% end %><% end %><% end %>

@@ -135,7 +135,7 @@ begin
       end
 
       if metric_max == nil
-        output = "#{metric} is #{metric_value}"
+        output = "#{metric} is #{metric_value}|#{metric}=#{"%.3f" % metric_value}#{metric_mu}"
         exitcode = 0
       else
 

@@ -283,7 +283,7 @@ $states = {
         "win_dea" => {
             "droplets_on_disk" => {
                 :mu => 'QTY',
-                :value => lambda{ |data|  data['dropletcountfolder'].scan(/<DIR>\s+\w{14}/).size }
+                :value => lambda{ |data|  data['dropletcountfolder'].scan(/<DIR>\s+\S+-\d+-\S{14}/).size }
             },
             "worker_processes_count" => {
                 :mu => 'QTY',
