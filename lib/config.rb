@@ -9,7 +9,7 @@ $states = {
             "cpu" => {
                 :mu => '%',
                 :max => 100,
-                :value => lambda{ |data|  /:.*us/.match(data['cpu_time'])[0].gsub(/(:)|(%us)/, '').strip!.to_f }
+                :value => lambda{ |data|  data['cpu_time'].scan(/:.*us/)[1].gsub(/(:)|(%us)/, '').strip!.to_f }
             },
             "physical_ram" => {
                 :mu => 'MB',
@@ -42,12 +42,12 @@ $states = {
         "dea" => {
             "droplets_on_disk" =>
                 {
-                    :mu => 'QTY',
+                    :mu => '',
                     :value => lambda{ |data|  data['dropletcountfolder'].scan(/vcap-user/).size }
                 },
             "worker_processes_count" =>
                 {
-                    :mu => 'QTY',
+                    :mu => '',
                     :value => lambda{ |data|  data['workerprocesses'].scan(/\/var\/vcap\/data\/dea\/apps/).size }
                 },
             "worker_processes_memory" =>
@@ -71,7 +71,7 @@ $states = {
                 },
             "dea_droplets" =>
                 {
-                    :mu => 'QTY',
+                    :mu => '',
                     :value => lambda{ |data|  data['dropletdata'].scan(/"droplet_id"/).size }
                 }
         },
@@ -79,12 +79,12 @@ $states = {
         "mysql_node" => {
             "services_on_disk" =>
                 {
-                    :mu => 'QTY',
+                    :mu => '',
                     :value => lambda{ |data|  data['databasesondrive'].scan(/\d*\s*d\w{32}/).size }
                 },
             "provisioned_services" =>
                 {
-                    :mu => 'QTY',
+                    :mu => '',
                     :max => lambda{ |data|  data['config'].scan(/capacity:\s+\d*/)[0].split(/\s+/)[1].to_f },
                     :value => lambda{ |data|  data['servicedb'].scan(/\w{33}/).size }
                 },
@@ -115,12 +115,12 @@ $states = {
         "postgresql_node" => {
             "services_on_disk" =>
                 {
-                    :mu => 'QTY',
+                    :mu => '',
                     :value => lambda{ |data|  data['databasesondrive'].scan(/\d{2}:\d{2}\s\d{5}/).size - 2 }
                 },
             "provisioned_services" =>
                 {
-                    :mu => 'QTY',
+                    :mu => '',
                     :max => lambda{ |data|  data['config'].scan(/capacity:\s+\d*/)[0].split(/\s+/)[1].to_f },
                     :value => lambda{ |data|  data['servicedb'].scan(/\w{33}/).size }
                 },
@@ -151,12 +151,12 @@ $states = {
         "mongodb_node" => {
             "services_on_disk" =>
                 {
-                    :mu => 'QTY',
+                    :mu => '',
                     :value => lambda{ |data|  data['databasesondrive'].scan(/\w{8}-\w{4}-\w{4}/).size }
                 },
             "provisioned_services" =>
                 {
-                    :mu => 'QTY',
+                    :mu => '',
                     :max => lambda{ |data|  data['config'].scan(/capacity:\s+\d*/)[0].split(/\s+/)[1].to_f },
                     :value => lambda{ |data|  data['servicedb'].scan(/\w{8}-\w{4}-\w{4}/).size }
                 },
@@ -187,7 +187,7 @@ $states = {
         "redis_node" => {
             "services_on_disk" =>
                 {
-                    :mu => 'QTY',
+                    :mu => '',
                     :value => lambda{ |data|  data['databasesondrive'].scan(/\w{8}-\w{4}-\w{4}/).size }
                 },
             "persistent_disk" => {
@@ -197,7 +197,7 @@ $states = {
                 },
             "provisioned_services" =>
                 {
-                    :mu => 'QTY',
+                    :mu => '',
                     :max => lambda{ |data|  data['config'].scan(/capacity:\s+\d*/)[0].split(/\s+/)[1].to_f },
                     :value => lambda{ |data|  data['servicedb'].scan(/\w{8}-\w{4}-\w{4}-\w{4}-\w{12}/).size }
                 },
@@ -223,7 +223,7 @@ $states = {
         "rabbit_node" => {
             "services_on_disk" =>
                 {
-                    :mu => 'QTY',
+                    :mu => '',
                     :value => lambda{ |data|  data['databasesondrive'].scan(/\w{8}-\w{4}-\w{4}/).size }
                 },
             "persistent_disk" => {
@@ -233,7 +233,7 @@ $states = {
                 },
             "provisioned_services" =>
                 {
-                    :mu => 'QTY',
+                    :mu => '',
                     :max => lambda{ |data|  data['config'].scan(/capacity:\s+\d*/)[0].split(/\s+/)[1].to_f },
                     :value => lambda{ |data|  data['servicedb'].scan(/\w{8}-\w{4}-\w{4}/).size }
                 },
@@ -282,11 +282,11 @@ $states = {
         },
         "win_dea" => {
             "droplets_on_disk" => {
-                :mu => 'QTY',
+                :mu => '',
                 :value => lambda{ |data|  data['dropletcountfolder'].scan(/<DIR>\s+\S+-\d+-\S{14}/).size }
             },
             "worker_processes_count" => {
-                :mu => 'QTY',
+                :mu => '',
                 :value => lambda{ |data| data['workerprocesses'].scan(/w3wp.exe/).size }
             },
             "worker_processes_memory" => {
@@ -305,17 +305,17 @@ $states = {
                 :value => lambda{ |data|  data['dropletdata'].scan(/"mem_quota":\s*\d*/).map {|x| x.split(':')[1].to_i }.inject(0){|sum, x| sum += x}.to_f / (1024.0 * 1024.0 * 1024.0) }
             },
             "dea_droplets" => {
-                :mu => 'QTY',
+                :mu => '',
                 :value => lambda{ |data|  data['dropletdata'].scan(/"droplet_id"/).size }
             }
         },
         "mssql_node" => {
             "services_on_disk" => {
-                :mu => 'QTY',
+                :mu => '',
                 :value => lambda{ |data|  data['databasesondrive'].scan(/PriData.mdf/).size }
             },
             "provisioned_services" => {
-                :mu => 'QTY',
+                :mu => '',
                 :max => lambda{ |data|  data['config'].scan(/capacity="\d*"/)[0].split('"')[1].to_i },
                 :value => lambda { |data| data['servicedb'].scan(/D4Ta\w{32}/).size }
             },
@@ -337,11 +337,11 @@ $states = {
         },
         "uhurufs_node" => {
             "services_on_disk" => {
-                :mu => 'QTY',
+                :mu => '',
                 :value => lambda{ |data|  data['datafolders'].scan(/D4Ta\w{32}/).size }
             },
             "provisioned_services" => {
-                :mu => 'QTY',
+                :mu => '',
                 :max => lambda{ |data|  data['config'].scan(/capacity="\d*"/)[0].split('"')[1].to_i },
                 :value => lambda { |data| data['servicedb'].scan(/D4Ta\w{32}/).size }
             },
@@ -351,7 +351,7 @@ $states = {
                 :value => lambda{ |data| data['nodeprocessmemory'].scan(/\d+.\d{6}/)[0].split(/\s+/)[0].to_f / (1024.0 * 1024.0) }
             },
             "iis_apps" => {
-                :mu => 'QTY',
+                :mu => '',
                 :value => lambda{ |data|  data['iiswebsitecount'].scan(/APP\s+/).size }
             }
         }

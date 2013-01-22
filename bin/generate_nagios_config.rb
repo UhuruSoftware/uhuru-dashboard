@@ -11,18 +11,6 @@ require 'config'
 require 'optparse'
 require 'json'
 
-options = {}
-OptionParser.new do |opts|
-  opts.separator ''
-  opts.on('-s [ARG]', '--serviceext_dir [ARG]', 'Specify serviceext directory') do |v|
-    options[:serviceext_dir] = v
-  end
-  opts.on('-h', '--help', 'Display this help') do
-    puts opts
-    exit
-  end
-end.parse!
-
 @vms = Uhuru::BOSHHelper.get_vms
 
 
@@ -63,16 +51,6 @@ if $config['legacy']['enabled'] == true
     end
   }
 end
-
-if options[:serviceext_dir]
-  ext_config_files = Dir[options[:serviceext_dir] + "/*.cfg"]
-  ext_config_files.each do |file|
-    if @hosts.any? { |host| host[:name] == Pathname.new(file).basename.to_s.chomp('.cfg') } == false
-      File.delete(file)
-    end
-  end
-end
-
 
 @services = []
 
@@ -121,7 +99,6 @@ if File.exist? File.expand_path("../../config/services", __FILE__)
 end
 
 FileUtils.cp(File.expand_path("../../config/uhuru-hosts.cfg", __FILE__), File.expand_path("../../config/uhuru-hosts.cfg.old", __FILE__))
-FileUtils.cp(File.expand_path("../../config/uhuru-ngraph.ncfg", __FILE__), File.expand_path("../../config/uhuru-ngraph.ncfg.old", __FILE__))
 
 if (@hosts - old_hosts != []) or (old_hosts - @hosts != []) or (old_services - @services != []) or (@services - old_services != [])
   template = ERB.new File.open(File.expand_path("../../config/uhuru-hosts.cfg.erb", __FILE__)).read
@@ -136,9 +113,4 @@ if (@hosts - old_hosts != []) or (old_hosts - @hosts != []) or (old_services - @
     file.write(@services.to_json)
   end
 
-  template = ERB.new File.open(File.expand_path("../../config/uhuru-ngraph.ncfg.erb", __FILE__)).read
-
-  File.open(File.expand_path("../../config/uhuru-ngraph.ncfg", __FILE__), "w") do |file|
-    file.write(template.result(binding))
-  end
 end

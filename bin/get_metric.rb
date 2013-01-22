@@ -135,7 +135,7 @@ begin
       end
 
       if metric_max == nil
-        output = "#{metric} is #{metric_value}|#{metric}=#{"%.3f" % metric_value}#{metric_mu}"
+        output = "#{metric} is #{metric_value}|#{metric}=#{metric_value}#{metric_mu}"
         exitcode = 0
       else
 
@@ -143,9 +143,16 @@ begin
           metric_max = metric_max[data]
         end
 
+        critical = (metric_max / 100) * metric_critical
+        warning = (metric_max / 100) * metric_warn
+
         pct = (metric_value / metric_max) * 100
 
-        performance = "|#{metric}=#{"%.3f" % metric_value}#{metric_mu}, max=#{"%.3f" % metric_max}#{metric_mu}, pct=#{"%.3f" % pct}%"
+        if metric_mu == '%'
+          performance = "|#{metric}=#{metric_value}#{metric_mu};#{warning};#{critical}"
+        else
+          performance = "|#{metric}=#{metric_value}#{metric_mu};#{warning};#{critical};0;#{metric_max}"
+        end
 
         if pct > metric_critical
           output = "CRITICAL - Metric #{metric} is above #{metric_critical}%#{performance}"

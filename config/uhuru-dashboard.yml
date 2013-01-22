@@ -68,7 +68,7 @@ windows:
 
 linux:
   base:
-    cpu_time: top -b -n 3 |grep ^Cpu
+    cpu_time: top -b -n 2 |grep ^Cpu
     system_info: free -m
     disk_usage: df
   dea:
