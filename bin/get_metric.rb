@@ -135,7 +135,7 @@ begin
       end
 
       if metric_max == nil
-        output = "#{metric} is #{metric_value}|#{metric}=#{metric_value}#{metric_mu}"
+        output = "#{metric_value}|#{metric}=#{metric_value}#{metric_mu}"
         exitcode = 0
       else
 
@@ -149,19 +149,21 @@ begin
         pct = (metric_value / metric_max) * 100
 
         if metric_mu == '%'
-          performance = "|#{metric}=#{metric_value}#{metric_mu};#{warning};#{critical}"
+          performance = "|#{metric}=#{"%.3f" % metric_value}#{metric_mu};#{"%.3f" % warning};#{"%.3f" % critical}"
+          info = "[#{metric_value}#{metric_mu}]"
         else
-          performance = "|#{metric}=#{metric_value}#{metric_mu};#{warning};#{critical};0;#{metric_max}"
+          performance = "|#{metric}=#{"%.3f" % metric_value}#{metric_mu};#{"%.3f" % warning};#{"%.3f" % critical};0;#{"%.3f" % metric_max}"
+          info = "[#{"%.3f" % metric_value}#{metric_mu} / #{"%.3f" % metric_max}#{metric_mu}]"
         end
 
         if pct > metric_critical
-          output = "CRITICAL - Metric #{metric} is above #{metric_critical}%#{performance}"
+          output = "#{info} Metric #{metric} is above #{metric_critical}%#{performance}"
           exitcode = 2
         elsif pct > metric_warn
-          output = "WARN - Metric #{metric} is above #{metric_warn}%#{performance}"
+          output = "#{info} Metric #{metric} is above #{metric_warn}%#{performance}"
           exitcode = 1
         else
-          output = "Metric #{metric} is OK#{performance}"
+          output = "#{info} Metric #{metric} is OK#{performance}"
           exitcode = 0
         end
       end
