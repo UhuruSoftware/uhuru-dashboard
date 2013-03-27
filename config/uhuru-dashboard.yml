@@ -12,6 +12,7 @@ director:
   port: 25555
   user: nagiosuser
   password: nagiospassword
+  create_user: false
 
 default_warn_level: 80
 default_critical_level: 90

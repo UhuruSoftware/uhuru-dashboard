@@ -143,7 +143,7 @@ module Uhuru
 
       user = conn.exec("select * from users where username='#{$config['director']['user']}'")
 
-      if user.values.size == 0
+      if (user.values.size == 0) && ($config['director']['create_user'] == true)
         conn.exec("insert into users (username, password) values ('#{$config['director']['user']}', '#{BCrypt::Password.create($config['director']['password'])}')")
       end
 
