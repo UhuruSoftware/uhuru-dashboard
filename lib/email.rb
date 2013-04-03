@@ -9,7 +9,9 @@ module Uhuru
       RFC822::EmailFormat.match(email)
     end
 
-    def self.send_email(to_email, subject, body)
+    def self.send_email(subject, body)
+
+      to_email = $config['alerts']['email_to']
 
       msg = <<END_OF_MESSAGE
 From: #{$config['email']['from_alias']} <#{$config['email']['from']}>

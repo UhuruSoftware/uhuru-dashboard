@@ -1,6 +1,7 @@
 #!/bin/bash
 result=`arping -w 5 -f -c 1 $1 | grep Received`
-if [ $? -eq 0 ]; then
+ok=`echo $result | cut -d \  -f 2`
+if [ "$ok" == "1" ]; then
   echo "OK - $result"
   exit 0
 else

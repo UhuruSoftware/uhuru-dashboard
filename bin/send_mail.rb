@@ -11,8 +11,7 @@ state             = ARGV[3]    # HOSTSTATE / SERVICESTATE
 hostaddress       = ARGV[4]    # HOSTADDRESS
 output            = ARGV[5]    # HOSTOUTPUT / SERVICEOUTPUT
 date              = ARGV[6]    # LONGDATETIME
-email             = ARGV[7]    # CONTACTEMAIL
-servicedesc       = ARGV[8]    # SERVICEDESC
+servicedesc       = ARGV[7]    # SERVICEDESC
 
 if type == "host"
   body = <<END_OF_BODY
@@ -47,4 +46,4 @@ END_OF_BODY
 end
 
 
-Uhuru::Email.send_email(email, subject, body)
+Uhuru::Email.send_email(subject, body)

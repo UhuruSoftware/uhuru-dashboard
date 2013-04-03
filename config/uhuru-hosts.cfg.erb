@@ -185,12 +185,12 @@ define command{
 
 define command{
     command_name            notify-host
-    command_line            <%= @send_mail_path %> host "$NOTIFICATIONTYPE$" "$HOSTNAME$" "$HOSTSTATE$" "$HOSTADDRESS$" "$HOSTOUTPUT$" "$LONGDATETIME$" "$CONTACTEMAIL$"
+    command_line            <%= @send_mail_path %> host "$NOTIFICATIONTYPE$" "$HOSTNAME$" "$HOSTSTATE$" "$HOSTADDRESS$" "$HOSTOUTPUT$" "$LONGDATETIME$"
 }
 
 define command{
     command_name            notify-service
-    command_line            <%= @send_mail_path %> service $NOTIFICATIONTYPE$ "$HOSTNAME$" "$SERVICESTATE$" "$HOSTADDRESS$" "$SERVICEOUTPUT$" "$LONGDATETIME$" "$CONTACTEMAIL$" "$SERVICEDESC$"
+    command_line            <%= @send_mail_path %> service $NOTIFICATIONTYPE$ "$HOSTNAME$" "$SERVICESTATE$" "$HOSTADDRESS$" "$SERVICEOUTPUT$" "$LONGDATETIME$" "$SERVICEDESC$"
 }
 
 define service {
@@ -212,9 +212,9 @@ define service{
 }
 
 define contact{
-    contact_name                    uhuru
+    contact_name                    nagios_alerts
     alias                           Nagios Alerts
-    email                           ucalerts@uhurusoftware.com
+    email                           email
     service_notification_period     24x7                        ; service notifications can be sent anytime
     host_notification_period        24x7                        ; host notifications can be sent anytime
     service_notification_options    w,u,c,r,f,s                 ; send notifications for all service states, flapping events, and scheduled downtime events
@@ -226,5 +226,5 @@ define contact{
 define contactgroup{
     contactgroup_name   admins
     alias               Nagios Administrators
-    members             uhuru
+    members             nagios_alerts
     }
