@@ -91,13 +91,13 @@ $states = {
             "services_disk_size" =>
                 {
                     :mu => 'MB',
-                    :max => lambda{ |data|  /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f / 1024.0 },
+                    :max => lambda{ |data|  /\d*\s*\d*\s*\d*\s*\d+.\s*\/var\/vcap\/store/.match(data['disk_usage'])[0].split(/\s+/)[0].to_f / 1024.0 },
                     :value => lambda{ |data|  data['servicesdisksize'].scan(/\d+\w\s+/).map {|x| x.split(/\s+/)[0].gsub(/\D/,'').to_i}.inject(0){|sum, x| sum += x}.to_f / 1024.0 }
                 },
             "persistent_disk" => {
                     :mu => 'GB',
-                    :max => lambda{ |data|  /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f  / (1024.0 * 1024.0)},
-                    :value => lambda{ |data|  /\/dev\/sdc1\s*\S*\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[2].to_f  / (1024.0 * 1024.0)}
+                    :max => lambda{ |data|  /\d*\s*\d*\s*\d*\s*\d+.\s*\/var\/vcap\/store/.match(data['disk_usage'])[0].split(/\s+/)[0].to_f  / (1024.0 * 1024.0)},
+                    :value => lambda{ |data|  /\d*\s*\d*\s*\d*\s*\d+.\s*\/var\/vcap\/store/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f  / (1024.0 * 1024.0)}
                 },
             "mysql_server_memory" =>
                 {
@@ -126,13 +126,13 @@ $states = {
                 },
             "persistent_disk" => {
                     :mu => 'GB',
-                    :max => lambda{ |data|  /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f  / (1024.0 * 1024.0)},
-                    :value => lambda{ |data|  /\/dev\/sdc1\s*\S*\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[2].to_f  / (1024.0 * 1024.0)}
+                    :max => lambda{ |data|  /\d*\s*\d*\s*\d*\s*\d+.\s*\/var\/vcap\/store/.match(data['disk_usage'])[0].split(/\s+/)[0].to_f  / (1024.0 * 1024.0)},
+                    :value => lambda{ |data|  /\d*\s*\d*\s*\d*\s*\d+.\s*\/var\/vcap\/store/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f  / (1024.0 * 1024.0)}
                 },
             "services_disk_size" =>
                 {
                     :mu => 'MB',
-                    :max => lambda{ |data|  /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f / 1024.0 },
+                    :max => lambda{ |data|  /\d*\s*\d*\s*\d*\s*\d+.\s*\/var\/vcap\/store/.match(data['disk_usage'])[0].split(/\s+/)[0].to_f / 1024.0 },
                     :value => lambda{ |data|  data['servicesdisksize'].scan(/\d+\w\s+/).map {|x| x.split(/\s+/)[0].gsub(/\D/,'').to_i}.inject(0){|sum, x| sum += x}.to_f / 1024.0 }
                 },
             "postgresql_server_memory" =>
@@ -162,13 +162,13 @@ $states = {
                 },
             "persistent_disk" => {
                     :mu => 'GB',
-                    :max => lambda{ |data|  /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f  / (1024.0 * 1024.0)},
-                    :value => lambda{ |data|  /\/dev\/sdc1\s*\S*\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[2].to_f  / (1024.0 * 1024.0)}
+                    :max => lambda{ |data|  /\d*\s*\d*\s*\d*\s*\d+.\s*\/var\/vcap\/store/.match(data['disk_usage'])[0].split(/\s+/)[0].to_f  / (1024.0 * 1024.0)},
+                    :value => lambda{ |data|  /\d*\s*\d*\s*\d*\s*\d+.\s*\/var\/vcap\/store/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f  / (1024.0 * 1024.0)}
                 },
             "services_disk_size" =>
                 {
                     :mu => 'MB',
-                    :max => lambda{ |data|  /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f / 1024.0 },
+                    :max => lambda{ |data|  /\d*\s*\d*\s*\d*\s*\d+.\s*\/var\/vcap\/store/.match(data['disk_usage'])[0].split(/\s+/)[0].to_f / 1024.0 },
                     :value => lambda{ |data|  data['servicesdisksize'].scan(/\d+\w\s+/).map {|x| x.split(/\s+/)[0].gsub(/\D/,'').to_i}.inject(0){|sum, x| sum += x}.to_f / 1024.0 }
                 },
             "mongodb_server_memory" =>
@@ -192,8 +192,8 @@ $states = {
                 },
             "persistent_disk" => {
                     :mu => 'GB',
-                    :max => lambda{ |data|  /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f  / (1024.0 * 1024.0)},
-                    :value => lambda{ |data|  /\/dev\/sdc1\s*\S*\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[2].to_f  / (1024.0 * 1024.0)}
+                    :max => lambda{ |data|  /\d*\s*\d*\s*\d*\s*\d+.\s*\/var\/vcap\/store/.match(data['disk_usage'])[0].split(/\s+/)[0].to_f  / (1024.0 * 1024.0)},
+                    :value => lambda{ |data|  /\d*\s*\d*\s*\d*\s*\d+.\s*\/var\/vcap\/store/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f  / (1024.0 * 1024.0)}
                 },
             "provisioned_services" =>
                 {
@@ -204,7 +204,7 @@ $states = {
             "services_disk_size" =>
                 {
                     :mu => 'MB',
-                    :max => lambda{ |data|  /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f / 1024.0 },
+                    :max => lambda{ |data|  /\d*\s*\d*\s*\d*\s*\d+.\s*\/var\/vcap\/store/.match(data['disk_usage'])[0].split(/\s+/)[0].to_f / 1024.0 },
                     :value => lambda{ |data|  data['servicesdisksize'].scan(/\d+\w\s+/).map {|x| x.split(/\s+/)[0].gsub(/\D/,'').to_i}.inject(0){|sum, x| sum += x}.to_f / 1024.0 }
                 },
             "redis_server_memory" =>
@@ -228,8 +228,8 @@ $states = {
                 },
             "persistent_disk" => {
                     :mu => 'GB',
-                    :max => lambda{ |data|  /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f  / (1024.0 * 1024.0)},
-                    :value => lambda{ |data|  /\/dev\/sdc1\s*\S*\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[2].to_f  / (1024.0 * 1024.0)}
+                    :max => lambda{ |data|  /\d*\s*\d*\s*\d*\s*\d+.\s*\/var\/vcap\/store/.match(data['disk_usage'])[0].split(/\s+/)[0].to_f  / (1024.0 * 1024.0)},
+                    :value => lambda{ |data|  /\d*\s*\d*\s*\d*\s*\d+.\s*\/var\/vcap\/store/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f  / (1024.0 * 1024.0)}
                 },
             "provisioned_services" =>
                 {
@@ -240,7 +240,7 @@ $states = {
             "services_disk_size" =>
                 {
                     :mu => 'MB',
-                    :max => lambda{ |data|  /\/dev\/sdc1\s*[0-9|.]*/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f / 1024.0 },
+                    :max => lambda{ |data|  /\d*\s*\d*\s*\d*\s*\d+.\s*\/var\/vcap\/store/.match(data['disk_usage'])[0].split(/\s+/)[0].to_f / 1024.0 },
                     :value => lambda{ |data|  data['servicesdisksize'].scan(/\d+\w\s+/).map {|x| x.split(/\s+/)[0].gsub(/\D/,'').to_i}.inject(0){|sum, x| sum += x}.to_f / 1024.0 }
                 },
             "rabbitmq_server_memory" =>
