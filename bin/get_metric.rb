@@ -54,7 +54,7 @@ begin
         begin
           Uhuru::BOSHHelper.open_ssh(deployment, job, index, sshkey, user, password )
         rescue Exception => e
-          raise "Cannot open SSH\n#{e.message}"
+          raise "Cannot open SSH\n#{e.message}:#{e.backtrace}"
         end
 
         begin
@@ -64,31 +64,33 @@ begin
           File.open(File.expand_path(datafile, __FILE__), filemode) do |file|
 
             ['base', job].each { |group|
-              win_output = Uhuru::SSHHelper.execute(ip, "bosh_#{user}", password, $config[os][group])
-              values = win_output.scan(regex)
-              values.each_with_index do |key, index|
-                next_element = values[index+1]
-                if next_element.nil?
-                  value = win_output.scan(/_{5}KEY:#{key[0]}_{5}(.*?)\z/m).flatten[0]
-                else
-                  value = win_output.scan(/_{5}KEY:#{key[0]}_{5}(.*?)_{5}KEY:#{next_element[0]}_{5}/m).flatten[0]
+              unless $config[os][group] == nil
+                win_output = Uhuru::SSHHelper.execute(ip, "bosh_#{user}", password, $config[os][group])
+                values = win_output.scan(regex)
+                values.each_with_index do |key, index|
+                  next_element = values[index+1]
+                  if next_element.nil?
+                    value = win_output.scan(/_{5}KEY:#{key[0]}_{5}(.*?)\z/m).flatten[0]
+                  else
+                    value = win_output.scan(/_{5}KEY:#{key[0]}_{5}(.*?)_{5}KEY:#{next_element[0]}_{5}/m).flatten[0]
+                  end
+                  file.write "#{key[0]}: |\n  ---\n"
+                  if !value.nil?
+                    value.lines.each {|line| file.write "  #{line}"}
+                  end
+                  file.write "\n"
                 end
-                file.write "#{key[0]}: |\n  ---\n"
-                if !value.nil?
-                  value.lines.each {|line| file.write "  #{line}"}
-                end
-                file.write "\n"
               end
             }
           end
         rescue Exception => e
-          raise "SSH Connection Failed\n#{e.message}"
+          raise "SSH Connection Failed\n#{e.message}:#{e.backtrace}"
         end
 
         begin
           Uhuru::BOSHHelper.stop_ssh(deployment, job, index, user)
         rescue Exception => e
-          raise "Cannot close SSH\n#{e.Message}"
+          raise "Cannot close SSH\n#{e.Message}:#{e.backtrace}"
         end
       end
 
@@ -96,7 +98,7 @@ begin
       begin
         Uhuru::BOSHHelper.open_ssh(deployment, job, index, sshkey, user, password )
       rescue Exception => e
-        raise "Cannot open SSH\n#{e.message}"
+        raise "Cannot open SSH\n#{e.message}:#{e.backtrace}"
       end
 
 
@@ -131,13 +133,13 @@ begin
         end
 
       rescue Exception => e
-        raise "SSH Connection Failed\n#{e.message}"
+        raise "SSH Connection Failed\n#{e.message}:#{e.backtrace}"
       end
 
       begin
         Uhuru::BOSHHelper.stop_ssh(deployment, job, index, user)
       rescue Exception => e
-        raise "Cannot close SSH\n#{e.Message}"
+        raise "Cannot close SSH\n#{e.Message}:#{e.backtrace}"
       end
     end
     output = "[#{ip}] Status is OK"

@@ -27,7 +27,7 @@ require 'json'
     host[:address] = vm['ips'][0]
     host[:component] = vm['job_name']
     host[:index] = vm['index']
-    host[:os] = ['mssql_node', 'win_dea', 'uhurufs_node'].include?(host[:component]) ? "windows" : "linux"
+    host[:os] = ['mssql_node', 'win_dea', 'uhurufs_node', 'uhuru_tunnel'].include?(host[:component]) ? "windows" : "linux"
     if host[:address] != nil && host[:address].size > 0
       @hosts << host
     end
@@ -60,7 +60,6 @@ $states.each do |os, components|
         service[:name] = "#{os}_#{component}_#{metric}"
         service[:hostgroup] = component == 'base' ? os : component
         service[:description] = Uhuru::StringHelper.humanize("#{os}_#{component}_#{metric}").split(' ').map {|w| w.capitalize}.join(' ')
-        #service[:servicegroups] = ["Cloud Foundry Metrics"]
         service[:os] = os
         service[:component] = component
         service[:warn] = 80

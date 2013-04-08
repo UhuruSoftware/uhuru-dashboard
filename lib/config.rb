@@ -280,6 +280,35 @@ $states = {
                 :value => lambda{ |data|  ((data['disk_usage_c']).scan(/of bytes\D+\d+/)[0].split(/\s+/)[3].gsub(/\D/, '').to_f - (data['disk_usage_c']).scan(/avail free bytes\D+\d+/)[0].split(/\s+/)[4].gsub(/\D/, '').to_f) / (1024 * 1024 * 1024) },
             }
         },
+        "uhuru_tunnel" => {
+            "tunnels_on_disk" => {
+                :mu => '',
+                :value => lambda{ |data|  data['dropletcountfolder'].scan(/<DIR>\s+\S+-\d+-\S{14}/).size }
+            },
+            "tunnel_processes_count" => {
+                :mu => '',
+                :value => lambda{ |data| data['workerprocesses'].scan(/w3wp.exe/).size }
+            },
+            "tunnel_processes_memory" => {
+                :mu => 'MB',
+                :max => lambda{ |data|  data['system_info'].scan(/Total Physical Memory:\s+\d+?,?\d+/)[0].split(/\s+/)[3].gsub(/\D/, '').to_f - 512.0 },
+                :value => lambda{ |data|  data['workerprocesses'].scan(/w3wp.exe\s+\d+\s\w+\s+\d+\s+\S+/).map {|x| x.split(/\s+/)[4].gsub(/\D/, '').to_f }.inject(0){|sum, x| sum += x}.to_f / 1024.0 }
+            },
+            "dea_service_memory" => {
+                :mu => 'MB',
+                :max => 256.0,
+                :value => lambda{ |data|  data['deaprocessmemory'].scan(/\d+.\d{6}/)[0].split(/\s+/)[0].to_f / (1024.0 * 1024.0) }
+            },
+            "dea_provisionable_memory" => {
+                :mu => 'GB',
+                :max => lambda{ |data|  data['config'].scan(/maxMemory="\d*"/)[0].split('"')[1].to_f / 1024.0 },
+                :value => lambda{ |data|  data['dropletdata'].scan(/"mem_quota":\s*\d*/).map {|x| x.split(':')[1].to_i }.inject(0){|sum, x| sum += x}.to_f / (1024.0 * 1024.0 * 1024.0) }
+            },
+            "tunnels" => {
+                :mu => '',
+                :value => lambda{ |data|  data['dropletdata'].scan(/"droplet_id"/).size }
+            }
+        },
         "win_dea" => {
             "droplets_on_disk" => {
                 :mu => '',

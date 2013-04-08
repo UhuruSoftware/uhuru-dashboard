@@ -99,11 +99,11 @@ define hostgroup{
 }
 <% end %>
 
-<%if @hosts.select {|host| ['routers'].include? host[:component]  }.size > 0 %>
+<%if @hosts.select {|host| ['router'].include? host[:component]  }.size > 0 %>
 define hostgroup{
     hostgroup_name  routers
     alias           Routers
-    members         <%= @hosts.select {|host| ['routers'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+    members         <%= @hosts.select {|host| ['router'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
 }
 <% end %>
 
@@ -128,6 +128,14 @@ define hostgroup{
     hostgroup_name  uhurufs_node
     alias           Uhuru FS Nodes
     members         <%= @hosts.select {|host| ['uhurufs_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['uhuru_tunnel'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+hostgroup_name  uhuru_tunnel
+alias           Uhuru Service Tunnels
+members         <%= @hosts.select {|host| ['uhuru_tunnel'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
 }
 <% end %>
 
