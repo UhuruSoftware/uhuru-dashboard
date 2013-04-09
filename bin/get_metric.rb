@@ -19,12 +19,8 @@ begin
   if metric == 'status'
 
     require 'bundler/setup'
-    require 'bosh_helper'
-    require 'net/ssh'
 
-    user = rand(36**9).to_s(36)
-    password = rand(36**9).to_s(36)
-    sshkey = File.open(File.expand_path("../../config/sshkey.pub", __FILE__)).read
+    require 'net/ssh'
 
     if os == 'windows'
       if $config['legacy']['enabled'] == true
@@ -51,11 +47,9 @@ begin
         end
       else
         require "ssh_helper"
-        begin
-          Uhuru::BOSHHelper.open_ssh(deployment, job, index, sshkey, user, password )
-        rescue Exception => e
-          raise "Cannot open SSH\n#{e.message}:#{e.backtrace}"
-        end
+        require 'bosh_helper'
+
+        user, password = Uhuru::BOSHHelper.setup_ssh_user(deployment, job, index, ip)
 
         begin
           regex = /_{5}KEY:(.+)_{5}/
@@ -86,21 +80,11 @@ begin
         rescue Exception => e
           raise "SSH Connection Failed\n#{e.message}:#{e.backtrace}"
         end
-
-        begin
-          Uhuru::BOSHHelper.stop_ssh(deployment, job, index, user)
-        rescue Exception => e
-          raise "Cannot close SSH\n#{e.Message}:#{e.backtrace}"
-        end
       end
 
     else
-      begin
-        Uhuru::BOSHHelper.open_ssh(deployment, job, index, sshkey, user, password )
-      rescue Exception => e
-        raise "Cannot open SSH\n#{e.message}:#{e.backtrace}"
-      end
-
+      require 'bosh_helper'
+      user, password = Uhuru::BOSHHelper.setup_ssh_user(deployment, job, index, ip)
 
       begin
         filemode = ARGV[5] == '--onscreen' ? "r" : "w"
@@ -134,12 +118,6 @@ begin
 
       rescue Exception => e
         raise "SSH Connection Failed\n#{e.message}:#{e.backtrace}"
-      end
-
-      begin
-        Uhuru::BOSHHelper.stop_ssh(deployment, job, index, user)
-      rescue Exception => e
-        raise "Cannot close SSH\n#{e.Message}:#{e.backtrace}"
       end
     end
     output = "[#{ip}] Status is OK"
