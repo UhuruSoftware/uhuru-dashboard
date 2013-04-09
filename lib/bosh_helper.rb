@@ -195,5 +195,55 @@ module Uhuru
       charset << "/"
       charset
     end
+
+    def self.setup_ssh_user(deployment, job, index, ip)
+      userfile = File.expand_path(File.join($config['data_dir'],"#{ip}.user"), __FILE__)
+      sshkey = File.open(File.expand_path("../../config/sshkey.pub", __FILE__)).read
+      ssh_reset_interval = $config['ssh_reset_interval_min'] || 60
+      YAML::ENGINE.yamler='syck'
+
+      if File.exist? userfile
+        userdata = YAML.load_file userfile
+        require 'time'
+        if (Time.parse(userdata["time"]) + ssh_reset_interval*60) > Time.now
+          user = userdata["username"]
+          password = userdata["password"]
+        else
+          begin
+            Uhuru::BOSHHelper.stop_ssh(deployment, job, index, userdata["username"])
+          rescue Exception => e
+            raise "Cannot close SSH\n#{e.Message}:#{e.backtrace}"
+          end
+
+          require 'securerandom'
+          user = SecureRandom.hex(6)
+          password = SecureRandom.hex(12)
+          userdata["username"] = user
+          userdata["password"] = password
+          userdata["time"] = Time.now.to_s
+          File.open(userfile, 'w+') {|f| f.write(userdata.to_yaml)}
+          begin
+            Uhuru::BOSHHelper.open_ssh(deployment, job, index, sshkey, user, password )
+          rescue Exception => e
+            raise "Cannot open SSH\n#{e.message}:#{e.backtrace}"
+          end
+        end
+      else
+        require 'securerandom'
+        user = SecureRandom.hex(6)
+        password = SecureRandom.hex(12)
+        userdata = {}
+        userdata["username"] = user
+        userdata["password"] = password
+        userdata["time"] = Time.now.to_s
+        File.open(userfile, 'w+') {|f| f.write(userdata.to_yaml)}
+        begin
+          Uhuru::BOSHHelper.open_ssh(deployment, job, index, sshkey, user, password )
+        rescue Exception => e
+          raise "Cannot open SSH\n#{e.message}:#{e.backtrace}"
+        end
+      end
+      return user, password
+    end
   end
 end

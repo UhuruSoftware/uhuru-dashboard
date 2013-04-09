@@ -17,6 +17,7 @@ director:
 default_warn_level: 80
 default_critical_level: 90
 data_dir: D:\\tmp
+ssh_reset_interval_min: 100
 
 alerts:
   email_to: email
