@@ -11,8 +11,8 @@ require 'json'
 
 @vms = Uhuru::BOSHHelper.get_vms
 
-
-@deployments = @vms.map { |vm| { :name => vm['deployment'].gsub(' ', '_').downcase , :description => vm['deployment'] } }.uniq!
+# erb crashes if @deployment = nil
+@deployments = @vms.map { |vm| { :name => vm['deployment'].gsub(' ', '_').downcase , :description => vm['deployment'] } }.uniq! || []
 
 # cache IPs and intersect with Database information
 

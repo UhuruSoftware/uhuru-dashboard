@@ -1,3 +1,31 @@
+<% if @hosts == [] %>
+define host{
+        use                     cf-host
+        host_name               localhost
+        alias                   localhost
+        address                 127.0.0.1
+        check_command           true
+        }
+
+define hostgroup{
+        hostgroup_name  linux-servers ; The name of the hostgroup
+        alias           Linux Servers ; Long name of the group
+        members         localhost     ; Comma separated list of hosts that belong to this group
+        }
+
+define service{
+        use                             cf-service
+        host_name                       localhost
+        service_description             localhost
+        check_command                   true
+        }
+
+define command{
+    command_name            true
+    command_line            true
+}
+<% end %>
+
 <% @deployments.each do |deployment| %>
 <%if @hosts.select {|host| [deployment[:description]].include? host[:deployment] }.size > 0 %>
 define hostgroup{
