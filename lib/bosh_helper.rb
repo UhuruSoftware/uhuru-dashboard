@@ -54,6 +54,8 @@ module Uhuru
         response = JSON.parse(get_bosh_response("tasks/#{response['id']}"))
         sleep 0.5
       end
+
+      response['state']
     end
 
     def self.stop_ssh(deployment, job, index, user)
@@ -218,32 +220,47 @@ module Uhuru
           require 'securerandom'
           user = SecureRandom.hex(6)
           password = SecureRandom.hex(12)
+          begin
+            state = Uhuru::BOSHHelper.open_ssh(deployment, job, index, sshkey, user, password )
+          rescue Exception => e
+            raise "Cannot open SSH\n#{e.message}:#{e.backtrace}"
+          end
+          if state == 'error'
+            File.delete(userfile)
+            raise "Cannot create SSH user"
+          end
           userdata["username"] = user
           userdata["password"] = password
           userdata["time"] = Time.now.to_s
           File.open(userfile, 'w+') {|f| f.write(userdata.to_yaml)}
-          begin
-            Uhuru::BOSHHelper.open_ssh(deployment, job, index, sshkey, user, password )
-          rescue Exception => e
-            raise "Cannot open SSH\n#{e.message}:#{e.backtrace}"
-          end
         end
       else
         require 'securerandom'
         user = SecureRandom.hex(6)
         password = SecureRandom.hex(12)
+        begin
+          state = Uhuru::BOSHHelper.open_ssh(deployment, job, index, sshkey, user, password )
+        rescue Exception => e
+          raise "Cannot open SSH\n#{e.message}:#{e.backtrace}"
+        end
+        if state == 'error'
+          raise "Cannot create SSH user"
+        end
         userdata = {}
         userdata["username"] = user
         userdata["password"] = password
         userdata["time"] = Time.now.to_s
         File.open(userfile, 'w+') {|f| f.write(userdata.to_yaml)}
-        begin
-          Uhuru::BOSHHelper.open_ssh(deployment, job, index, sshkey, user, password )
-        rescue Exception => e
-          raise "Cannot open SSH\n#{e.message}:#{e.backtrace}"
-        end
       end
       return user, password
+    end
+
+    def self.delete_user(user, deployment, job, index, ip)
+      begin
+        File.delete(File.expand_path(File.join($config['data_dir'],"#{ip}.user"), __FILE__))
+        Uhuru::BOSHHelper.stop_ssh(deployment, job, index, user)
+      rescue
+      end
     end
   end
 end

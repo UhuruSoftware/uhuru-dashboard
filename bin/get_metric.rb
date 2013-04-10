@@ -78,6 +78,7 @@ begin
             }
           end
         rescue Exception => e
+          Uhuru::BOSHHelper.delete_user(user, deployment, job, index, ip)
           raise "SSH Connection Failed\n#{e.message}:#{e.backtrace}"
         end
       end
@@ -117,6 +118,7 @@ begin
         end
 
       rescue Exception => e
+        Uhuru::BOSHHelper.delete_user(user, deployment, job, index, ip)
         raise "SSH Connection Failed\n#{e.message}:#{e.backtrace}"
       end
     end
