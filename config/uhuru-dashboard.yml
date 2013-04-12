@@ -21,6 +21,9 @@ ssh_reset_interval_min: 100
 
 alerts:
   email_to: email
+  notification_interval: 0
+
+
 email:
   from: "uhurusoftw@gmail.com"
   from_alias: "Nagios"

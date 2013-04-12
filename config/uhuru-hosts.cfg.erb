@@ -244,7 +244,7 @@ define service{
     register                        0       		    ; DONT REGISTER THIS DEFINITION - ITS NOT A REAL SERVICE, JUST A TEMPLATE!
     process_perf_data               1                   ; Process performance data
     contact_groups                  admins              ; Notifications get sent out to everyone in 'admins' group
-    notification_interval	        60
+    notification_interval	        <%= $config['alerts']['notification_interval'] %>
 }
 
 define contact{
