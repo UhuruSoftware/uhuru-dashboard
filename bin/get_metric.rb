@@ -171,7 +171,13 @@ begin
       else
 
         if metric_max.is_a? Proc
-          metric_max = metric_max[data]
+          begin
+            metric_max = metric_max[data]
+          rescue Exception => e
+            puts "Data not found\n#{e.message}\n#{e.backtrace}"
+            $stdout.flush
+            exit! 3
+          end
         end
 
         critical = (metric_max / 100) * metric_critical
