@@ -278,6 +278,11 @@ $states = {
                 :mu => 'GB',
                 :max => lambda{ |data|  (data['disk_usage_c']).scan(/of bytes\D+\d+/)[0].split(/\s+/)[3].gsub(/\D/, '').to_f / (1024 * 1024 * 1024) },
                 :value => lambda{ |data|  ((data['disk_usage_c']).scan(/of bytes\D+\d+/)[0].split(/\s+/)[3].gsub(/\D/, '').to_f - (data['disk_usage_c']).scan(/avail free bytes\D+\d+/)[0].split(/\s+/)[4].gsub(/\D/, '').to_f) / (1024 * 1024 * 1024) },
+            },
+            "license_info" => {
+                :mu => 'string',
+                :accepted_values => ["Licensed"],
+                :value => lambda{ |data| data['license_info'].scan(/^License\sStatus:\s(.*)$/)[0][0].to_s }
             }
         },
         "uhuru_tunnel" => {
