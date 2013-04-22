@@ -18,6 +18,12 @@ require 'json'
 
 @hosts = []
 
+old_hosts = []
+if File.exist? File.expand_path("../../config/hosts", __FILE__)
+  buffer = File.open(File.expand_path("../../config/hosts", __FILE__)).read
+  old_hosts = JSON.parse(buffer, :symbolize_names => true)
+end
+
 @vms.each do |vm|
   if !vm['job_name'].nil?
     host = {}
@@ -27,8 +33,23 @@ require 'json'
     host[:address] = vm['ips'][0]
     host[:component] = vm['job_name']
     host[:index] = vm['index']
+    host[:agent_id] = vm['agent_id']
     host[:os] = ['mssql_node', 'win_dea', 'uhurufs_node', 'uhuru_tunnel'].include?(host[:component]) ? "windows" : "linux"
     if host[:address] != nil && host[:address].size > 0
+      @hosts << host
+    end
+  else
+    old_host = old_hosts.find{|oh| oh[:agent_id] == vm['agent_id'] }
+    if old_host
+      host = {}
+      host[:deployment] = old_host[:deployment]
+      host[:name] = old_host[:name]
+      host[:alias] = old_host[:alias]
+      host[:address] = old_host[:address]
+      host[:component] = old_host[:component]
+      host[:index] = old_host[:index]
+      host[:agent_id] = old_host[:agent_id]
+      host[:os] = old_host[:os]
       @hosts << host
     end
   end
@@ -66,6 +87,7 @@ $states.each do |os, components|
         service[:critical] = 90
         service[:metric] = metric
         service[:mu] = metric_data[:mu]
+        service[:graph] = metric_data[:graph]
         if(metric_data[:max] != nil)
           service[:has_max] = true
         else
@@ -82,12 +104,6 @@ end
 @command_path = File.expand_path("../../bin/get_metric.sh", __FILE__)
 @check_host_path = File.expand_path("../../bin/check_host.sh", __FILE__)
 @send_mail_path = File.expand_path("../../bin/send_mail.sh", __FILE__)
-
-old_hosts = []
-if File.exist? File.expand_path("../../config/hosts", __FILE__)
-  buffer = File.open(File.expand_path("../../config/hosts", __FILE__)).read
-  old_hosts = JSON.parse(buffer, :symbolize_names => true)
-end
 
 old_services = []
 if File.exist? File.expand_path("../../config/services", __FILE__)

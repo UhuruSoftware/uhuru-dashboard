@@ -169,7 +169,7 @@ begin
         output = "#{metric_value}|#{metric}=#{metric_value}#{metric_mu}"
         exitcode = 0
 
-        if metric_mu == 'string'
+        if metric_mu == 'state'
           accepted_values = metric_hash[:accepted_values]
           output = metric_value
           if accepted_values.include? metric_value

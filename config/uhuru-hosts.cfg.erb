@@ -201,7 +201,7 @@ define host{
 <% @services.each do |service| %>
 define service{
     name                    <%= service[:name] %>
-    use                     cf-service,srv-pnp
+    use                     cf-service<% if service[:graph] %>,srv-pnp<% end %>
     hostgroup_name          <%= service[:hostgroup] %>
     service_description     <%= service[:name] %>
 <%#    servicegroups           <%= service[:servicegroups].join(',') %>
