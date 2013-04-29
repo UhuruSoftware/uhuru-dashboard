@@ -45,6 +45,30 @@ $states = {
                 :graph => true
             }
         },
+        "ccdb" => {
+            "persistent_disk" => {
+              :mu => 'GB',
+              :max => lambda{ |data|  /\d*\s*\d*\s*\d*\s*\d+.\s*\/var\/vcap\/store/.match(data['disk_usage'])[0].split(/\s+/)[0].to_f  / (1024.0 * 1024.0)},
+              :value => lambda{ |data|  /\d*\s*\d*\s*\d*\s*\d+.\s*\/var\/vcap\/store/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f  / (1024.0 * 1024.0)},
+              :graph => true
+            }
+        },
+        "debian_nfs_server" => {
+            "persistent_disk" => {
+              :mu => 'GB',
+              :max => lambda{ |data|  /\d*\s*\d*\s*\d*\s*\d+.\s*\/var\/vcap\/store/.match(data['disk_usage'])[0].split(/\s+/)[0].to_f  / (1024.0 * 1024.0)},
+              :value => lambda{ |data|  /\d*\s*\d*\s*\d*\s*\d+.\s*\/var\/vcap\/store/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f  / (1024.0 * 1024.0)},
+              :graph => true
+            }
+        },
+        "syslog_aggregator" => {
+            "persistent_disk" => {
+              :mu => 'GB',
+              :max => lambda{ |data|  /\d*\s*\d*\s*\d*\s*\d+.\s*\/var\/vcap\/store/.match(data['disk_usage'])[0].split(/\s+/)[0].to_f  / (1024.0 * 1024.0)},
+              :value => lambda{ |data|  /\d*\s*\d*\s*\d*\s*\d+.\s*\/var\/vcap\/store/.match(data['disk_usage'])[0].split(/\s+/)[1].to_f  / (1024.0 * 1024.0)},
+              :graph => true
+            }
+        },
         "dea" => {
             "droplets_on_disk" =>
                 {
@@ -325,6 +349,12 @@ $states = {
                 :value => lambda{ |data|  ((data['disk_usage_c']).scan(/of bytes\D+\d+/)[0].split(/\s+/)[3].gsub(/\D/, '').to_f - (data['disk_usage_c']).scan(/avail free bytes\D+\d+/)[0].split(/\s+/)[4].gsub(/\D/, '').to_f) / (1024 * 1024 * 1024) },
                 :graph => true
             },
+            "ephemeral_disk" => {
+                :mu => 'GB',
+                :max => lambda{ |data|  (data['disk_usage_data']).scan(/of bytes\D+\d+/)[0].split(/\s+/)[3].gsub(/\D/, '').to_f / (1024 * 1024 * 1024) },
+                :value => lambda{ |data|  ((data['disk_usage_data']).scan(/of bytes\D+\d+/)[0].split(/\s+/)[3].gsub(/\D/, '').to_f - (data['disk_usage_data']).scan(/avail free bytes\D+\d+/)[0].split(/\s+/)[4].gsub(/\D/, '').to_f) / (1024 * 1024 * 1024) },
+                :graph => true
+            },
             "license_info" => {
                 :mu => 'state',
                 :accepted_values => ["Licensed"],
@@ -357,7 +387,7 @@ $states = {
             },
             "dea_provisionable_memory" => {
                 :mu => 'GB',
-                :max => lambda{ |data|  data['config'].scan(/maxMemory="\d*"/)[0].split('"')[1].to_f / 1024.0 },
+                :max => lambda{ |data|  data['config'].scan(/maxMemoryMB="\d*"/)[0].split('"')[1].to_f / 1024.0 },
                 :value => lambda{ |data|  data['dropletdata'].scan(/"mem_quota":\s*\d*/).map {|x| x.split(':')[1].to_i }.inject(0){|sum, x| sum += x}.to_f / (1024.0 * 1024.0 * 1024.0) },
                 :graph => true
             },
@@ -392,7 +422,7 @@ $states = {
             },
             "dea_provisionable_memory" => {
                 :mu => 'GB',
-                :max => lambda{ |data|  data['config'].scan(/maxMemory="\d*"/)[0].split('"')[1].to_f / 1024.0 },
+                :max => lambda{ |data|  data['config'].scan(/maxMemoryMB="\d*"/)[0].split('"')[1].to_f / 1024.0 },
                 :value => lambda{ |data|  data['dropletdata'].scan(/"mem_quota":\s*\d*/).map {|x| x.split(':')[1].to_i }.inject(0){|sum, x| sum += x}.to_f / (1024.0 * 1024.0 * 1024.0) },
                 :graph => true
             },
@@ -416,7 +446,7 @@ $states = {
             },
             "services_disk_size" => {
                 :mu => 'MB',
-                :max => lambda{ |data|  (data['disk_usage_c']).scan(/of bytes\D+\d+/)[0].split(/\s+/)[3].gsub(/\D/, '').to_f / (1024 * 1024) - 20480.0 },
+                :max => lambda{ |data|  (data['disk_usage_store']).scan(/of bytes\D+\d+/)[0].split(/\s+/)[3].gsub(/\D/, '').to_f / (1024 * 1024) },
                 :value => lambda{ |data|  data['databasesondrive'].scan(/\d*,?\d*,?\d*\sD4Ta/).map {|x| x.split(/\s+/)[0].gsub(/\D/,'').to_i}.inject{|sum, x| sum += x }.to_f / (1024.0 * 1024.0) },
                 :graph => true
             },
@@ -454,6 +484,12 @@ $states = {
             "iis_apps" => {
                 :mu => '',
                 :value => lambda{ |data|  data['iiswebsitecount'].scan(/APP\s+/).size },
+                :graph => true
+            },
+            "services_disk_size" => {
+                :mu => 'MB',
+                :max => lambda{ |data|  (data['disk_usage_store']).scan(/of bytes\D+\d+/)[0].split(/\s+/)[3].gsub(/\D/, '').to_f / (1024 * 1024 * 1024) },
+                :value => lambda{ |data|  ((data['disk_usage_store']).scan(/of bytes\D+\d+/)[0].split(/\s+/)[3].gsub(/\D/, '').to_f - (data['disk_usage_store']).scan(/avail free bytes\D+\d+/)[0].split(/\s+/)[4].gsub(/\D/, '').to_f) / (1024 * 1024 * 1024) },
                 :graph => true
             }
         }

@@ -167,6 +167,30 @@ members         <%= @hosts.select {|host| ['uhuru_tunnel'].include? host[:compon
 }
 <% end %>
 
+<%if @hosts.select {|host| ['syslog_aggregator'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+hostgroup_name  syslog_aggregator
+alias           Syslog Aggregator
+members         <%= @hosts.select {|host| ['syslog_aggregator'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['ccdb'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+hostgroup_name  ccdb
+alias           Cloud Controller Database
+members         <%= @hosts.select {|host| ['ccdb'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['debian_nfs_server'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+hostgroup_name  debian_nfs_server
+alias           NFS Server
+members         <%= @hosts.select {|host| ['debian_nfs_server'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
 <%if @hosts.select {|host| !['dea', 'cloud_controller', 'mysql_node', 'postgresql_node', 'mongodb_node', 'redis_node', 'rabbit_node', 'routers', 'win_dea', 'mssql_node', 'uhurufs_node'].include? host[:component]  }.size > 0 %>
 define hostgroup{
     hostgroup_name  cloudfoundry_internals

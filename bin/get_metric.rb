@@ -17,113 +17,124 @@ datafile =     File.expand_path(File.join($config['data_dir'],"#{ip}.yml"), __FI
 
 begin
   if metric == 'status'
-
+    tempdatafile = "#{datafile}.tmp"
+    require "fileutils"
     require 'bundler/setup'
-
     require 'net/ssh'
 
-    if os == 'windows'
-      if $config['legacy']['enabled'] == true
-        if $config['legacy']['machines'].any? {|machine| machine["address"].include? ip}
-          winexebin = File.expand_path('../../bin/winexe', __FILE__)
+    begin
+      if os == 'windows'
+        if $config['legacy']['enabled'] == true
+          if $config['legacy']['machines'].any? {|machine| machine["address"].include? ip}
+            winexebin = File.expand_path('../../bin/winexe', __FILE__)
 
-          filemode = ARGV[5] == '--onscreen' ? "r" : "w"
+            filemode = ARGV[5] == '--onscreen' ? "r" : "w"
 
-          File.open(File.expand_path(datafile, __FILE__), filemode) do |file|
+            File.open(File.expand_path(tempdatafile, __FILE__), filemode) do |file|
 
-            ['base', job].each { |group|
-              unless $config[os][group] == nil
-                $config[os][group].each { |script_name, script|
-                  value = `#{winexebin} -U #{$config['legacy']['user']} --password="#{$config['legacy']['password']}" //#{ip} 'cmd /C #{script}'`
-                  file.write "#{script_name}: |\n  ---\n"
-                  if !value.nil?
-                    value.lines.each {|line| file.write "  #{line}"}
+              ['base', job].each { |group|
+                unless $config[os][group] == nil
+                  $config[os][group].each { |script_name, script|
+                    value = `#{winexebin} -U #{$config['legacy']['user']} --password="#{$config['legacy']['password']}" //#{ip} 'cmd /C #{script}'`
+                    file.write "#{script_name}: |\n  ---\n"
+                    if !value.nil?
+                      value.lines.each {|line| file.write "  #{line}"}
+                    end
+                    file.write "\n"
+                  }
+                end
+              }
+            end
+          end
+        else
+          require "ssh_helper"
+          require 'bosh_helper'
+
+          user, password = Uhuru::BOSHHelper.setup_ssh_user(deployment, job, index, ip)
+
+          begin
+            regex = /_{5}KEY:(.+)_{5}/
+            filemode = ARGV[5] == '--onscreen' ? "r" : "w"
+
+            File.open(File.expand_path(tempdatafile, __FILE__), filemode) do |file|
+
+              ['base', job].each { |group|
+                unless $config[os][group] == nil
+                  win_output = Uhuru::SSHHelper.execute(ip, "bosh_#{user}", password, $config[os][group])
+                  values = win_output.scan(regex)
+                  values.each_with_index do |key, index|
+                    next_element = values[index+1]
+                    if next_element.nil?
+                      value = win_output.scan(/_{5}KEY:#{key[0]}_{5}(.*?)\z/m).flatten[0]
+                    else
+                      value = win_output.scan(/_{5}KEY:#{key[0]}_{5}(.*?)_{5}KEY:#{next_element[0]}_{5}/m).flatten[0]
+                    end
+                    file.write "#{key[0]}: |\n  ---\n"
+                    if !value.nil?
+                      value.lines.each {|line| file.write "  #{line}"}
+                    end
+                    file.write "\n"
                   end
-                  file.write "\n"
-                }
-              end
-            }
+                end
+              }
+            end
+
+          rescue Exception => e
+            Uhuru::BOSHHelper.delete_user(user, deployment, job, index, ip)
+            raise "SSH Connection Failed\n#{e.message}:#{e.backtrace}"
           end
         end
-      else
-        require "ssh_helper"
-        require 'bosh_helper'
 
+      else
+        require 'bosh_helper'
         user, password = Uhuru::BOSHHelper.setup_ssh_user(deployment, job, index, ip)
 
         begin
-          regex = /_{5}KEY:(.+)_{5}/
           filemode = ARGV[5] == '--onscreen' ? "r" : "w"
 
-          File.open(File.expand_path(datafile, __FILE__), filemode) do |file|
+          File.open(File.expand_path(tempdatafile, __FILE__), filemode) do |file|
+            Net::SSH.start(ip, "bosh_#{user}", :password => password, :keys => [File.expand_path("../../config/sshkey", __FILE__)] ) do |ssh|
 
-            ['base', job].each { |group|
-              unless $config[os][group] == nil
-                win_output = Uhuru::SSHHelper.execute(ip, "bosh_#{user}", password, $config[os][group])
-                values = win_output.scan(regex)
-                values.each_with_index do |key, index|
-                  next_element = values[index+1]
-                  if next_element.nil?
-                    value = win_output.scan(/_{5}KEY:#{key[0]}_{5}(.*?)\z/m).flatten[0]
-                  else
-                    value = win_output.scan(/_{5}KEY:#{key[0]}_{5}(.*?)_{5}KEY:#{next_element[0]}_{5}/m).flatten[0]
-                  end
-                  file.write "#{key[0]}: |\n  ---\n"
-                  if !value.nil?
-                    value.lines.each {|line| file.write "  #{line}"}
-                  end
-                  file.write "\n"
+              ['base', job].each { |group|
+                value = ssh.exec!("echo #{password} | sudo -S ps")
+                unless $config[os][group] == nil
+                  $config[os][group].each { |script_name, script|
+                    value = ssh.exec!("sudo bash -c \'#{script}\'")
+                    if ARGV[5] == '--onscreen'
+                      puts "#{script_name}: |\n  ---\n"
+                      if !value.nil?
+                        value.lines.each {|line| puts "  #{line}"}
+                      end
+                      $stdout.flush
+                    else
+                      file.write "#{script_name}: |\n  ---\n"
+                      if !value.nil?
+                        value.lines.each {|line| file.write "  #{line}"}
+                      end
+                      file.write "\n"
+                    end
+                  }
                 end
-              end
-            }
+              }
+            end
           end
+
         rescue Exception => e
           Uhuru::BOSHHelper.delete_user(user, deployment, job, index, ip)
           raise "SSH Connection Failed\n#{e.message}:#{e.backtrace}"
         end
       end
 
-    else
-      require 'bosh_helper'
-      user, password = Uhuru::BOSHHelper.setup_ssh_user(deployment, job, index, ip)
-
-      begin
-        filemode = ARGV[5] == '--onscreen' ? "r" : "w"
-
-        File.open(File.expand_path(datafile, __FILE__), filemode) do |file|
-          Net::SSH.start(ip, "bosh_#{user}", :password => password, :keys => [File.expand_path("../../config/sshkey", __FILE__)] ) do |ssh|
-
-            ['base', job].each { |group|
-              value = ssh.exec!("echo #{password} | sudo -S ps")
-              unless $config[os][group] == nil
-                $config[os][group].each { |script_name, script|
-                  value = ssh.exec!("sudo bash -c \'#{script}\'")
-                  if ARGV[5] == '--onscreen'
-                    puts "#{script_name}: |\n  ---\n"
-                    if !value.nil?
-                      value.lines.each {|line| puts "  #{line}"}
-                    end
-                    $stdout.flush
-                  else
-                    file.write "#{script_name}: |\n  ---\n"
-                    if !value.nil?
-                      value.lines.each {|line| file.write "  #{line}"}
-                    end
-                    file.write "\n"
-                  end
-                }
-              end
-            }
-          end
-        end
-
-      rescue Exception => e
-        Uhuru::BOSHHelper.delete_user(user, deployment, job, index, ip)
-        raise "SSH Connection Failed\n#{e.message}:#{e.backtrace}"
+      output = "[#{ip}] Status is OK"
+      exitcode = 0
+    rescue
+      raise
+    ensure
+      if File.exist?(tempdatafile)
+        FileUtils.mv tempdatafile, datafile, :force => true
       end
     end
-    output = "[#{ip}] Status is OK"
-    exitcode = 0
+
   else
     if File.exist?(datafile)
       component = service_component
