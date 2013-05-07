@@ -113,7 +113,10 @@ end
 
 FileUtils.cp(File.expand_path("../../config/uhuru-hosts.cfg", __FILE__), File.expand_path("../../config/uhuru-hosts.cfg.old", __FILE__))
 
-if (@hosts - old_hosts != []) or (old_hosts - @hosts != []) or (old_services - @services != []) or (@services - old_services != [])
+require "yaml"
+old_config = YAML::load_file File.expand_path("../../config/uhuru-hosts.cfg.old", __FILE__)
+
+if (@hosts - old_hosts != []) or (old_hosts - @hosts != []) or (old_services - @services != []) or (@services - old_services != []) or (old_config['alerts']['notification_interval'] != $config['alerts']['notification_interval'])
   template = ERB.new File.open(File.expand_path("../../config/uhuru-hosts.cfg.erb", __FILE__)).read
 
   File.open(File.expand_path("../../config/uhuru-hosts.cfg", __FILE__), "w") do |file|
