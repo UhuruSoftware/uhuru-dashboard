@@ -487,7 +487,7 @@ $states = {
                 :graph => true
             },
             "services_disk_size" => {
-                :mu => 'MB',
+                :mu => 'GB',
                 :max => lambda{ |data|  (data['disk_usage_store']).scan(/of bytes\D+\d+/)[0].split(/\s+/)[3].gsub(/\D/, '').to_f / (1024 * 1024 * 1024) },
                 :value => lambda{ |data|  ((data['disk_usage_store']).scan(/of bytes\D+\d+/)[0].split(/\s+/)[3].gsub(/\D/, '').to_f - (data['disk_usage_store']).scan(/avail free bytes\D+\d+/)[0].split(/\s+/)[4].gsub(/\D/, '').to_f) / (1024 * 1024 * 1024) },
                 :graph => true
