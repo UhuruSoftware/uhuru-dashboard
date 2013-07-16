@@ -33,9 +33,11 @@ module Uhuru
       req.body = payload.to_json
       req.add_field("Content-Type", "application/json")
 
-      res = Net::HTTP.start(uri.host, uri.port) {|http|
-        http.request(req)
-      }
+      http = Net::HTTP.new($config['director']['address'], $config['director']['port'])
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+      res = http.request(req)
 
       case res
         when Net::HTTPSuccess then res.body
@@ -43,9 +45,12 @@ module Uhuru
           uri = URI(res['location'])
           req = Net::HTTP::Get.new(uri.request_uri)
           req.basic_auth $config['director']['user'], $config['director']['password']
-          res = Net::HTTP.start(uri.host, uri.port) {|http|
-            http.request(req)
-          }
+
+          http = Net::HTTP.new($config['director']['address'], $config['director']['port'])
+          http.use_ssl = true
+          http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+          res = http.request(req)
       end
 
       response = JSON.parse(res.body)
@@ -81,9 +86,11 @@ module Uhuru
       req.body = payload.to_json
       req.add_field("Content-Type", "application/json")
 
-      res = Net::HTTP.start(uri.host, uri.port) {|http|
-        http.request(req)
-      }
+      http = Net::HTTP.new($config['director']['address'], $config['director']['port'])
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+      res = http.request(req)
 
       case res
         when Net::HTTPSuccess then res.body
@@ -91,9 +98,12 @@ module Uhuru
           uri = URI(res['location'])
           req = Net::HTTP::Get.new(uri.request_uri)
           req.basic_auth $config['director']['user'], $config['director']['password']
-          res = Net::HTTP.start(uri.host, uri.port) {|http|
-            http.request(req)
-          }
+
+          http = Net::HTTP.new($config['director']['address'], $config['director']['port'])
+          http.use_ssl = true
+          http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+          res = http.request(req)
       end
 
       response = JSON.parse(res.body)
@@ -160,9 +170,11 @@ module Uhuru
       req = Net::HTTP::Get.new(uri.request_uri)
       req.basic_auth $config['director']['user'], $config['director']['password']
 
-      res = Net::HTTP.start(uri.host, uri.port) {|http|
-        http.request(req)
-      }
+      http = Net::HTTP.new($config['director']['address'], $config['director']['port'])
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+      res = http.request(req)
 
       case res
         when Net::HTTPSuccess then res.body
@@ -170,11 +182,13 @@ module Uhuru
           uri = URI(res['location'])
           req = Net::HTTP::Get.new(uri.request_uri)
           req.basic_auth $config['director']['user'], $config['director']['password']
-          res = Net::HTTP.start(uri.host, uri.port) {|http|
-            http.request(req)
-          }
-          res.body
 
+          http = Net::HTTP.new($config['director']['address'], $config['director']['port'])
+          http.use_ssl = true
+          http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+          res = http.request(req)
+          res.body
       end
     end
 

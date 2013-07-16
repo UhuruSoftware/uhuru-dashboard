@@ -232,7 +232,7 @@ begin
   end
 rescue Exception => e
   output = "#{e.message} \n #{e.backtrace} \n #{ ARGV.join(', ') }"
-  exitcode = 2
+  exitcode = 3
 end
 
 puts output
