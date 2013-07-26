@@ -235,7 +235,7 @@ define service{
 
 define command{
     command_name            check_host
-    command_line            <%= @check_host_path %> $HOSTADDRESS$
+    command_line            <%= @check_host_path %> $HOSTADDRESS$ <%= $config['listen_address'] %>
 }
 
 define command{

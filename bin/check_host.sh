@@ -1,5 +1,6 @@
 #!/bin/bash
-eth=`ifconfig | grep eth | awk '{print $1}'`
+listen_address=$2
+for nic in `ifconfig|grep -v ^\ |grep -v ^$|cut -f 1 -d \ `;do [ ! -z "`ifconfig $nic|grep -w ${listen_address}`" ] && eth=$nic;done
 result=`arping -I ${eth} -w 5 -f -c 1 $1 | grep Received`
 ok=`echo $result | cut -d \  -f 2`
 if [ "$ok" == "1" ]; then
