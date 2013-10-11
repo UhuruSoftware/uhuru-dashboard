@@ -34,7 +34,7 @@ end
     host[:component] = vm['job_name']
     host[:index] = vm['index']
     host[:agent_id] = vm['agent_id']
-    host[:os] = ['mssql_node', 'win_dea', 'uhurufs_node', 'uhuru_tunnel'].include?(host[:component]) ? "windows" : "linux"
+    host[:os] = ['mssql_node', 'mssql_node_free', 'win_dea', 'uhurufs_node', 'uhuru_tunnel'].include?(host[:component]) ? "windows" : "linux"
     if host[:address] != nil && host[:address].size > 0
       @hosts << host
     end

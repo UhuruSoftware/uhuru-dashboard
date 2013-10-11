@@ -79,6 +79,22 @@ define hostgroup{
 }
 <% end %>
 
+<%if @hosts.select {|host| ['uhuru_webui'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  uhuru_webui
+    alias           Linux DEAs
+    members         <%= @hosts.select {|host| ['uhuru_webui'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['dea_next'].include? host[:component]  }.size > 0 %>
+    define hostgroup{
+    hostgroup_name  dea_next
+    alias           Linux DEAs
+    members         <%= @hosts.select {|host| ['dea_next'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+    }
+<% end %>
+
 <%if @hosts.select {|host| ['cloud_controller'].include? host[:component]  }.size > 0 %>
 define hostgroup{
     hostgroup_name  cloud_controller
@@ -87,11 +103,27 @@ define hostgroup{
 }
 <% end %>
 
+<%if @hosts.select {|host| ['cloud_controller_ng'].include? host[:component]  }.size > 0 %>
+    define hostgroup{
+    hostgroup_name  cloud_controller_ng
+    alias           NG Cloud Controllers
+    members         <%= @hosts.select {|host| ['cloud_controller_ng'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+    }
+<% end %>
+
 <%if @hosts.select {|host| ['mysql_node'].include? host[:component]  }.size > 0 %>
 define hostgroup{
     hostgroup_name  mysql_node
     alias           MySQL Nodes
     members         <%= @hosts.select {|host| ['mysql_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['mysql_node_free'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  mysql_node_free
+    alias           Free MySQL Nodes
+    members         <%= @hosts.select {|host| ['mysql_node_free'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
 }
 <% end %>
 
@@ -103,11 +135,27 @@ define hostgroup{
 }
 <% end %>
 
+<%if @hosts.select {|host| ['postgresql_service_node_free'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  postgresql_service_node_free
+    alias           Free PostgreSQL Nodes
+    members         <%= @hosts.select {|host| ['postgresql_service_node_free'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
 <%if @hosts.select {|host| ['mongodb_node'].include? host[:component]  }.size > 0 %>
 define hostgroup{
     hostgroup_name  mongodb_node
     alias           MongoDB Nodes
     members         <%= @hosts.select {|host| ['mongodb_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['mongodb_service_node_free'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  mongodb_service_node_free
+    alias           Free MongoDB Nodes
+    members         <%= @hosts.select {|host| ['mongodb_service_node_free'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
 }
 <% end %>
 
@@ -119,11 +167,27 @@ define hostgroup{
 }
 <% end %>
 
+<%if @hosts.select {|host| ['redis_service_node_free'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  redis_service_node_free
+    alias           Redis Nodes
+    members         <%= @hosts.select {|host| ['redis_service_node_free'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
 <%if @hosts.select {|host| ['rabbit_node'].include? host[:component]  }.size > 0 %>
 define hostgroup{
     hostgroup_name  rabbit_node
     alias           RabbitMQ Nodes
     members         <%= @hosts.select {|host| ['rabbit_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['rabbit_service_node_free'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  rabbit_service_node_free
+    alias           RabbitMQ Nodes
+    members         <%= @hosts.select {|host| ['rabbit_service_node_free'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
 }
 <% end %>
 
@@ -148,6 +212,14 @@ define hostgroup{
     hostgroup_name  mssql_node
     alias           MS SQL Nodes
     members         <%= @hosts.select {|host| ['mssql_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['mssql_node_free'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  mssql_node_free
+    alias           MS SQL Nodes
+    members         <%= @hosts.select {|host| ['mssql_node_free'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
 }
 <% end %>
 
@@ -183,6 +255,14 @@ members         <%= @hosts.select {|host| ['ccdb'].include? host[:component]  }.
 }
 <% end %>
 
+<%if @hosts.select {|host| ['vcap_postgres'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+hostgroup_name  vcap_postgres
+alias           VCAP Postgres
+members         <%= @hosts.select {|host| ['vcap_postgres'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
 <%if @hosts.select {|host| ['debian_nfs_server'].include? host[:component]  }.size > 0 %>
 define hostgroup{
 hostgroup_name  debian_nfs_server
@@ -191,11 +271,11 @@ members         <%= @hosts.select {|host| ['debian_nfs_server'].include? host[:c
 }
 <% end %>
 
-<%if @hosts.select {|host| !['dea', 'cloud_controller', 'mysql_node', 'postgresql_node', 'mongodb_node', 'redis_node', 'rabbit_node', 'routers', 'win_dea', 'mssql_node', 'uhurufs_node'].include? host[:component]  }.size > 0 %>
+<%if @hosts.select {|host| !['dea', 'dea_next', 'cloud_controller', 'cloud_controller_ng', 'mysql_node', 'mysql_node_free', 'postgresql_node', 'postgresql_service_node_free', 'mongodb_node', 'mongodb_service_node_free' 'redis_node', 'redis_service_node_free', 'rabbit_node', 'rabbit_service_node_free', 'routers', 'win_dea', 'mssql_node', 'mssql_node_free', 'uhuru_webui', 'uhurufs_node'].include? host[:component]  }.size > 0 %>
 define hostgroup{
     hostgroup_name  cloudfoundry_internals
     alias           CloudFoundry Core
-    members         <%= @hosts.select {|host| !['dea', 'cloud_controller', 'mysql_node', 'postgresql_node', 'mongodb_node', 'redis_node', 'rabbit_node', 'routers', 'win_dea', 'mssql_node', 'uhurufs_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+    members         <%= @hosts.select {|host| !['dea', 'dea_next', 'cloud_controller', 'cloud_controller_ng', 'mysql_node', 'mysql_node_free', 'postgresql_node', 'postgresql_service_node_free', 'mongodb_node', 'mongodb_service_node_free' 'redis_node', 'redis_service_node_free', 'rabbit_node', 'rabbit_service_node_free', 'routers', 'win_dea', 'mssql_node', 'mssql_node_free', 'uhuru_webui', 'uhurufs_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
 }
 <% end %>
 
