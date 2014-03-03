@@ -1,85 +1,183 @@
+
+nats: nats://nats:nats@10.0.5.114:4222/
+bosh_db:
+  user: bosh
+  password: bosh
+  address:  10.0.5.112
+  port: 5432
+  database: bosh
+
+director:
+  address: 10.0.5.110
+  port: 25555
+  user: nagiosuser
+  password: nagiospassword
+  create_user: false
+
+default_warn_level: 80
+default_critical_level: 90
+data_dir: D:\\tmp
+ssh_reset_interval_min: 100
+listen_address: 127.0.0.1
+
+alerts:
+  email_to: email
+  notification_interval: 0
+
+
+email:
+  from: "sender@domain.com"
+  from_alias: "Nagios"
+  server: "smtp.domain.com"
+  port: 587
+  user: "sender@domain.com"
+  secret: "password"
+  auth_method: :login
+  enable_tls: true
+
+legacy:
+  enabled: false
+  user: administrator
+  password: password
+  machines:
+    - machine:
+      deployment: cloud-foundry
+      component: windea
+      index: 0
+      address: 10.0.5.81
+      name: cloud-foundry_windea_0
+      alias: Cloud Foundry Windea 0
+      os: windows  
+  
+windows:
+  base:
+    cpu_time: 'typeperf -sc 1 "\processor(_total)\% processor time"'
+    system_info: 'systeminfo'
+    disk_usage_c: 'fsutil volume diskfree c:'
+    disk_usage_data: 'fsutil volume diskfree c:\vcap\data'
+    license_info: 'cscript c:\windows\system32\slmgr.vbs -dli'
+  win_dea:
+    dropletcountfolder: 'dir C:\vcap\data\win_dea\apps'
+    workerprocesses: 'tasklist'
+    deaprocessmemory: 'typeperf -sc 1 "\process(dea)\working set - private"'
+    iiswebsitecount: '%systemroot%\system32\inetsrv\appcmd list app'
+    config: 'type "C:\vcap\packages\win_dea\DEA.config"'
+    dropletdata: 'type "C:\vcap\data\win_dea\db\applications.json"'
+  mssql_node:
+    databasesondrive: 'dir C:\vcap\store\mssql\data'
+    sqlservermemory: 'typeperf -sc 1 "\process(sqlservr)\working set - private"'
+    nodeprocessmemory: 'typeperf -sc 1 "\process(mssqlnode)\working set - private"'
+    config: 'type "C:\vcap\packages\mssql_node\uhuru.config"'
+    servicedb: 'type "C:\vcap\store\mssql_node.xml"'
+    disk_usage_store: 'fsutil volume diskfree c:\vcap\store'
+  mssql_node_free:
+    databasesondrive: 'dir C:\vcap\store\mssql\data'
+    sqlservermemory: 'typeperf -sc 1 "\process(sqlservr)\working set - private"'
+    nodeprocessmemory: 'typeperf -sc 1 "\process(mssqlnode)\working set - private"'
+    config: 'type "C:\vcap\packages\mssql_node\uhuru.config"'
+    servicedb: 'type "C:\vcap\store\mssql_node.xml"'
+    disk_usage_store: 'fsutil volume diskfree c:\vcap\store'
+  uhurufs_node:
+    datafolders: 'dir C:\vcap\store\uhurufs'
+    iiswebsitecount: '%systemroot%\system32\inetsrv\appcmd list app'
+    config: 'type "C:\vcap\packages\uhurufs_node\uhuru.config"'
+    nodeprocessmemory: 'typeperf -sc 1 "\process(fileservicenode)\working set - private"'
+    servicedb: 'type "C:\vcap\store\uhurufs_node.xml"'
+    disk_usage_store: 'fsutil volume diskfree c:\vcap\store'
+  uhuru_tunnel:
+    dropletcountfolder: 'dir C:\vcap\data\win_dea\apps'
+    workerprocesses: 'tasklist'
+    deaprocessmemory: 'typeperf -sc 1 "\process(dea)\working set - private"'
+    iiswebsitecount: '%systemroot%\system32\inetsrv\appcmd list app'
+    config: 'type "C:\vcap\packages\win_dea\DEA.config"'
+    dropletdata: 'type "C:\vcap\data\win_dea\db\applications.json"'
+
 linux:
   base:
-    CPU_TIME: top -b -n 1 |grep ^Cpu
-    SYSTEM_INFO: free -m
-    DISK_USAGE: df -h
+    cpu_time: top -b -n 2 |grep ^Cpu
+    system_info: free -m
+    disk_usage: df
   dea:
-    CHECK: if [ -d /var/vcap/jobs/dea ]; then echo Linux DEA ; fi
-    DROPLETCOUNTFOLDER: ls -la /var/vcap/data/dea/apps/
-    WORKERPROCESSESIISCOUNT: ps aux | grep dea/apps
-    WORKERPROCESSESMEMORY: ps aux | grep dea/apps
-    DEAPROCESSMEMORY: ps aux | grep jobs/dea
-    CONFIG: cat /var/vcap/jobs/dea/config/dea.yml
-    DROPLETDATA: cat /var/vcap/data/dea/db/applications.json
+    dropletcountfolder: ls -la /var/vcap/data/dea/apps/
+    workerprocesses: ps aux | grep dea/apps
+    deaprocessmemory: ps aux | grep jobs/dea
+    config: cat /var/vcap/jobs/dea/config/dea.yml
+    dropletdata: cat /var/vcap/data/dea/db/applications.json
+    corrupt_uhurufs_bindings: mount|grep -w bind|cut -f 3 -d \ |while read i;do ls $i 1>/dev/null 2>&1 || echo error ;done|wc -l
+  dea_next:
+    dropletcountfolder: ls -la /var/vcap/data/warden/depot/
+    workerprocesses: ps aux | grep /warden/depot/
+    deaprocessmemory: ps aux | grep jobs/dea
+    config: cat /var/vcap/jobs/dea_next/config/dea.yml
+    dropletdata: cat /var/vcap/data/dea_next/db/instances.json
+    corrupt_uhurufs_bindings: mount|grep -w bind|cut -f 3 -d \ |while read i;do ls $i 1>/dev/null 2>&1 || echo error ;done|wc -l
   mysql_node:
-    CHECK: if [ -d /var/vcap/jobs/mysql_node ]; then echo MySQL Node ; fi
-    DATABASESONDRIVE: ls /var/vcap/store/mysql/ -la
-    SERVERMEMORY: ps aux | grep libexec/mysqld
-    NODEPROCESSMEMORY: ps aux | grep bin/mysql_node
-    CONFIG: cat /var/vcap/jobs/mysql_node/config/mysql_node.yml
-    SERVICEDB: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/mysql_node.db "select name,plan,quota_exceeded from vcap_services_mysql_node_provisioned_services"
+    databasesondrive: ls /var/vcap/store/mysql/ -la
+    servermemory: ps aux | grep libexec/mysqld
+    nodeprocessmemory: ps aux | grep bin/mysql_node
+    servicesdisksize: du -s /var/vcap/store/mysql/
+    config: cat /var/vcap/jobs/mysql_node/config/mysql_node.yml
+    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/mysql_node.db "select name,plan,quota_exceeded from vcap_services_mysql_node_provisioned_services" ; echo done
+  mysql_node_free:
+    databasesondrive: ls /var/vcap/store/mysql*/ -la
+    servermemory: ps aux | grep libexec/mysqld
+    nodeprocessmemory: ps aux | grep bin/mysql_node
+    servicesdisksize: du -s /var/vcap/store/mysql/
+    config: cat /var/vcap/jobs/mysql_node/config/mysql_node.yml
+    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/mysql_node.db "select name,plan,quota_exceeded from vcap_services_mysql_node_provisioned_services" ; echo done
   postgresql_node:
-    CHECK: if [ -d /var/vcap/jobs/postgresql_node ]; then echo PostgreSQL Node ; fi
-    DATABASESONDRIVE: ls -la /var/vcap/store/postgresql/base/
-    SERVERMEMORY: ps aux | grep 'postgres:\|5.1/bin/postgres'
-    NODEPROCESSMEMORY: ps aux | grep bin/postgresql_node
-    CONFIG: cat /var/vcap/jobs/postgresql_node/config/postgresql_node.yml
-    SERVICEDB: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/postgresql_node.db "select name,plan,quota_exceeded from vcap_services_postgresql_node_provisionedservices"
+    databasesondrive: ls -la /var/vcap/store/postgresql/base/
+    servermemory: ps aux | grep '/bin/postgres'
+    nodeprocessmemory: ps aux | grep bin/postgresql_node
+    servicesdisksize: du -s /var/vcap/store/postgresql/
+    config: cat /var/vcap/jobs/postgresql_node/config/postgresql_node.yml
+    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/postgresql_node.db "select name,plan,quota_exceeded from vcap_services_postgresql_node_provisionedservices" ; echo done
+  postgresql_service_node_free:
+    databasesondrive: ls -la /var/vcap/store/postgresql*/base/
+    servermemory: ps aux | grep '/bin/postgres'
+    nodeprocessmemory: ps aux | grep bin/postgresql_node
+    servicesdisksize: du -s /var/vcap/store/postgresql/
+    config: cat /var/vcap/jobs/postgresql_node_ng/config/postgresql_node.yml
+    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/postgresql_node.db "select name,plan,quota_exceeded from vcap_services_postgresql_node_provisionedservices" ; echo done
   mongodb_node:
-    CHECK: if [ -d /var/vcap/jobs/mongodb_node ]; then echo MongoDB Node ; fi
-    DATABASESONDRIVE: ls -la /var/vcap/store/mongodb/
-    SERVERMEMORY: ps aux | grep "bin/mongod -f"
-    NODEPROCESSMEMORY: ps aux | grep "mongodb_node"
-    CONFIG: cat /var/vcap/jobs/mongodb_node/config/mongodb_node.yml
-    SERVICEDB: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/mongodb_node.db "select name,plan,quota_exceeded from vcap_services_mongodb_node_provisioned_services"
+    databasesondrive: ls -la /var/vcap/store/mongodb/
+    servermemory: ps aux | grep 'bin/mongod'
+    nodeprocessmemory: ps aux | grep 'mongodb_node'
+    config: cat /var/vcap/jobs/mongodb_node/config/mongodb_node.yml
+    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/mongodb_node.db "select name,plan from vcap_services_mongo_db_node_provisioned_services" ; echo done
+    servicesdisksize: du -s /var/vcap/store/mongodb/
+  mongodb_service_node_free:
+    databasesondrive: ls -la /var/vcap/store/mongodb/
+    servermemory: ps aux | grep 'bin/mongod'
+    nodeprocessmemory: ps aux | grep 'mongodb_node'
+    config: cat /var/vcap/jobs/mongodb_node_ng/config/mongodb_node.yml
+    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/mongodb_node.db "select name,plan from vcap_services_mongo_db_node_provisioned_services" ; echo done
+    servicesdisksize: du -s /var/vcap/store/mongodb/
   redis_node:
-    CHECK: if [ -d /var/vcap/jobs/redis_node ]; then echo Redis Node ; fi
-    DATABASESONDRIVE: ls -la /var/vcap/store/redis/instances/
-    SERVERMEMORY: ps aux | grep redis-server
-    NODEPROCESSMEMORY: ps aux | grep redis_node
-    CONFIG: cat /var/vcap/jobs/redis_node/config/redis_node.yml
-    SERVICEDB: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/redis_node.db "select name,plan,quota_exceeded from vcap_services_redis_node_provisioned_services"
+    databasesondrive: ls -la /var/vcap/store/redis/instances/
+    servermemory: ps aux | grep redis-server
+    nodeprocessmemory: ps aux | grep redis_node
+    config: cat /var/vcap/jobs/redis_node/config/redis_node.yml
+    servicesdisksize: du -s /var/vcap/store/redis/instances/
+    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/redis/redis_node.db "select name,plan from vcap_services_redis_node_provisioned_services" ; echo done
+  redis_service_node_free:
+    databasesondrive: ls -la /var/vcap/store/redis/instances/
+    servermemory: ps aux | grep redis-server
+    nodeprocessmemory: ps aux | grep redis_node
+    config: cat /var/vcap/jobs/redis_node_ng/config/redis_node.yml
+    servicesdisksize: du -s /var/vcap/store/redis/instances/
+    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/redis/redis_node.db "select name,plan from vcap_services_redis_node_provisioned_services" ; echo done
   rabbit_node:
-    CHECK: if [ -d /var/vcap/jobs/rabbit_node ]; then echo RabbitMQ Node ; fi
-    DATABASESONDRIVE: ls -la /var/vcap/store/rabbit/instances/
-    SERVERMEMORY: ps aux | grep /var/vcap/store/rabbit/instances/
-    NODEPROCESSMEMORY: ps aux | grep rabbit_node
-    CONFIG: cat /var/vcap/jobs/rabbit_node/config/rabbit_node.yml
-    SERVICEDB: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/rabbit_node.db "select name,plan,quota_exceeded from vcap_services_rabbit_node_provisioned_services"
-  cloud_controller:
-    CHECK: if [ -d /var/vcap/jobs/cloud_controller ]; then echo Cloud Controller ; fi
-  stager:
-    CHECK: if [ -d /var/vcap/jobs/stager ]; then echo Stager ; fi
-  ccdb_postgres:
-    CHECK: if [ -d /var/vcap/jobs/ccdb_postgres ]; then echo Cloud Controller Database ; fi
-  collector:
-    CHECK: if [ -d /var/vcap/jobs/collector ]; then echo Collector ; fi
-  dashboard:
-    CHECK: if [ -d /var/vcap/jobs/dashboard ]; then echo Dashboard ; fi
-  debian_nfs_server:
-    CHECK: if [ -d /var/vcap/jobs/debian_nfs_server ]; then echo Network File System ; fi
-  opentsdb:
-    CHECK: if [ -d /var/vcap/jobs/opentsdb ]; then echo Open TSTB ; fi
-  nats:
-    CHECK: if [ -d /var/vcap/jobs/nats ]; then echo NATS Server ; fi
-  router:
-    CHECK: if [ -d /var/vcap/jobs/router ]; then echo Router ; fi
-  syslog_aggregator:
-    CHECK: if [ -d /var/vcap/jobs/syslog_aggregator ]; then echo Syslog Aggregator ; fi
-  vcap_redis:
-    CHECK: if [ -d /var/vcap/jobs/vcap_redis ]; then echo VCAP Redis ; fi
-  mysql_gateway:
-    CHECK: if [ -d /var/vcap/jobs/mysql_gateway ]; then echo MySQL Gateway ; fi
-  postgresql_gateway:
-    CHECK: if [ -d /var/vcap/jobs/postgresql_gateway ]; then echo PostgreSQL Gateway ; fi
-  mongodb_gateway:
-    CHECK: if [ -d /var/vcap/jobs/mongodb_gateway ]; then echo MongoDB Gateway ; fi
-  redis_gateway:
-    CHECK: if [ -d /var/vcap/jobs/redis_gateway ]; then echo Redis Gateway ; fi
-  rabbit_mq:
-    CHECK: if [ -d /var/vcap/jobs/rabbit_gateway ]; then echo RabbitMQ Gateway ; fi
-  sqlserver_gateway:
-    CHECK: if [ -d /var/vcap/jobs/sqlserver_gateway ]; then echo SqlServer Gateway ; fi
-  uhurufs_gateway:
-    CHECK: if [ -d /var/vcap/jobs/uhurufs_gateway ]; then echo UhuruFS Gateway ; fi
- 
+    databasesondrive: ls -la /var/vcap/store/rabbit/instances/
+    servermemory: ps aux | grep /var/vcap/store/rabbit/instances/
+    nodeprocessmemory: ps aux | grep rabbit_node
+    servicesdisksize: du -s /var/vcap/store/rabbit/instances/
+    config: cat /var/vcap/jobs/rabbit_node/config/rabbit_node.yml
+    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/rabbit/rabbit_node.db "select name,plan from vcap_services_rabbit_node_provisioned_services" ; echo done
+  rabbit_service_node_free:
+    databasesondrive: ls -la /var/vcap/store/rabbit/instances/
+    servermemory: ps aux | grep /var/vcap/store/rabbit/instances/
+    nodeprocessmemory: ps aux | grep rabbit_node
+    servicesdisksize: du -s /var/vcap/store/rabbit/instances/
+    config: cat /var/vcap/jobs/rabbit_node_ng/config/rabbit_node.yml
+    servicedb: /var/vcap/packages/sqlite/bin/sqlite3 /var/vcap/store/rabbit/rabbit_node.db "select name,plan from vcap_services_rabbit_node_provisioned_services" ; echo done

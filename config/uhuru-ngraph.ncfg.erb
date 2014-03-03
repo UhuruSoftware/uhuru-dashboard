@@ -1,0 +1,24 @@
+<% @services.each do |service| %><% if service[:mu] != nil %>define ngraph {
+       service_name        <%= service[:name] %>
+       graph_perf_regex    <%= service[:metric] %>=(\d+\.?\d+)
+       graph_value         value
+       graph_units         <%= service[:mu] %>
+       graph_legend        <%= service[:description] %>
+       graph_legend_eol    none
+       page                1 <%= service[:description] %>
+       rrd_plottype        AREA
+       rrd_color           0000aa
+}
+<% if service[:has_max] == true %>
+define ngraph {
+       service_name        <%= service[:name] %>
+       graph_perf_regex    max=(\d+\.?\d+)
+       graph_value         max
+       graph_units         <%= service[:mu] %>
+       graph_legend        <%= service[:description] %> Max
+       graph_legend_eol    none
+       page                1 <%= service[:description] %>
+       rrd_plottype        LINE2
+       rrd_color           aa0000
+}
+<% end %><% end %><% end %>

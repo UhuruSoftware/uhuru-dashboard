@@ -1,0 +1,370 @@
+<% if @hosts == [] %>
+define host{
+        use                     cf-host
+        host_name               localhost
+        alias                   localhost
+        address                 127.0.0.1
+        check_command           true
+        }
+
+define hostgroup{
+        hostgroup_name  linux-servers ; The name of the hostgroup
+        alias           Linux Servers ; Long name of the group
+        members         localhost     ; Comma separated list of hosts that belong to this group
+        }
+
+define service{
+        use                             cf-service
+        host_name                       localhost
+        service_description             localhost
+        check_command                   true
+        }
+
+define command{
+    command_name            true
+    command_line            true
+}
+<% end %>
+
+<% @deployments.each do |deployment| %>
+<%if @hosts.select {|host| [deployment[:description]].include? host[:deployment] }.size > 0 %>
+define hostgroup{
+    hostgroup_name  <%= deployment[:name] %>
+    alias           <%= deployment[:description] %>
+    members         <%= @hosts.select {|host| [deployment[:description]].include? host[:deployment] }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+<% end %>
+
+<%if @hosts.select {|host| ['linux'].include? host[:os]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  linux
+    alias           Linux VMs
+    members         <%= @hosts.select {|host| ['linux'].include? host[:os]}.map{|host| host[:name] }.join(',')  %>
+}
+
+define service{
+    name                    Linux Status
+    use                     cf-service
+    hostgroup_name          linux
+    service_description     Linux VM Status
+    check_command           get_cf_metric!linux!$HOSTADDRESS$!base!status!$HOSTNAME$!$_HOSTDEPLOYMENT$!$_HOSTJOB!$_HOSTINDEX$
+}
+
+<% end %>
+
+<%if @hosts.select {|host| ['windows'].include? host[:os]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  windows
+    alias           Windows VMs
+    members         <%= @hosts.select {|host| ['windows'].include? host[:os]}.map{|host| host[:name] }.join(',')  %>
+}
+
+define service{
+    name                    Windows Status
+    use                     cf-service
+    hostgroup_name          windows
+    service_description     Windows VM Status
+    check_command           get_cf_metric!windows!$HOSTADDRESS$!base!status!$HOSTNAME$!$_HOSTDEPLOYMENT$!$_HOSTJOB!$_HOSTINDEX$
+}
+
+<% end %>
+
+
+<%if @hosts.select {|host| ['dea'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  dea
+    alias           Linux DEAs
+    members         <%= @hosts.select {|host| ['dea'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['uhuru_webui'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  uhuru_webui
+    alias           Linux DEAs
+    members         <%= @hosts.select {|host| ['uhuru_webui'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['dea_next'].include? host[:component]  }.size > 0 %>
+    define hostgroup{
+    hostgroup_name  dea_next
+    alias           Linux DEAs
+    members         <%= @hosts.select {|host| ['dea_next'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+    }
+<% end %>
+
+<%if @hosts.select {|host| ['cloud_controller'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  cloud_controller
+    alias           Cloud Controllers
+    members         <%= @hosts.select {|host| ['cloud_controller'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['cloud_controller_ng'].include? host[:component]  }.size > 0 %>
+    define hostgroup{
+    hostgroup_name  cloud_controller_ng
+    alias           NG Cloud Controllers
+    members         <%= @hosts.select {|host| ['cloud_controller_ng'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+    }
+<% end %>
+
+<%if @hosts.select {|host| ['mysql_node'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  mysql_node
+    alias           MySQL Nodes
+    members         <%= @hosts.select {|host| ['mysql_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['mysql_node_free'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  mysql_node_free
+    alias           Free MySQL Nodes
+    members         <%= @hosts.select {|host| ['mysql_node_free'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['postgresql_node'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  postgresql_node
+    alias           PostgreSQL Nodes
+    members         <%= @hosts.select {|host| ['postgresql_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['postgresql_service_node_free'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  postgresql_service_node_free
+    alias           Free PostgreSQL Nodes
+    members         <%= @hosts.select {|host| ['postgresql_service_node_free'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['mongodb_node'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  mongodb_node
+    alias           MongoDB Nodes
+    members         <%= @hosts.select {|host| ['mongodb_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['mongodb_service_node_free'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  mongodb_service_node_free
+    alias           Free MongoDB Nodes
+    members         <%= @hosts.select {|host| ['mongodb_service_node_free'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['redis_node'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  redis_node
+    alias           Redis Nodes
+    members         <%= @hosts.select {|host| ['redis_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['redis_service_node_free'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  redis_service_node_free
+    alias           Redis Nodes
+    members         <%= @hosts.select {|host| ['redis_service_node_free'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['rabbit_node'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  rabbit_node
+    alias           RabbitMQ Nodes
+    members         <%= @hosts.select {|host| ['rabbit_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['rabbit_service_node_free'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  rabbit_service_node_free
+    alias           RabbitMQ Nodes
+    members         <%= @hosts.select {|host| ['rabbit_service_node_free'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['router'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  routers
+    alias           Routers
+    members         <%= @hosts.select {|host| ['router'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['win_dea'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  win_dea
+    alias           Windows DEAs
+    members         <%= @hosts.select {|host| ['win_dea'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['mssql_node'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  mssql_node
+    alias           MS SQL Nodes
+    members         <%= @hosts.select {|host| ['mssql_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['mssql_node_free'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  mssql_node_free
+    alias           MS SQL Nodes
+    members         <%= @hosts.select {|host| ['mssql_node_free'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['uhurufs_node'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  uhurufs_node
+    alias           Uhuru FS Nodes
+    members         <%= @hosts.select {|host| ['uhurufs_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['uhuru_tunnel'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+hostgroup_name  uhuru_tunnel
+alias           Uhuru Service Tunnels
+members         <%= @hosts.select {|host| ['uhuru_tunnel'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['syslog_aggregator'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+hostgroup_name  syslog_aggregator
+alias           Syslog Aggregator
+members         <%= @hosts.select {|host| ['syslog_aggregator'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['ccdb'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+hostgroup_name  ccdb
+alias           Cloud Controller Database
+members         <%= @hosts.select {|host| ['ccdb'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['vcap_postgres'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+hostgroup_name  vcap_postgres
+alias           VCAP Postgres
+members         <%= @hosts.select {|host| ['vcap_postgres'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| ['debian_nfs_server'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+hostgroup_name  debian_nfs_server
+alias           NFS Server
+members         <%= @hosts.select {|host| ['debian_nfs_server'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+<%if @hosts.select {|host| !['dea', 'dea_next', 'cloud_controller', 'cloud_controller_ng', 'mysql_node', 'mysql_node_free', 'postgresql_node', 'postgresql_service_node_free', 'mongodb_node', 'mongodb_service_node_free' 'redis_node', 'redis_service_node_free', 'rabbit_node', 'rabbit_service_node_free', 'routers', 'win_dea', 'mssql_node', 'mssql_node_free', 'uhuru_webui', 'uhurufs_node'].include? host[:component]  }.size > 0 %>
+define hostgroup{
+    hostgroup_name  cloudfoundry_internals
+    alias           CloudFoundry Core
+    members         <%= @hosts.select {|host| !['dea', 'dea_next', 'cloud_controller', 'cloud_controller_ng', 'mysql_node', 'mysql_node_free', 'postgresql_node', 'postgresql_service_node_free', 'mongodb_node', 'mongodb_service_node_free' 'redis_node', 'redis_service_node_free', 'rabbit_node', 'rabbit_service_node_free', 'routers', 'win_dea', 'mssql_node', 'mssql_node_free', 'uhuru_webui', 'uhurufs_node'].include? host[:component]  }.map{|host| host[:name] }.join(',')  %>
+}
+<% end %>
+
+define host{
+    name cf-host
+    use generic-host
+    check_period 24x7
+    check_interval 5
+    check_command check_host
+    max_check_attempts 10
+    register 0
+    contact_groups admins
+}
+
+<% @hosts.each do |host| %>
+define host{
+    use         cf-host
+    host_name   <%= host[:name] %>
+    alias       <%= host[:alias] %>
+    address     <%= host[:address] %>
+    _DEPLOYMENT <%= host[:deployment] %>
+    _JOB        <%= host[:component] %>
+    _INDEX      <%= host[:index] %>
+}
+<% end %>
+
+<% @services.each do |service| %>
+define service{
+    name                    <%= service[:name] %>
+    use                     cf-service<% if service[:graph] %>,srv-pnp<% end %>
+    hostgroup_name          <%= service[:hostgroup] %>
+    service_description     <%= service[:name] %>
+<%#    servicegroups           <%= service[:servicegroups].join(',') %>
+    check_command           get_cf_metric!<%= service[:os] %>!$HOSTADDRESS$!<%= service[:component] %>!<%= service[:metric] %>!$HOSTNAME$!$_HOSTDEPLOYMENT$!$_HOSTJOB!$_HOSTINDEX$
+}
+<% end %>
+
+define command{
+    command_name            check_host
+    command_line            <%= @check_host_path %> $HOSTADDRESS$ <%= $config['listen_address'] %>
+}
+
+define command{
+    command_name            get_cf_metric
+    command_line            <%= @command_path %> $ARG1$ $ARG2$ $ARG3$ $ARG4$ $ARG5$ $ARG6$ $ARG7$ $ARG8$
+}
+
+define command{
+    command_name            notify-host
+    command_line            <%= @send_mail_path %> host "$NOTIFICATIONTYPE$" "$HOSTNAME$" "$HOSTSTATE$" "$HOSTADDRESS$" "$HOSTOUTPUT$" "$LONGDATETIME$"
+}
+
+define command{
+    command_name            notify-service
+    command_line            <%= @send_mail_path %> service $NOTIFICATIONTYPE$ "$HOSTNAME$" "$SERVICESTATE$" "$HOSTADDRESS$" "$SERVICEOUTPUT$" "$LONGDATETIME$" "$SERVICEDESC$"
+}
+
+define service {
+   name       srv-pnp
+   action_url /pnp4nagios/index.php/graph?host=$HOSTNAME$&srv=$SERVICEDESC$' class='tips' rel='/pnp4nagios/index.php/popup?host=$HOSTNAME$&srv=$SERVICEDESC$
+   register   0
+}
+
+define service{
+    name				            cf-service 		    ; The name of this service template
+    use				                generic-service		; Inherit default values from the generic-service definition
+    max_check_attempts              3			        ; Re-check the service up to 4 times in order to determine its final (hard) state
+    normal_check_interval           10			        ; Check the service every 5 minutes under normal conditions
+    retry_check_interval            1			        ; Re-check the service every minute until a hard state can be determined
+    register                        0       		    ; DONT REGISTER THIS DEFINITION - ITS NOT A REAL SERVICE, JUST A TEMPLATE!
+    process_perf_data               1                   ; Process performance data
+    contact_groups                  admins              ; Notifications get sent out to everyone in 'admins' group
+    notification_interval	        <%= $config['alerts']['notification_interval'] %>
+}
+
+define contact{
+    contact_name                    nagios_alerts
+    alias                           Nagios Alerts
+    email                           email
+    service_notification_period     24x7                        ; service notifications can be sent anytime
+    host_notification_period        24x7                        ; host notifications can be sent anytime
+    service_notification_options    w,u,c,r,f,s                 ; send notifications for all service states, flapping events, and scheduled downtime events
+    host_notification_options       d,u,r,f,s                   ; send notifications for all host states, flapping events, and scheduled downtime events
+    service_notification_commands   notify-service              ; send service notifications via email
+    host_notification_commands      notify-host                 ; send host notifications via email
+}
+
+define contactgroup{
+    contactgroup_name   admins
+    alias               Nagios Administrators
+    members             nagios_alerts
+    }
